@@ -1,19 +1,24 @@
 ---
-layout: home
+layout: default
 title: Malan Lab
 ---
 
-# Malan Lab
-
-## Neural Signals, Brain Dynamics & Neuroengineering
+<div class="hero">
+  <h1>Malan Lab</h1>
+  <p class="tagline">Neural Signals, Brain Dynamics & Neuroengineering</p>
+  <p class="subtitle">
+    Multimodal neurophysiology • Computational neuroscience • Brain–Computer Interfaces • Neural biomarkers
+  </p>
+</div>
 
 ---
 
-### 🧠 About the Lab
+## About the Lab
 
-Malan Lab studies brain function and dysfunction using multimodal neurophysiology and computational methods.
+Malan Lab studies brain function and dysfunction using multimodal neurophysiology and computational approaches.
 
 We focus on understanding neural mechanisms underlying:
+
 - Movement disorders (Parkinson’s disease, freezing of gait)
 - Brain network dynamics
 - Neural decoding and biomarkers
@@ -22,25 +27,39 @@ We focus on understanding neural mechanisms underlying:
 
 ---
 
-### 🔬 Research Themes
+## Research Areas
 
-**Neural Signal Processing**  
-EEG, MEG, LFP, and EMG analysis for brain-state decoding.
+<div class="grid">
 
-**Brain Dynamics & Connectivity**  
-Oscillations, synchronization, and network interactions in the human brain.
+<div class="card">
+<h3>Neural Signal Processing</h3>
+<p>EEG, MEG, LFP and EMG analysis for brain-state decoding and computational modeling.</p>
+</div>
 
-**Neuroengineering & BCI**  
-Designing computational models for brain–computer interfaces.
+<div class="card">
+<h3>Brain Dynamics</h3>
+<p>Oscillations, connectivity, and large-scale network interactions in the human brain.</p>
+</div>
 
-**Neuromodulation & DBS**  
-Understanding stimulation effects on motor and cognitive circuits.
+<div class="card">
+<h3>Neuroengineering & BCI</h3>
+<p>Brain–computer interfaces and neural decoding for assistive technologies.</p>
+</div>
 
-**Neural Biomarkers**  
-Identifying biomarkers for diagnosis and therapeutic monitoring.
+<div class="card">
+<h3>Neuromodulation</h3>
+<p>Deep brain stimulation and therapeutic modulation of neural circuits.</p>
+</div>
+
+<div class="card">
+<h3>Neural Biomarkers</h3>
+<p>Data-driven biomarkers for diagnosis, prognosis, and treatment monitoring.</p>
+</div>
+
+</div>
 
 ---
 
-### 🚀 Mission
+## Mission
 
-To develop computational and translational frameworks for understanding brain dynamics and improving neurological care.
+To develop computational and translational frameworks for understanding brain dynamics and improving neurological health.
