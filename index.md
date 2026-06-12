@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Malan Lab
+title: Malan Lab 
 ---
 
 <div class="hero">
