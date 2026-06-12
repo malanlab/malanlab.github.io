@@ -21,31 +21,34 @@ Malan Lab focuses on understanding the neural mechanisms underlying movement, co
 
 ## Research Themes
 
-<div class="grid">
+## Research Highlights
 
-<div class="card">
+<div class="highlight-grid">
+
+<div class="highlight-card">
 <h3>Neural Signal Processing</h3>
-<p>EEG, MEG, LFP analysis for brain-state decoding.</p>
+EEG, MEG, LFP decoding and brain-state analysis.
 </div>
 
-<div class="card">
+<div class="highlight-card">
 <h3>Brain Dynamics</h3>
-<p>Oscillations, connectivity, and large-scale neural networks.</p>
+Oscillations, connectivity, and network-level brain function.
 </div>
 
-<div class="card">
+<div class="highlight-card">
 <h3>Movement Disorders</h3>
-<p>Parkinson’s disease, freezing of gait, and motor control.</p>
+Parkinson’s disease, freezing of gait, DBS effects.
 </div>
 
-<div class="card">
+<div class="highlight-card">
 <h3>Brain–Computer Interfaces</h3>
-<p>Neural decoding for assistive neurotechnology.</p>
+Decoding motor imagery and SSVEP signals.
 </div>
 
-<div class="card">
+<div class="highlight-card">
 <h3>Neural Biomarkers</h3>
-<p>Data-driven biomarkers for diagnosis and therapy tracking.</p>
+Data-driven clinical biomarkers for neurological disorders.
 </div>
 
 </div>
+
