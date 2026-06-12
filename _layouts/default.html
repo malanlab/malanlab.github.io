@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }} | Malan Lab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #0b1f3a;
+      color: white;
+      padding: 20px;
+    }
+
+    nav a {
+      color: white;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Malan Lab</h1>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/research">Research</a>
+    <a href="/publications">Publications</a>
+    <a href="/people">People</a>
+    <a href="/join">Join Us</a>
+  </nav>
+</header>
+
+<main>
+  {{ content }}
+</main>
+
+</body>
+</html>
