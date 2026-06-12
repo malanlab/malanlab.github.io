@@ -79,49 +79,88 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let t = 0;
 
+  // --------- helper: smoothed noise (1/f like drift) ----------
+  function noise(x) {
+    return (
+      Math.sin(x * 0.013) * 1.2 +
+      Math.sin(x * 0.031) * 0.6 +
+      Math.sin(x * 0.057) * 0.3
+    );
+  }
+
+  // --------- helper: bursty oscillation (alpha/beta packets) ----------
+  function burst(x, phase) {
+    const env =
+      Math.exp(-Math.pow(Math.sin((x + t) * 0.001 + phase), 2) * 6);
+
+    return env * Math.sin((x + t) * 0.03 + phase);
+  }
+
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const channels = 8;
+    const channels = 10;
     const spacing = canvas.height / (channels + 1);
+
+    // subtle dark neuro background glow
+    const grad = ctx.createRadialGradient(
+      canvas.width / 2, canvas.height / 2, 50,
+      canvas.width / 2, canvas.height / 2, canvas.width
+    );
+    grad.addColorStop(0, "#0b1220");
+    grad.addColorStop(1, "#05070d");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     for (let c = 0; c < channels; c++) {
 
       ctx.beginPath();
 
-      const alpha = 0.15 + c * 0.08;
-      ctx.strokeStyle = `rgba(0, 255, 200, ${alpha})`;
-      ctx.lineWidth = 1.5;
+      const phase = c * 0.8;
 
-      for (let x = 0; x < canvas.width; x += 4) {
+      // EEG-like channel colors (not neon random)
+      const hue = 190 + c * 6; // cyan → blue shift
+      const alpha = 0.35;
 
-        const phase = c * 0.7;
+      ctx.strokeStyle = `hsla(${hue}, 90%, 60%, ${alpha})`;
+      ctx.lineWidth = 1.2;
 
-        let noise = (Math.random() - 0.5) * 3;
+      let first = true;
 
-        let signal =
-          Math.sin((x + t) * 0.02 + phase) * 10 +
-          Math.sin((x + t) * 0.005 + phase) * 25;
+      for (let x = 0; x < canvas.width; x += 3) {
+
+        // --- realistic EEG composition ---
+        let baseline = noise(x * 0.8) * 2.5;
+        let alphaRhythm = Math.sin((x + t) * 0.012 + phase) * 6;
+        let betaBurst = burst(x, phase) * 10;
+
+        // small random micro-fluctuation (MEG/EEG noise floor)
+        let microNoise = (Math.random() - 0.5) * 1.2;
 
         let y =
           spacing * (c + 1) +
-          signal +
-          noise;
+          baseline +
+          alphaRhythm +
+          betaBurst +
+          microNoise;
 
-        if (x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
+        if (first) {
+          ctx.moveTo(x, y);
+          first = false;
+        } else {
+          ctx.lineTo(x, y);
+        }
       }
 
       ctx.stroke();
     }
 
-    t += 2;
+    t += 1.2;
     requestAnimationFrame(draw);
   }
 
   draw();
 });
 </script>
-
 </body>
 </html>
