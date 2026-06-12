@@ -38,18 +38,18 @@ To build next-generation neurotechnology bridging neuroscience, AI, and clinical
 <div class="grid">
 
 <div class="card">
-<h3>Computational Neuroscience</h3>
-<p>Modeling brain dynamics and neural systems.</p>
+<h3>Neural Signal Processing</h3>
+<p>EEG, MEG, LFP analysis, spectral decomposition, and time-frequency modeling.</p>
 </div>
 
 <div class="card">
-<h3>Neuroengineering</h3>
-<p>Tools for brain signal acquisition and analysis.</p>
+<h3>Functional Connectivity</h3>
+<p>WPLI, coherence, phase synchrony, and network neuroscience methods.</p>
 </div>
 
 <div class="card">
-<h3>Brain Dynamics</h3>
-<p>Oscillations, connectivity, and networks.</p>
+<h3>Motor Control & Disorders</h3>
+<p>Parkinson’s disease, freezing of gait, DBS modulation, and motor learning.</p>
 </div>
 
 </div>
