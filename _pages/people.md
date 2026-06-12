@@ -1,19 +1,18 @@
 ---
 layout: default
 title: People
+permalink: /people/
 ---
 
 # People
 
-## PI
+## Principal Investigator
+
 **Nitesh Singh Malan**
 
-Assistant Professor  
-IIT Jammu
-
-Research:
-- Neural Signal Processing
-- Brain Dynamics
+Research interests:
+- Neural signal processing
+- Brain dynamics
 - Neuroengineering
-- BCI
-- DBS
+- Brain–computer interfaces
+- Neural biomarkers
