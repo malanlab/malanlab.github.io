@@ -77,132 +77,140 @@ document.addEventListener("DOMContentLoaded", () => {
   resize();
   window.addEventListener("resize", resize);
 
-  // -----------------------------
-  // Brain network configuration
-  // -----------------------------
-  const N = 14; // nodes (electrodes / ROIs)
-  const nodes = [];
-
   let t = 0;
 
-  // initialize nodes in a pseudo-brain shape (ellipse)
+  // -----------------------------
+  // Brain-shaped node layout
+  // (two hemispheres)
+  // -----------------------------
+  const N = 26;
+  const nodes = [];
+
   for (let i = 0; i < N; i++) {
-    const angle = (i / N) * Math.PI * 2;
+
+    const hemisphere = i < N / 2 ? -1 : 1;
+    const localIndex = i % (N / 2);
+
+    const angle = (localIndex / (N / 2)) * Math.PI;
+
+    const x = 0.5 + hemisphere * 0.18 * Math.cos(angle);
+    const y = 0.5 + 0.28 * Math.sin(angle) * (0.8 + Math.random() * 0.4);
 
     nodes.push({
-      x: 0.5 + 0.35 * Math.cos(angle),
-      y: 0.5 + 0.25 * Math.sin(angle),
-      vx: (Math.random() - 0.5) * 0.002,
-      vy: (Math.random() - 0.5) * 0.002,
-      phase: Math.random() * 10
+      x,
+      y,
+      phase: Math.random() * 10,
+      vx: (Math.random() - 0.5) * 0.0015,
+      vy: (Math.random() - 0.5) * 0.0015,
+      hemi: hemisphere
     });
   }
 
-  function scaleX(x) {
-    return x * canvas.width;
-  }
+  function sx(x) { return x * canvas.width; }
+  function sy(y) { return y * canvas.height; }
 
-  function scaleY(y) {
-    return y * canvas.height;
-  }
+  // -----------------------------
+  // Brain-like connectivity rule
+  // (strong local + weaker cross-hemisphere)
+  // -----------------------------
+  function connectivity(a, b) {
 
-  function connectionStrength(a, b) {
-    // dynamic functional connectivity (oscillatory + slow drift)
     const dx = a.x - b.x;
     const dy = a.y - b.y;
     const dist = Math.sqrt(dx * dx + dy * dy);
 
-    const oscillation = Math.sin(t * 0.02 + a.phase - b.phase);
-    const slowDrift = Math.sin(t * 0.005 + dist * 10);
+    const local = Math.exp(-dist * 6);
 
-    return Math.max(0, oscillation * 0.6 + slowDrift * 0.4);
+    const interHemisphereBoost =
+      a.hemi !== b.hemi ? 0.6 : 1.0;
+
+    const oscillation =
+      Math.sin(t * 0.02 + a.phase - b.phase);
+
+    return local * interHemisphereBoost * (0.6 + 0.4 * oscillation);
   }
 
   function draw() {
 
-    // background (deep brain space)
+    // -----------------------------
+    // brain background (soft cortex feel)
+    // -----------------------------
     const grad = ctx.createRadialGradient(
-      canvas.width * 0.5, canvas.height * 0.5, 20,
+      canvas.width * 0.5, canvas.height * 0.45, 30,
       canvas.width * 0.5, canvas.height * 0.5, canvas.width
     );
-    
+
     grad.addColorStop(0, "#0d1b2a");
-    grad.addColorStop(0.4, "#08101a");
+    grad.addColorStop(0.5, "#08101a");
     grad.addColorStop(1, "#04060a");
-    
+
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    // subtle noise layer (VERY important for realism)
-    for (let i = 0; i < 60; i++) {
-      ctx.fillStyle = "rgba(255,255,255,0.02)";
+
+    // subtle noise (brain texture)
+    for (let i = 0; i < 80; i++) {
+      ctx.fillStyle = "rgba(255,255,255,0.015)";
       ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 1);
     }
 
     // -----------------------------
-    // draw edges (connectivity)
+    // edges (connectivity inside brain)
     // -----------------------------
     for (let i = 0; i < N; i++) {
       for (let j = i + 1; j < N; j++) {
-    
+
         const a = nodes[i];
         const b = nodes[j];
-    
-        const w = connectionStrength(a, b);
-    
-        // soft threshold instead of hard cut
-        const alpha = Math.pow(w, 1.5) * 0.7;
-    
-        if (alpha < 0.05) continue;
-    
-        const x1 = scaleX(a.x);
-        const y1 = scaleY(a.y);
-        const x2 = scaleX(b.x);
-        const y2 = scaleY(b.y);
-    
+
+        const w = connectivity(a, b);
+
+        const alpha = Math.pow(Math.max(0, w), 1.6) * 0.6;
+
+        if (alpha < 0.03) continue;
+
         ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-    
-        // smoother neuro color mapping
-        const hue = 200 + w * 60;
-    
+        ctx.moveTo(sx(a.x), sy(a.y));
+        ctx.lineTo(sx(b.x), sy(b.y));
+
+        const hue = 185 + w * 50;
+
         ctx.strokeStyle = `hsla(${hue}, 95%, 65%, ${alpha})`;
-        ctx.lineWidth = 0.6 + w * 2.0;
-    
+        ctx.lineWidth = 0.5 + w * 2.0;
+
         ctx.stroke();
       }
     }
 
     // -----------------------------
-    // update + draw nodes
+    // nodes (brain regions)
     // -----------------------------
     for (let i = 0; i < N; i++) {
-    
+
       const n = nodes[i];
-    
-      // oscillatory drift (brain state)
+
+      // brain-like slow oscillation + drift
       n.x += n.vx + 0.002 * Math.sin(t * 0.01 + n.phase);
       n.y += n.vy + 0.002 * Math.cos(t * 0.012 + n.phase);
-    
-      // soft attractor to center (prevents runaway)
+
+      // soft attractor (keeps brain shape stable)
       n.x += (0.5 - n.x) * 0.002;
       n.y += (0.5 - n.y) * 0.002;
-    
+
       const activity = 0.5 + 0.5 * Math.sin(t * 0.03 + n.phase);
-    
-      const px = scaleX(n.x);
-      const py = scaleY(n.y);
-    
+
+      const x = sx(n.x);
+      const y = sy(n.y);
+
+      // node body
       ctx.beginPath();
-      ctx.arc(px, py, 2 + activity * 3, 0, Math.PI * 2);
-    
+      ctx.arc(x, y, 2.5 + activity * 2.5, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(0, 255, 210, ${0.35 + activity * 0.5})`;
       ctx.fill();
-    
+
+      // glow ring (brain activation)
       ctx.beginPath();
-      ctx.arc(px, py, 6 + activity * 5, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(0, 180, 255, ${0.06 + activity * 0.1})`;
+      ctx.arc(x, y, 6 + activity * 6, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(0, 180, 255, ${0.06 + activity * 0.12})`;
       ctx.stroke();
     }
 
