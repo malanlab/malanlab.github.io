@@ -22,16 +22,11 @@ body {
 
 :root {
   --primary: #0b1f3a;
-  --accent: #1d4ed8;
+  --accent: #14b8a6;  /* teal scientific highlight */
   --bg: #f5f7fb;
   --card: #ffffff;
-  --muted: #666;
-
-  --space-1: 8px;
-  --space-2: 16px;
-  --space-3: 24px;
-  --space-4: 40px;
-  --space-5: 70px;
+  --text: #1a1a1a;
+  --muted: #64748b;
 }
 
 /* =========================
