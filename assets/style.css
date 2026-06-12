@@ -2,6 +2,39 @@
 /* =========================
    DESIGN SYSTEM (ELITE LAB)
 ========================= */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, p, ul, ol {
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: 14px;
+}
+
+ul, ol {
+  padding-left: 20px;
+  margin-bottom: 14px;
+}
+
+
+div {
+  margin-bottom: 0;
+}
+
+
+.grid,
+.highlight-grid {
+  gap: 20px;
+}
+
+.card,
+.highlight-card {
+  margin: 0;
+}
 
 :root {
   --primary: #0b1f3a;
