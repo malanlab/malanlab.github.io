@@ -9,10 +9,15 @@
 
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
-<script>
-const canvas = document.querySelector(".brain-canvas");
 
-if (canvas) {
+<body>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const canvas = document.querySelector(".brain-canvas");
+  if (!canvas) return;
+
   const ctx = canvas.getContext("2d");
 
   function resize() {
@@ -49,9 +54,8 @@ if (canvas) {
   }
 
   draw();
-}
+});
 </script>
-<body>
 
 <header class="navbar">
   <div class="nav-container">
