@@ -35,8 +35,6 @@ Malan Lab is a computational neuroscience and neuroengineering research group at
 Our research spans multiple scales of brain organization, from neural oscillations and network dynamics to clinical biomarkers and neurotechnology applications. We develop quantitative approaches for studying healthy brain function as well as neurological disorders including Parkinson's disease, chronic pain, and stroke.
   </div>
 
-  <img src="/assets/images/lab_group.jpg" />
-
 </div>
 ---
 
@@ -114,17 +112,6 @@ Learn about student opportunities and collaborations.
 
 </div>
 
----
 
-## Lab at a Glance
-
-<div class="image-grid">
-
-  <img src="/assets/images/lab1.jpg" />
-  <img src="/assets/images/eeg.jpg" />
-  <img src="/assets/images/brain.jpg" />
-  <img src="/assets/images/research.jpg" />
-
-</div>
 
 </div>
