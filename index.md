@@ -24,55 +24,56 @@ title: Malan Lab
 
 </div>
 
-## Welcome
+## About the Lab
 
-Malan Lab develops computational and experimental approaches to understand brain function in health and neurological disease. Our research combines electrophysiology, neuroimaging, machine learning, and network neuroscience to uncover neural mechanisms underlying movement, cognition, and rehabilitation.
+Malan Lab is a computational neuroscience and neuroengineering research group at IIT Jammu. We seek to understand how neural circuits generate movement, cognition, learning, and behavior through the integration of experimental neurophysiology, signal processing, machine learning, and computational modeling.
+
+Our research spans multiple scales of brain organization, from neural oscillations and network dynamics to clinical biomarkers and neurotechnology applications. We develop quantitative approaches for studying healthy brain function as well as neurological disorders including Parkinson's disease, chronic pain, and stroke.
 
 ---
 
-## Research Areas
+## Mission
+
+<div class="card">
+
+To advance our understanding of brain function through multimodal neurophysiology, computational neuroscience, and translational neuroengineering, while developing objective neural biomarkers and technologies that improve diagnosis, rehabilitation, and patient care.
+
+</div>
+
+---
+
+## Vision
+
+<div class="card">
+
+To establish a leading interdisciplinary research program that bridges neuroscience, engineering, artificial intelligence, and clinical neuroscience to address fundamental questions about the human brain and develop next-generation neurotechnologies.
+
+</div>
+
+---
+
+## Core Expertise
 
 <div class="grid">
-
-<div class="card">
-<h3>Neural Signal Processing</h3>
-
-EEG, MEG, EMG, and Local Field Potential (LFP) analysis for decoding neural activity and characterizing brain states.
-
-</div>
-
-<div class="card">
-<h3>Brain Dynamics & Connectivity</h3>
-
-Oscillatory activity, functional connectivity, neural synchrony, and large-scale brain network interactions.
-
-</div>
-
-<div class="card">
-<h3>Movement Disorders</h3>
-
-Neural mechanisms of Parkinson’s disease, freezing of gait, deep brain stimulation, and motor rehabilitation.
-
-</div>
 
 <div class="card">
 <h3>Computational Neuroscience</h3>
 
-Data-driven modeling, machine learning, neural biomarkers, and quantitative approaches to brain function.
+Data-driven modeling of neural systems and brain dynamics.
 
 </div>
 
 <div class="card">
-<h3>Brain–Computer Interfaces</h3>
+<h3>Neuroengineering</h3>
 
-Motor imagery decoding, neurofeedback systems, and adaptive human–machine interaction.
+Development of advanced tools for neural measurement and analysis.
 
 </div>
 
 <div class="card">
-<h3>Neurorehabilitation</h3>
+<h3>Brain Dynamics</h3>
 
-Neural mechanisms of recovery after stroke and development of objective biomarkers for rehabilitation outcomes.
+Understanding oscillations, connectivity, and large-scale neural networks.
 
 </div>
 
@@ -80,66 +81,29 @@ Neural mechanisms of recovery after stroke and development of objective biomarke
 
 ---
 
-## Current Research Programs
+## Explore
 
 <div class="grid">
 
 <div class="card">
-<h3>Parkinson's Disease & Freezing of Gait</h3>
+<h3>Research</h3>
 
-Studying cortical and subcortical neural signatures of gait impairment using EEG, DBS-LFP recordings, and immersive virtual reality paradigms.
-
-</div>
-
-<div class="card">
-<h3>Brain Oscillations in Chronic Pain</h3>
-
-Investigating alterations in alpha oscillations and functional connectivity as potential biomarkers of chronic pain.
+Discover our research programs, methods, and ongoing projects.
 
 </div>
 
 <div class="card">
-<h3>Human Cerebello-Cortical Dynamics</h3>
+<h3>Publications</h3>
 
-Understanding neural mechanisms of motor adaptation, error processing, and motor learning.
-
-</div>
-
-</div>
-
----
-
-## Research Impact
-
-<div class="grid">
-
-<div class="card">
-<h3>Methods</h3>
-
-Advanced signal processing, machine learning, connectivity analysis, and multimodal neurophysiology.
+Explore peer-reviewed publications and scientific contributions.
 
 </div>
 
 <div class="card">
-<h3>Applications</h3>
+<h3>Join Us</h3>
 
-Parkinson’s disease, stroke rehabilitation, chronic pain, motor learning, and brain–computer interfaces.
-
-</div>
-
-<div class="card">
-<h3>Goal</h3>
-
-Develop objective neural biomarkers and computational tools that improve diagnosis, monitoring, and rehabilitation.
+Learn about student opportunities and collaborations.
 
 </div>
 
 </div>
-
----
-
-## Join the Lab
-
-We welcome motivated students and collaborators interested in neuroscience, biomedical engineering, signal processing, machine learning, and neurotechnology.
-
-**Interested in joining?** Visit the **Join Us** page or contact the Principal Investigator.
