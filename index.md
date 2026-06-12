@@ -5,9 +5,11 @@ title: Malan Lab
 
 <div class="hero">
   <h1>Malan Lab</h1>
-  <p class="tagline">Neural Signals, Brain Dynamics & Neuroengineering</p>
+  <p class="tagline">
+    Neural Signals • Brain Dynamics • Neuroengineering
+  </p>
   <p class="subtitle">
-    Multimodal neurophysiology • Computational neuroscience • Brain–Computer Interfaces • Neural biomarkers
+    Multimodal neurophysiology, computational neuroscience, brain–computer interfaces, and neural biomarkers
   </p>
 </div>
 
@@ -15,45 +17,39 @@ title: Malan Lab
 
 ## About the Lab
 
-Malan Lab studies brain function and dysfunction using multimodal neurophysiology and computational approaches.
+Malan Lab studies brain function and dysfunction using multimodal neural recordings and computational approaches.
 
-We focus on understanding neural mechanisms underlying:
-
-- Movement disorders (Parkinson’s disease, freezing of gait)
-- Brain network dynamics
-- Neural decoding and biomarkers
-- Brain–computer interfaces
-- Deep brain stimulation mechanisms
+We aim to understand how neural circuits generate behavior and how they break down in neurological disorders.
 
 ---
 
-## Research Areas
+## Research Focus
 
 <div class="grid">
 
 <div class="card">
 <h3>Neural Signal Processing</h3>
-<p>EEG, MEG, LFP and EMG analysis for brain-state decoding and computational modeling.</p>
+<p>EEG, MEG, LFP, EMG analysis for decoding brain states.</p>
 </div>
 
 <div class="card">
 <h3>Brain Dynamics</h3>
-<p>Oscillations, connectivity, and large-scale network interactions in the human brain.</p>
+<p>Oscillations, connectivity, and large-scale neural networks.</p>
 </div>
 
 <div class="card">
-<h3>Neuroengineering & BCI</h3>
-<p>Brain–computer interfaces and neural decoding for assistive technologies.</p>
+<h3>Movement Disorders</h3>
+<p>Parkinson’s disease, freezing of gait, and motor control.</p>
 </div>
 
 <div class="card">
-<h3>Neuromodulation</h3>
-<p>Deep brain stimulation and therapeutic modulation of neural circuits.</p>
+<h3>Brain–Computer Interfaces</h3>
+<p>Decoding neural signals for assistive neurotechnology.</p>
 </div>
 
 <div class="card">
 <h3>Neural Biomarkers</h3>
-<p>Data-driven biomarkers for diagnosis, prognosis, and treatment monitoring.</p>
+<p>Data-driven biomarkers for diagnosis and therapy monitoring.</p>
 </div>
 
 </div>
@@ -62,4 +58,4 @@ We focus on understanding neural mechanisms underlying:
 
 ## Mission
 
-To develop computational and translational frameworks for understanding brain dynamics and improving neurological health.
+To develop computational frameworks that bridge neuroscience, engineering, and clinical translation.
