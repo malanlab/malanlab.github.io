@@ -13,42 +13,47 @@ title: Malan Lab
 
 ---
 
-## Welcome
+## About the Lab
 
-Malan Lab focuses on understanding the neural mechanisms underlying movement, cognition, and neurological disorders using computational and experimental approaches.
+Malan Lab focuses on understanding neural mechanisms underlying movement, cognition, and neurological disorders using computational and experimental approaches.
+
+We aim to bridge neuroscience, engineering, and clinical translation through data-driven modeling of brain activity.
 
 ---
 
-## Research Themes
-
-## Research Highlights
+## Research Areas
 
 <div class="highlight-grid">
 
 <div class="highlight-card">
 <h3>Neural Signal Processing</h3>
-EEG, MEG, LFP decoding and brain-state analysis.
+EEG, MEG, and LFP analysis for decoding brain states and neural dynamics.
 </div>
 
 <div class="highlight-card">
 <h3>Brain Dynamics</h3>
-Oscillations, connectivity, and network-level brain function.
+Oscillatory activity, functional connectivity, and large-scale network organization.
 </div>
 
 <div class="highlight-card">
 <h3>Movement Disorders</h3>
-Parkinson’s disease, freezing of gait, DBS effects.
+Parkinson’s disease, freezing of gait, motor control, and DBS modulation.
 </div>
 
 <div class="highlight-card">
 <h3>Brain–Computer Interfaces</h3>
-Decoding motor imagery and SSVEP signals.
+Motor imagery and SSVEP-based neural decoding systems for assistive technologies.
 </div>
 
 <div class="highlight-card">
 <h3>Neural Biomarkers</h3>
-Data-driven clinical biomarkers for neurological disorders.
+Computational biomarkers for neurological disorders and clinical translation.
 </div>
 
 </div>
 
+---
+
+## Mission
+
+To develop computational frameworks that link neural activity to behavior, cognition, and clinical outcomes.
