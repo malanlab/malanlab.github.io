@@ -26,10 +26,18 @@ title: Malan Lab
 
 ## About the Lab
 
+<div class="about-grid">
+
+  <div>
+
 Malan Lab is a computational neuroscience and neuroengineering research group at IIT Jammu. We seek to understand how neural circuits generate movement, cognition, learning, and behavior through the integration of experimental neurophysiology, signal processing, machine learning, and computational modeling.
 
 Our research spans multiple scales of brain organization, from neural oscillations and network dynamics to clinical biomarkers and neurotechnology applications. We develop quantitative approaches for studying healthy brain function as well as neurological disorders including Parkinson's disease, chronic pain, and stroke.
+  </div>
 
+  <img src="/assets/images/lab_group.jpg" />
+
+</div>
 ---
 
 ## Mission
