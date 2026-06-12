@@ -122,41 +122,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // background (deep brain space)
     const grad = ctx.createRadialGradient(
-      canvas.width / 2, canvas.height / 2, 50,
-      canvas.width / 2, canvas.height / 2, canvas.width
+      canvas.width * 0.5, canvas.height * 0.5, 20,
+      canvas.width * 0.5, canvas.height * 0.5, canvas.width
     );
-
-    grad.addColorStop(0, "#0b1220");
-    grad.addColorStop(1, "#05070d");
-
+    
+    grad.addColorStop(0, "#0d1b2a");
+    grad.addColorStop(0.4, "#08101a");
+    grad.addColorStop(1, "#04060a");
+    
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // subtle noise layer (VERY important for realism)
+    for (let i = 0; i < 60; i++) {
+      ctx.fillStyle = "rgba(255,255,255,0.02)";
+      ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 1);
+    }
 
     // -----------------------------
     // draw edges (connectivity)
     // -----------------------------
     for (let i = 0; i < N; i++) {
       for (let j = i + 1; j < N; j++) {
-
+    
         const a = nodes[i];
         const b = nodes[j];
-
+    
         const w = connectionStrength(a, b);
-
-        if (w < 0.35) continue;
-
+    
+        // soft threshold instead of hard cut
+        const alpha = Math.pow(w, 1.5) * 0.7;
+    
+        if (alpha < 0.05) continue;
+    
+        const x1 = scaleX(a.x);
+        const y1 = scaleY(a.y);
+        const x2 = scaleX(b.x);
+        const y2 = scaleY(b.y);
+    
         ctx.beginPath();
-        ctx.moveTo(scaleX(a.x), scaleY(a.y));
-        ctx.lineTo(scaleX(b.x), scaleY(b.y));
-
-        const alpha = 0.05 + w * 0.6;
-
-        // neuro connectivity color (cyan-blue spectrum)
-        const hue = 190 + w * 40;
-
-        ctx.strokeStyle = `hsla(${hue}, 90%, 60%, ${alpha})`;
-        ctx.lineWidth = 1.2 * w;
-
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+    
+        // smoother neuro color mapping
+        const hue = 200 + w * 60;
+    
+        ctx.strokeStyle = `hsla(${hue}, 95%, 65%, ${alpha})`;
+        ctx.lineWidth = 0.6 + w * 2.0;
+    
         ctx.stroke();
       }
     }
@@ -165,36 +178,31 @@ document.addEventListener("DOMContentLoaded", () => {
     // update + draw nodes
     // -----------------------------
     for (let i = 0; i < N; i++) {
-
+    
       const n = nodes[i];
-
-      // subtle drift (like brain state fluctuation)
-      n.x += n.vx;
-      n.y += n.vy;
-
-      // soft boundary constraint
-      n.x = 0.5 + (n.x - 0.5) * 0.995;
-      n.y = 0.5 + (n.y - 0.5) * 0.995;
-
-      // node activity (EEG-like power)
-      const activity =
-        0.5 +
-        0.5 * Math.sin(t * 0.03 + n.phase);
-
+    
+      // oscillatory drift (brain state)
+      n.x += n.vx + 0.002 * Math.sin(t * 0.01 + n.phase);
+      n.y += n.vy + 0.002 * Math.cos(t * 0.012 + n.phase);
+    
+      // soft attractor to center (prevents runaway)
+      n.x += (0.5 - n.x) * 0.002;
+      n.y += (0.5 - n.y) * 0.002;
+    
+      const activity = 0.5 + 0.5 * Math.sin(t * 0.03 + n.phase);
+    
       const px = scaleX(n.x);
       const py = scaleY(n.y);
-
-      // node glow
+    
       ctx.beginPath();
-      ctx.arc(px, py, 2.5 + activity * 2.5, 0, Math.PI * 2);
-
-      ctx.fillStyle = `rgba(0, 255, 210, ${0.4 + activity * 0.4})`;
+      ctx.arc(px, py, 2 + activity * 3, 0, Math.PI * 2);
+    
+      ctx.fillStyle = `rgba(0, 255, 210, ${0.35 + activity * 0.5})`;
       ctx.fill();
-
-      // outer glow ring
+    
       ctx.beginPath();
-      ctx.arc(px, py, 6 + activity * 4, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(0, 200, 255, ${0.08 + activity * 0.1})`;
+      ctx.arc(px, py, 6 + activity * 5, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(0, 180, 255, ${0.06 + activity * 0.1})`;
       ctx.stroke();
     }
 
