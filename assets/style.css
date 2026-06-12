@@ -168,6 +168,21 @@ section {
   transform: translateY(-6px);
 }
 
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.about-grid img {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+
 /* =========================
    HERO (INSTITUTE GRADE)
 ========================= */
