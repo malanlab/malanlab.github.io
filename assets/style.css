@@ -31,7 +31,27 @@ body {
   opacity: 0.85;
   margin-top: 10px;
 }
+.subtitle {
+  font-size: 15px;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: auto;
+}
 
+h2 {
+  margin-top: 40px;
+  color: #0b1f3a;
+}
+
+.card h3 {
+  margin-top: 0;
+  color: #0b1f3a;
+}
+
+.card p {
+  font-size: 14px;
+  color: #444;
+}
 
 /* NAVBAR */
 .navbar {
