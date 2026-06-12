@@ -54,4 +54,3 @@ To build next-generation neurotechnology bridging neuroscience, AI, and clinical
 
 </div>
 
-</div>
