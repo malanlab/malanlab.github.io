@@ -1,4 +1,3 @@
-
 /* =========================
    RESET (CRITICAL)
 ========================= */
@@ -7,13 +6,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  /* smoother rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  font-family: "Inter", "Segoe UI", Roboto, Arial;
-  background: #f5f7fb;
-  color: #1a1a1a;
-  line-height: 1.7;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
 /* =========================
@@ -22,36 +23,51 @@ body {
 
 :root {
   --primary: #0b1f3a;
-  --accent: #14b8a6;  /* teal scientific highlight */
+  --accent: #14b8a6;
   --bg: #f5f7fb;
   --card: #ffffff;
   --text: #1a1a1a;
   --muted: #64748b;
+
+  /* spacing system (WAS MISSING → FIXED) */
+  --space-1: 6px;
+  --space-2: 12px;
+  --space-3: 20px;
+  --space-4: 40px;
+  --space-5: 70px;
 }
+
+/* selection */
 ::selection {
   background: var(--accent);
   color: white;
 }
 
-a {
-  transition: 0.2s ease;
-}
 /* =========================
-   PAGE SYSTEM (NO BUG ZONE)
+   BASE
 ========================= */
 
-.page {
-  padding: var(--space-4) 0;
+body {
+  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
 }
 
-.container {
-  max-width: 1050px;
-  margin: 0 auto;
-  padding: 0 var(--space-2);
+/* FIX: prevent unwanted spacing drift */
+h1, h2, h3, p {
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: var(--space-2);
+  max-width: 800px;
+  font-size: 15.5px;
+  color: #333;
 }
 
 /* =========================
-   TYPOGRAPHY (CONTROLLED)
+   TYPOGRAPHY
 ========================= */
 
 h1 {
@@ -66,13 +82,36 @@ h2 {
   color: var(--primary);
 }
 
-p {
-  margin-bottom: var(--space-2);
-  max-width: 800px;
+/* =========================
+   LINKS
+========================= */
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent);
 }
 
 /* =========================
-   NAVBAR (CLEAN + FIXED)
+   LAYOUT SYSTEM
+========================= */
+
+.page {
+  padding: var(--space-4) 0;
+}
+
+.container {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 var(--space-2);
+}
+
+/* =========================
+   NAVBAR
 ========================= */
 
 .navbar {
@@ -89,6 +128,7 @@ p {
   margin: auto;
   display: flex;
   justify-content: space-between;
+  align-items: center; /* FIXED */
   padding: var(--space-2) var(--space-3);
 }
 
@@ -113,7 +153,7 @@ p {
 }
 
 /* =========================
-   GRID SYSTEM (SAFE)
+   GRID SYSTEM
 ========================= */
 
 .grid {
@@ -124,7 +164,7 @@ p {
 }
 
 /* =========================
-   CARDS (NO LAYOUT LEAKS)
+   CARDS
 ========================= */
 
 .card {
@@ -141,7 +181,7 @@ p {
 }
 
 /* =========================
-   HERO (SAFE ISOLATED)
+   HERO
 ========================= */
 
 .hero {
