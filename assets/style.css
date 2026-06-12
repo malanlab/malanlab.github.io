@@ -1,25 +1,15 @@
+
 /* =========================
-   RESET (CRITICAL)
+   RESET (INSTITUTE SAFE)
 ========================= */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
-  /* smoother rendering */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-/* =========================
-   DESIGN TOKENS
-========================= */
 
 :root {
   --primary: #0b1f3a;
@@ -29,7 +19,6 @@ html, body {
   --text: #1a1a1a;
   --muted: #64748b;
 
-  /* spacing system (WAS MISSING → FIXED) */
   --space-1: 6px;
   --space-2: 12px;
   --space-3: 20px;
@@ -37,37 +26,24 @@ html, body {
   --space-5: 70px;
 }
 
-/* selection */
+/* =========================
+   BASE SYSTEM
+========================= */
+
+body {
+  font-family: "Inter", "Segoe UI", Roboto, Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+}
+
 ::selection {
   background: var(--accent);
   color: white;
 }
 
 /* =========================
-   BASE
-========================= */
-
-body {
-  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-}
-
-/* FIX: prevent unwanted spacing drift */
-h1, h2, h3, p {
-  margin-top: 0;
-}
-
-p {
-  margin-bottom: var(--space-2);
-  max-width: 800px;
-  font-size: 15.5px;
-  color: #333;
-}
-
-/* =========================
-   TYPOGRAPHY
+   TYPOGRAPHY SYSTEM
 ========================= */
 
 h1 {
@@ -80,6 +56,15 @@ h2 {
   font-size: 24px;
   margin: var(--space-5) 0 var(--space-2);
   color: var(--primary);
+}
+
+h3 {
+  color: var(--primary);
+}
+
+p {
+  margin-bottom: var(--space-2);
+  max-width: 800px;
 }
 
 /* =========================
@@ -97,7 +82,7 @@ a:hover {
 }
 
 /* =========================
-   LAYOUT SYSTEM
+   LAYOUT ENGINE (CORE)
 ========================= */
 
 .page {
@@ -105,66 +90,65 @@ a:hover {
 }
 
 .container {
-  max-width: 1050px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 var(--space-2);
 }
 
+section {
+  margin-bottom: var(--space-5);
+}
+
 /* =========================
-   NAVBAR
+   NAVBAR (INSTITUTE STYLE)
 ========================= */
 
 .navbar {
   position: sticky;
   top: 0;
   background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(0,0,0,0.06);
   z-index: 1000;
 }
 
 .nav-container {
-  max-width: 1100px;
+  max-width: 1150px;
   margin: auto;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* FIXED */
+  align-items: center;
   padding: var(--space-2) var(--space-3);
 }
 
 .logo {
   font-weight: 800;
+  font-size: 18px;
   color: var(--primary);
 }
 
 .nav-links {
   display: flex;
-  gap: 24px;
+  gap: 26px;
 }
 
 .nav-links a {
   font-weight: 600;
-  color: #333;
-  position: relative;
-}
-
-.nav-links a:hover {
-  color: var(--primary);
+  font-size: 14.5px;
 }
 
 /* =========================
-   GRID SYSTEM
+   GRID SYSTEM (RESEARCH ENGINE)
 ========================= */
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-3);
-  margin-top: var(--space-3);
 }
 
 /* =========================
-   CARDS
+   CARDS (PUBLICATION STYLE)
 ========================= */
 
 .card {
@@ -172,8 +156,8 @@ a:hover {
   padding: var(--space-3);
   border-radius: 14px;
   border-left: 4px solid var(--primary);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-  transition: 0.2s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: 0.2s ease;
 }
 
 .card:hover {
@@ -181,13 +165,13 @@ a:hover {
 }
 
 /* =========================
-   HERO
+   HERO (INSTITUTE GRADE)
 ========================= */
 
 .hero {
   background: linear-gradient(135deg, var(--primary), var(--accent));
   color: white;
-  padding: 90px 20px;
+  padding: 100px 20px;
   border-radius: 18px;
   text-align: center;
   margin-bottom: var(--space-5);
