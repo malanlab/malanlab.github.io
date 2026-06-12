@@ -28,7 +28,14 @@ body {
   --text: #1a1a1a;
   --muted: #64748b;
 }
+::selection {
+  background: var(--accent);
+  color: white;
+}
 
+a {
+  transition: 0.2s ease;
+}
 /* =========================
    PAGE SYSTEM (NO BUG ZONE)
 ========================= */
