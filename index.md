@@ -4,15 +4,24 @@ title: Malan Lab
 ---
 
 <div class="hero">
-  <h1>Malan Lab</h1>
+
+  <div class="hero-lab">
+    MALAN LAB • IIT JAMMU
+  </div>
+
+  <h1>
+    Computational Neuroscience &
+    Neuroengineering
+  </h1>
 
   <p class="tagline">
-    Computational Neuroscience • Neuroengineering • Brain Dynamics
+    Neural Signals • Brain Dynamics • Brain–Computer Interfaces • Neurorehabilitation
   </p>
 
   <p class="subtitle">
-    We investigate how neural circuits generate movement, cognition, and behavior using multimodal neurophysiology, signal processing, machine learning, and computational modeling.
+    Investigating the neural mechanisms of movement, cognition, and neurological disorders through multimodal neurophysiology, computational modeling, and machine learning.
   </p>
+
 </div>
 
 ## Welcome
