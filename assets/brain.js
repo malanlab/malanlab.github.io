@@ -13,12 +13,37 @@ document.addEventListener("DOMContentLoaded", () => {
   resize();
   window.addEventListener("resize", resize);
 
+  // -----------------------------
+  // BRAIN NETWORK
+  // -----------------------------
   const N = 24;
   const nodes = [];
   let t = 0;
 
+  // default brain state
+  let BRAIN_STATE = "REST";
+
+  // state parameters
+  const STATES = {
+    REST: {
+      connectivityScale: 1.0,
+      noise: 0.6,
+      color: 190
+    },
+    DBS_OFF: {
+      connectivityScale: 0.7,
+      noise: 1.2,
+      color: 210
+    },
+    DBS_ON: {
+      connectivityScale: 1.4,
+      noise: 0.3,
+      color: 160
+    }
+  };
+
   // -----------------------------
-  // INIT BRAIN GEOMETRY
+  // INIT NODES (hemispheres)
   // -----------------------------
   for (let i = 0; i < N; i++) {
 
@@ -27,9 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const angle = (k / (N / 2)) * Math.PI;
 
     nodes.push({
-      x: 0.5 + hemi * 0.22 * Math.cos(angle),
+      x: 0.5 + hemi * 0.23 * Math.cos(angle),
       y: 0.5 + 0.28 * Math.sin(angle),
-      phase: Math.random() * 10,
+      phase: Math.random() * Math.PI * 2,
       hemi
     });
   }
@@ -38,45 +63,51 @@ document.addEventListener("DOMContentLoaded", () => {
   const sy = y => y * canvas.height;
 
   // -----------------------------
-  // DEFAULT SYNTHETIC CONNECTIVITY
-  // (THIS WILL BE REPLACED BY DATA)
+  // CONNECTIVITY MODEL
   // -----------------------------
-  function getConnectivity(i, j) {
-
-    const a = nodes[i];
-    const b = nodes[j];
+  function connect(a, b) {
 
     const dx = a.x - b.x;
     const dy = a.y - b.y;
     const dist = Math.sqrt(dx * dx + dy * dy);
 
     const local = Math.exp(-dist * 6);
+
     const hemiBoost = a.hemi !== b.hemi ? 0.6 : 1.0;
 
-    const oscillation =
-      0.6 + 0.4 * Math.sin(t * 0.02 + a.phase - b.phase);
+    const sync =
+      0.6 +
+      0.4 * Math.sin(t * 0.02 + a.phase - b.phase);
 
-    return local * hemiBoost * oscillation;
+    const state = STATES[BRAIN_STATE];
+
+    return local * hemiBoost * sync * state.connectivityScale;
   }
 
   // -----------------------------
-  // LAYER 1: DATA HOOK (IMPORTANT)
+  // STATE CONTROLLER (EXPOSED)
   // -----------------------------
-  let CONNECTIVITY_MATRIX = null;
-
-  function setConnectivityMatrix(matrix) {
-    CONNECTIVITY_MATRIX = matrix;
-  }
+  window.setBrainState = function(state) {
+    if (STATES[state]) {
+      BRAIN_STATE = state;
+    }
+  };
 
   // -----------------------------
   // DRAW LOOP
   // -----------------------------
   function draw() {
 
+    const state = STATES[BRAIN_STATE];
+
     // background
     const g = ctx.createRadialGradient(
-      canvas.width / 2, canvas.height / 2, 20,
-      canvas.width / 2, canvas.height / 2, canvas.width
+      canvas.width / 2,
+      canvas.height / 2,
+      20,
+      canvas.width / 2,
+      canvas.height / 2,
+      canvas.width
     );
 
     g.addColorStop(0, "#0d1b2a");
@@ -85,28 +116,24 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // noise texture
-    for (let i = 0; i < 50; i++) {
+    // noise (state dependent)
+    for (let i = 0; i < 50 * state.noise; i++) {
       ctx.fillStyle = "rgba(255,255,255,0.015)";
-      ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 1, 1);
+      ctx.fillRect(
+        Math.random() * canvas.width,
+        Math.random() * canvas.height,
+        1,
+        1
+      );
     }
 
     // -----------------------------
-    // EDGES (DATA OR SYNTHETIC)
+    // EDGES
     // -----------------------------
     for (let i = 0; i < N; i++) {
       for (let j = i + 1; j < N; j++) {
 
-        let w;
-
-        // 🔥 DATA MODE (future plug-in)
-        if (CONNECTIVITY_MATRIX) {
-          w = CONNECTIVITY_MATRIX[i][j] || 0;
-        }
-        // fallback synthetic mode
-        else {
-          w = getConnectivity(i, j);
-        }
+        const w = connect(nodes[i], nodes[j]);
 
         const alpha = Math.pow(w, 1.6) * 0.6;
         if (alpha < 0.03) continue;
@@ -115,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.moveTo(sx(nodes[i].x), sy(nodes[i].y));
         ctx.lineTo(sx(nodes[j].x), sy(nodes[j].y));
 
-        ctx.strokeStyle = `hsla(${185 + w * 60}, 95%, 65%, ${alpha})`;
+        ctx.strokeStyle = `hsla(${state.color + w * 40}, 95%, 65%, ${alpha})`;
         ctx.lineWidth = 0.5 + w * 2;
 
         ctx.stroke();
@@ -133,7 +160,8 @@ document.addEventListener("DOMContentLoaded", () => {
       n.x += (0.5 - n.x) * 0.002;
       n.y += (0.5 - n.y) * 0.002;
 
-      const activity = 0.5 + 0.5 * Math.sin(t * 0.03 + n.phase);
+      const activity =
+        0.5 + 0.5 * Math.sin(t * 0.03 + n.phase);
 
       const x = sx(n.x);
       const y = sy(n.y);
@@ -149,8 +177,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   draw();
-
-  // expose for future research integration
-  window.setBrainConnectivity = setConnectivityMatrix;
-
 });
