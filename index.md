@@ -39,17 +39,19 @@ To build next-generation neurotechnology bridging neuroscience, AI, and clinical
 
 <div class="card">
 <h3>Computational Neuroscience</h3>
-Modeling brain dynamics and neural systems.
+<p>Modeling brain dynamics and neural systems.</p>
 </div>
 
 <div class="card">
 <h3>Neuroengineering</h3>
-Tools for brain signal acquisition and analysis.
+<p>Tools for brain signal acquisition and analysis.</p>
 </div>
 
 <div class="card">
 <h3>Brain Dynamics</h3>
-Oscillations, connectivity, and networks.
+<p>Oscillations, connectivity, and networks.</p>
+</div>
+
 </div>
 
 </div>
