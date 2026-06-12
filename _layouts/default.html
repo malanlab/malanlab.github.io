@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
-  <title>{{ page.title }} | Malan Lab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ page.title }} | Malan Lab</title>
 
   <link rel="stylesheet" href="/assets/style.css">
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <header class="navbar">
   <div class="nav-container">
 
-    <div class="logo">Malan Lab</div>
+    <div class="logo">
+      <a href="/" style="text-decoration:none; color:inherit;">
+        Malan Lab
+      </a>
+    </div>
 
     <nav class="nav-links">
       <a href="/">Home</a>
@@ -26,9 +33,15 @@
   </div>
 </header>
 
+<!-- PAGE CONTENT -->
 <main>
   {{ content }}
 </main>
+
+<!-- FOOTER -->
+<footer style="text-align:center; padding:20px; font-size:12px; color:#777;">
+  © {{ site.time | date: "%Y" }} Malan Lab • IIT Jammu
+</footer>
 
 </body>
 </html>
