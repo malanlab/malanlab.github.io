@@ -25,6 +25,11 @@
   --space-4: 40px;
   --space-5: 70px;
 }
+.logo {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
 
 /* =========================
    BASE SYSTEM
