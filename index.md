@@ -106,4 +106,17 @@ Learn about student opportunities and collaborations.
 
 </div>
 
+---
+
+## Lab at a Glance
+
+<div class="image-grid">
+
+  <img src="/assets/images/lab1.jpg" />
+  <img src="/assets/images/eeg.jpg" />
+  <img src="/assets/images/brain.jpg" />
+  <img src="/assets/images/research.jpg" />
+
+</div>
+
 </div>
