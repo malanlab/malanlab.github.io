@@ -9,7 +9,48 @@
 
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
+<script>
+const canvas = document.querySelector(".brain-canvas");
 
+if (canvas) {
+  const ctx = canvas.getContext("2d");
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = 420;
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+
+  let t = 0;
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "rgba(255,255,255,0.6)";
+
+    ctx.beginPath();
+
+    for (let x = 0; x < canvas.width; x += 5) {
+      let y =
+        canvas.height / 2 +
+        Math.sin((x + t) * 0.02) * 20 +
+        Math.sin((x + t) * 0.01) * 40;
+
+      ctx.lineTo(x, y);
+    }
+
+    ctx.stroke();
+
+    t += 2;
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+}
+</script>
 <body>
 
 <header class="navbar">
