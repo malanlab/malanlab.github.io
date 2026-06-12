@@ -209,7 +209,9 @@ section {
 
 .tagline {
   font-size: 20px;
-  margin-bottom: 16px;
+  margin: 0 auto 16px;
+  text-align: center;
+  max-width: none;
 }
 
 .subtitle {
