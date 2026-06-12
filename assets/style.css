@@ -181,6 +181,35 @@ section {
   color: white;
 }
 
+.hero-lab {
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  opacity: 0.85;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: 58px;
+  line-height: 1.1;
+  font-weight: 800;
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
+.tagline {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
 /* =========================
    FOOTER
 ========================= */
