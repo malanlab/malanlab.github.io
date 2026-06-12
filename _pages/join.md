@@ -1,13 +1,14 @@
 ---
 layout: default
 title: Join Us
+permalink: /join/
 ---
 
 # Join Us
 
 We are looking for motivated students in:
 
-- EEG/MEG signal processing
+- EEG / MEG / LFP signal processing
 - Computational neuroscience
 - Brain–computer interfaces
 - Neuroengineering
