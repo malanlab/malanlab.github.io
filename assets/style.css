@@ -53,6 +53,24 @@ h2 {
   color: #444;
 }
 
+/* PEOPLE PAGE */
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
+
+.card strong {
+  color: #0b1f3a;
+}
+
+.grid .card {
+  margin-bottom: 0;
+}
+
+
 /* NAVBAR */
 .navbar {
   position: sticky;
