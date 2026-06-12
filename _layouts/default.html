@@ -7,34 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-
-    header {
-      background: #0b1f3a;
-      color: white;
-      padding: 20px;
-    }
-
-    nav a {
-      color: white;
-      margin-right: 15px;
-      text-decoration: none;
-    }
-
-    main {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-  </style>
-</head>
-
-<body>
+  <body>
+  
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">Malan Lab</div>
+  
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#research">Research</a>
+        <a href="/_pages/people.html">People</a>
+        <a href="/_pages/publications.html">Publications</a>
+        <a href="/_pages/join.html">Join Us</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main>
+    {{ content }}
+  </main>
+  
+  </body>
 
 <header>
   <h1>Malan Lab</h1>
