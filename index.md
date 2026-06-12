@@ -5,9 +5,9 @@ title: Malan Lab
 
 <div class="hero">
   <h1>Malan Lab</h1>
-  <p class="tagline">Neural Signals • Brain Dynamics • Neuroengineering</p>
+  <p class="tagline">Neural Dynamics • Brain-Computer Interfaces • Neuroengineering</p>
   <p class="subtitle">
-    Multimodal neurophysiology and computational neuroscience for understanding brain function and dysfunction
+    We study brain function and dysfunction using multimodal neurophysiology (EEG, MEG, LFP) and computational modeling to understand movement, cognition, and neurological disorders.
   </p>
 </div>
 
@@ -15,39 +15,66 @@ title: Malan Lab
 
 ## About the Lab
 
-Malan Lab focuses on understanding neural mechanisms underlying movement, cognition, and neurological disorders using computational and experimental approaches.
+Malan Lab is a computational neuroscience group focused on understanding how large-scale brain dynamics give rise to behavior and how these dynamics are altered in neurological disorders.
 
-We aim to bridge neuroscience, engineering, and clinical translation through data-driven modeling of brain activity.
+We combine:
+- Neural signal processing  
+- Dynamical systems modeling  
+- Clinical neurophysiology  
+- Brain–computer interface development  
 
 ---
 
-## Research Areas
+## Research Themes
 
 <div class="highlight-grid">
 
 <div class="highlight-card">
-<h3>Neural Signal Processing</h3>
-EEG, MEG, and LFP analysis for decoding brain states and neural dynamics.
+<h3>Neural Dynamics</h3>
+Oscillations, connectivity, and large-scale brain networks.
 </div>
 
 <div class="highlight-card">
-<h3>Brain Dynamics</h3>
-Oscillatory activity, functional connectivity, and large-scale network organization.
+<h3>Motor Control</h3>
+Neural mechanisms of movement, learning, and adaptation.
 </div>
 
 <div class="highlight-card">
-<h3>Movement Disorders</h3>
-Parkinson’s disease, freezing of gait, motor control, and DBS modulation.
+<h3>Neurological Disorders</h3>
+Parkinson’s disease, chronic pain, and motor dysfunction.
 </div>
 
 <div class="highlight-card">
 <h3>Brain–Computer Interfaces</h3>
-Motor imagery and SSVEP-based neural decoding systems for assistive technologies.
+Decoding neural signals for assistive neurotechnology.
 </div>
 
 <div class="highlight-card">
-<h3>Neural Biomarkers</h3>
-Computational biomarkers for neurological disorders and clinical translation.
+<h3>Computational Biomarkers</h3>
+Data-driven biomarkers for diagnosis and rehabilitation.
+</div>
+
+</div>
+
+---
+
+## Selected Projects
+
+<div class="grid">
+
+<div class="card">
+<h3>Freezing of Gait Prediction</h3>
+LFP-based machine learning models for Parkinson’s disease motor state decoding.
+</div>
+
+<div class="card">
+<h3>EEG Motor Learning Dynamics</h3>
+Time-frequency modeling of motor adaptation and learning.
+</div>
+
+<div class="card">
+<h3>DBS–Cortex Connectivity</h3>
+Directional connectivity analysis between deep brain stimulation and cortical activity.
 </div>
 
 </div>
@@ -56,4 +83,4 @@ Computational biomarkers for neurological disorders and clinical translation.
 
 ## Mission
 
-To develop computational frameworks that link neural activity to behavior, cognition, and clinical outcomes.
+To develop computational frameworks that link neural activity to behavior and enable next-generation neurotechnology for clinical translation.
