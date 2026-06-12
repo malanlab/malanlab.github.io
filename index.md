@@ -27,4 +27,4 @@ brain function and neurological disorders.
 ## Latest Updates
 
 - Malan Lab website launched (2026)
-- New research program initiated
+- New research program initiated 
