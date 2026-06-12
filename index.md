@@ -5,31 +5,27 @@ title: Malan Lab
 
 <div class="hero">
   <h1>Malan Lab</h1>
-  <p class="tagline">
-    Neural Signals • Brain Dynamics • Neuroengineering
-  </p>
+  <p class="tagline">Neural Signals • Brain Dynamics • Neuroengineering</p>
   <p class="subtitle">
-    Multimodal neurophysiology, computational neuroscience, brain–computer interfaces, and neural biomarkers
+    Multimodal neurophysiology and computational neuroscience for understanding brain function and dysfunction
   </p>
 </div>
 
 ---
 
-## About the Lab
+## Welcome
 
-Malan Lab studies brain function and dysfunction using multimodal neural recordings and computational approaches.
-
-We aim to understand how neural circuits generate behavior and how they break down in neurological disorders.
+Malan Lab focuses on understanding the neural mechanisms underlying movement, cognition, and neurological disorders using computational and experimental approaches.
 
 ---
 
-## Research Focus
+## Research Themes
 
 <div class="grid">
 
 <div class="card">
 <h3>Neural Signal Processing</h3>
-<p>EEG, MEG, LFP, EMG analysis for decoding brain states.</p>
+<p>EEG, MEG, LFP analysis for brain-state decoding.</p>
 </div>
 
 <div class="card">
@@ -44,18 +40,12 @@ We aim to understand how neural circuits generate behavior and how they break do
 
 <div class="card">
 <h3>Brain–Computer Interfaces</h3>
-<p>Decoding neural signals for assistive neurotechnology.</p>
+<p>Neural decoding for assistive neurotechnology.</p>
 </div>
 
 <div class="card">
 <h3>Neural Biomarkers</h3>
-<p>Data-driven biomarkers for diagnosis and therapy monitoring.</p>
+<p>Data-driven biomarkers for diagnosis and therapy tracking.</p>
 </div>
 
 </div>
-
----
-
-## Mission
-
-To develop computational frameworks that bridge neuroscience, engineering, and clinical translation.
