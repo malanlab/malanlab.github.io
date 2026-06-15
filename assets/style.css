@@ -15,6 +15,10 @@ html, body {
   overflow-x: hidden;
 }
 
+/* =========================
+   ROOT VARIABLES
+========================= */
+
 :root {
   --primary: #0b1f3a;
   --accent: #14b8a6;
@@ -24,6 +28,7 @@ html, body {
   --muted: #64748b;
 
   --radius: 16px;
+
   --space-1: 6px;
   --space-2: 12px;
   --space-3: 20px;
@@ -77,52 +82,6 @@ a {
 
 a:hover {
   color: var(--accent);
-}
-/* =========================
-   BRAIN IMAGE (FINAL FIX)
-========================= */
-
-.hero {
-  position: relative; /* IMPORTANT anchor */
-}
-
-/* =========================
-   BRAIN IMAGE (FINAL CLEAN FIX)
-========================= */
-
-.brain-image {
-  position: absolute;
-  right: 40px;              /* inside screen */
-  top: 50%;
-  transform: translateY(-50%);
-
-  width: min(650px, 48vw);  /* BIG but stable */
-
-  opacity: 0.25;            /* visible but subtle */
-
-  z-index: 2;
-
-  pointer-events: none;
-
-  filter: drop-shadow(0 30px 80px rgba(0,0,0,0.6));
-}
-
-
-.brain-canvas {
-  z-index: 1;
-}
-
-.hero::before {
-  z-index: 2;
-}
-
-.brain-image {
-  z-index: 2;
-}
-
-.hero-inner {
-  z-index: 3;
-  position: relative;
 }
 
 /* =========================
@@ -188,7 +147,7 @@ a:hover {
 }
 
 /* =========================
-   HERO (FIXED + STABLE)
+   HERO
 ========================= */
 
 .hero {
@@ -204,25 +163,32 @@ a:hover {
 
   margin-bottom: var(--space-5);
 
-  background: linear-gradient(135deg,
+  background: linear-gradient(
+    135deg,
     #081528 0%,
     #0b1f3a 40%,
     #0d3b53 70%,
-    #14b8a6 100%);
+    #14b8a6 100%
+  );
 }
 
-/* IMPORTANT: forces canvas to exist visually */
+/* =========================
+   CANVAS LAYER
+========================= */
+
 .brain-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  display: block;
   z-index: 1;
   opacity: 0.35;
 }
 
-/* soft overlay */
+/* =========================
+   OVERLAY LAYER
+========================= */
+
 .hero::before {
   content: "";
   position: absolute;
@@ -234,7 +200,31 @@ a:hover {
     radial-gradient(circle at 75% 65%, rgba(255,255,255,0.06), transparent 45%);
 }
 
-/* content layer */
+/* =========================
+   BRAIN IMAGE (FIXED)
+========================= */
+
+.brain-image {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: min(650px, 48vw);
+
+  opacity: 0.28;
+
+  z-index: 2.5;
+
+  pointer-events: none;
+
+  filter: drop-shadow(0 30px 80px rgba(0,0,0,0.6));
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
+
 .hero-inner {
   position: relative;
   z-index: 3;
@@ -277,7 +267,7 @@ a:hover {
 }
 
 /* =========================
-   DBS CONTROLS
+   CONTROLS
 ========================= */
 
 .brain-controls {
@@ -285,8 +275,6 @@ a:hover {
   display: flex;
   justify-content: center;
   gap: 10px;
-  z-index: 4;
-  position: relative;
 }
 
 .brain-controls button {
@@ -327,7 +315,7 @@ a:hover {
 }
 
 /* =========================
-   ABOUT
+   ABOUT GRID
 ========================= */
 
 .about-grid {
