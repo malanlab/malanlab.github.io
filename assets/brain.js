@@ -13,17 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
   resize();
   window.addEventListener("resize", resize);
 
-  // -----------------------------
-  // BRAIN NETWORK
-  // -----------------------------
-  const N = 24;
-  const nodes = [];
-  let t = 0;
-
-  // default brain state
+  // =========================
+  // BRAIN STATE SYSTEM
+  // =========================
   let BRAIN_STATE = "REST";
 
-  // state parameters
   const STATES = {
     REST: {
       connectivityScale: 1.0,
@@ -42,9 +36,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // -----------------------------
-  // INIT NODES (hemispheres)
-  // -----------------------------
+  window.setBrainState = function(state) {
+    if (STATES[state]) {
+      BRAIN_STATE = state;
+    }
+  };
+
+  let t = 0;
+
+  // =========================
+  // NETWORK NODES (CONNECTIVITY)
+  // =========================
+  const N = 24;
+  const nodes = [];
+
   for (let i = 0; i < N; i++) {
 
     const hemi = i < N / 2 ? -1 : 1;
@@ -59,12 +64,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // =========================
+  // DOTTED BRAIN (RIGHT SIDE)
+  // =========================
+  const brainDots = [];
+  const DOTS = 180;
+
+  for (let i = 0; i < DOTS; i++) {
+
+    const angle = Math.random() * Math.PI * 2;
+    const radius = 0.18 + Math.random() * 0.18;
+
+    brainDots.push({
+      x: 0.75 + radius * Math.cos(angle),
+      y: 0.5 + radius * Math.sin(angle),
+      phase: Math.random() * Math.PI * 2
+    });
+  }
+
   const sx = x => x * canvas.width;
   const sy = y => y * canvas.height;
 
-  // -----------------------------
-  // CONNECTIVITY MODEL
-  // -----------------------------
+  // =========================
+  // CONNECTIVITY FUNCTION
+  // =========================
   function connect(a, b) {
 
     const dx = a.x - b.x;
@@ -72,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const dist = Math.sqrt(dx * dx + dy * dy);
 
     const local = Math.exp(-dist * 6);
-
     const hemiBoost = a.hemi !== b.hemi ? 0.6 : 1.0;
 
     const sync =
@@ -84,23 +106,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return local * hemiBoost * sync * state.connectivityScale;
   }
 
-  // -----------------------------
-  // STATE CONTROLLER (EXPOSED)
-  // -----------------------------
-  window.setBrainState = function(state) {
-    if (STATES[state]) {
-      BRAIN_STATE = state;
-    }
-  };
-
-  // -----------------------------
+  // =========================
   // DRAW LOOP
-  // -----------------------------
+  // =========================
   function draw() {
 
     const state = STATES[BRAIN_STATE];
 
-    // background
+    // -------------------------
+    // BACKGROUND
+    // -------------------------
     const g = ctx.createRadialGradient(
       canvas.width / 2,
       canvas.height / 2,
@@ -116,7 +131,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // noise (state dependent)
+    // -------------------------
+    // NOISE (STATE DEPENDENT)
+    // -------------------------
     for (let i = 0; i < 50 * state.noise; i++) {
       ctx.fillStyle = "rgba(255,255,255,0.015)";
       ctx.fillRect(
@@ -127,9 +144,9 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
-    // -----------------------------
-    // EDGES
-    // -----------------------------
+    // =========================
+    // CONNECTIVITY EDGES (LEFT)
+    // =========================
     for (let i = 0; i < N; i++) {
       for (let j = i + 1; j < N; j++) {
 
@@ -149,9 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    // -----------------------------
-    // NODES
-    // -----------------------------
+    // =========================
+    // NODE ACTIVITY (LEFT NETWORK)
+    // =========================
     for (let n of nodes) {
 
       n.x += 0.002 * Math.sin(t * 0.01 + n.phase);
@@ -163,12 +180,28 @@ document.addEventListener("DOMContentLoaded", () => {
       const activity =
         0.5 + 0.5 * Math.sin(t * 0.03 + n.phase);
 
-      const x = sx(n.x);
-      const y = sy(n.y);
+      ctx.beginPath();
+      ctx.arc(sx(n.x), sy(n.y), 2 + activity * 2.2, 0, Math.PI * 2);
+
+      ctx.fillStyle = `rgba(0,255,210,${0.35 + activity * 0.5})`;
+      ctx.fill();
+    }
+
+    // =========================
+    // DOTTED BRAIN (RIGHT SIDE)
+    // =========================
+    for (let d of brainDots) {
+
+      const pulse =
+        0.5 + 0.5 * Math.sin(t * 0.02 + d.phase);
+
+      const x = sx(d.x);
+      const y = sy(d.y);
 
       ctx.beginPath();
-      ctx.arc(x, y, 2 + activity * 2.2, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0,255,210,${0.35 + activity * 0.5})`;
+      ctx.arc(x, y, 1.2 + pulse * 1.2, 0, Math.PI * 2);
+
+      ctx.fillStyle = `rgba(255,255,255,${0.08 + pulse * 0.25})`;
       ctx.fill();
     }
 
