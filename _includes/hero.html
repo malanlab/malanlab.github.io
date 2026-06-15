@@ -2,31 +2,34 @@
 
   <canvas class="brain-canvas"></canvas>
 
-  <div class="hero-content">
+  <div class="hero-inner">
 
-    <div class="hero-lab">
-      MALAN LAB • IIT JAMMU
+    <div class="hero-content">
+
+      <div class="hero-lab">
+        MALAN LAB • IIT JAMMU
+      </div>
+
+      <h1>
+        Computational Neuroscience & Neuroengineering
+      </h1>
+
+      <p class="tagline">
+        Neural Signals • Brain Dynamics • Brain–Computer Interfaces • Neurorehabilitation
+      </p>
+
+      <p class="subtitle">
+        Investigating brain activity through multimodal neurophysiology, signal processing, and computational modeling.
+      </p>
+
     </div>
 
-    <h1>
-      Computational Neuroscience & Neuroengineering
-    </h1>
+    <div class="brain-controls">
+      <button onclick="setBrainState('REST')">REST</button>
+      <button onclick="setBrainState('DBS_OFF')">DBS OFF</button>
+      <button onclick="setBrainState('DBS_ON')">DBS ON</button>
+    </div>
 
-    <p class="tagline">
-      Neural Signals • Brain Dynamics • Brain–Computer Interfaces • Neurorehabilitation
-    </p>
-
-    <p class="subtitle">
-      Investigating brain activity through multimodal neurophysiology, signal processing, and computational modeling.
-    </p>
-
-  </div>
-
-  <!-- IMPORTANT: keep controls inside hero but OUTSIDE content block -->
-  <div class="brain-controls">
-    <button onclick="setBrainState('REST')">REST</button>
-    <button onclick="setBrainState('DBS_OFF')">DBS OFF</button>
-    <button onclick="setBrainState('DBS_ON')">DBS ON</button>
   </div>
 
 </div>
