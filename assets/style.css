@@ -109,6 +109,22 @@ a:hover {
   }
 }
 
+
+.brain-image {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 420px;   /* 👈 MAKE BIG */
+  height: auto;
+
+  opacity: 0.85;
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+
 /* =========================
    LAYOUT
 ========================= */
