@@ -78,50 +78,29 @@ a {
 a:hover {
   color: var(--accent);
 }
-.brain-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
+/* =========================
+   BRAIN IMAGE (FINAL FIX)
+========================= */
 
-  width: min(45vw, 520px);   /* 🔥 responsive BIG brain */
-  height: auto;
-
-  z-index: 2;
-
-  opacity: 0.95;
-
-  pointer-events: none;
-
-  filter: drop-shadow(0 25px 60px rgba(0,0,0,0.55));
-}
-.brain-overlay {
-  animation: brainGlow 4s ease-in-out infinite;
+.hero {
+  position: relative; /* IMPORTANT anchor */
 }
 
-@keyframes brainGlow {
-  0%, 100% {
-    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
-    transform: scale(1);
-  }
-  50% {
-    filter: drop-shadow(0 30px 60px rgba(20,184,166,0.35));
-    transform: scale(1.02);
-  }
-}
-
+/* =========================
+   BRAIN IMAGE (FINAL CLEAN FIX)
+========================= */
 
 .brain-image {
   position: absolute;
-  right: -80px;
+  right: 40px;              /* inside screen */
   top: 50%;
   transform: translateY(-50%);
 
-  width: min(700px, 50vw);   /* 🔥 BIG brain */
-  height: auto;
+  width: min(650px, 48vw);  /* BIG but stable */
+
+  opacity: 0.25;            /* visible but subtle */
 
   z-index: 2;
-
-  opacity: 0.22;
 
   pointer-events: none;
 
