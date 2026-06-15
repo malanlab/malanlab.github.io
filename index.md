@@ -7,11 +7,11 @@ title: Malan Lab
 
 <div class="container">
 <h2>About the Lab</h2>
-<div class="about-grid">
+  
 <div class="card">
 Malan Lab is a computational neuroscience and neuroengineering research group at IIT Jammu. We study neural circuits, brain dynamics, and neurotechnology using multimodal data and computational modeling.
 </div>
-</div>
+
 <hr>
 <h2>Mission</h2>
 <div class="card">
