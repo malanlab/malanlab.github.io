@@ -14,93 +14,88 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", resize);
 
   // =============================
-  // BRAIN SETTINGS
+  // CAMERA / 3D SETTINGS
   // =============================
-  const N = 28;
-  const nodes = [];
-  const dots = [];
+  const FOV = 300;
+  const CENTER_X = () => canvas.width / 2;
+  const CENTER_Y = () => canvas.height / 2;
+
+  let angle = 0;
   let t = 0;
 
   let BRAIN_STATE = "REST";
 
   const STATES = {
-    REST:   { gain: 1.0, noise: 0.6, hue: 190 },
-    DBS_OFF:{ gain: 0.7, noise: 1.2, hue: 210 },
-    DBS_ON: { gain: 1.4, noise: 0.3, hue: 160 }
+    REST:   { gain: 1.0, hue: 190 },
+    DBS_OFF:{ gain: 0.7, hue: 210 },
+    DBS_ON: { gain: 1.4, hue: 160 }
   };
 
   // =============================
-  // REALISTIC BRAIN SHAPE (key fix)
+  // 3D BRAIN POINT CLOUD
   // =============================
-  function brainShape(i, hemi) {
+  const N = 220;
+  const points = [];
 
-    const k = i % (N / 2);
-    const angle = (k / (N / 2)) * Math.PI;
-
-    // brain-like ellipse + slight frontal bulge
-    let x = Math.cos(angle);
-    let y = Math.sin(angle);
-
-    // frontal cortex bulge
-    const bulge = 1 + 0.25 * Math.exp(-Math.abs(x));
+  function brainSurface(x, y, z) {
+    // ellipsoid brain shape
+    const rx = 1.2;
+    const ry = 1.0;
+    const rz = 0.9;
 
     return {
-      x: 0.5 + hemi * 0.28 * x * bulge,
-      y: 0.52 + 0.32 * y
+      x: x * rx,
+      y: y * ry,
+      z: z * rz
     };
   }
 
   for (let i = 0; i < N; i++) {
 
-    const hemi = i < N / 2 ? -1 : 1;
+    const u = Math.random() * Math.PI * 2;
+    const v = Math.random() * Math.PI;
 
-    const p = brainShape(i, hemi);
+    let x = Math.sin(v) * Math.cos(u);
+    let y = Math.sin(v) * Math.sin(u);
+    let z = Math.cos(v);
 
-    nodes.push({
+    const p = brainSurface(x, y, z);
+
+    points.push({
       x: p.x,
       y: p.y,
-      hemi,
+      z: p.z,
       phase: Math.random() * Math.PI * 2
     });
   }
 
   // =============================
-  // RIGHT HEMISPHERE CORTICAL DOTS (FIXED)
+  // 3D ROTATION
   // =============================
-  for (let i = 0; i < 220; i++) {
+  function rotateY(p, a) {
+    const cos = Math.cos(a);
+    const sin = Math.sin(a);
 
-    const angle = Math.random() * Math.PI;
-    const r = 0.25 + Math.random() * 0.25;
-
-    dots.push({
-      x: 0.5 + r * Math.cos(angle),
-      y: 0.5 + r * Math.sin(angle),
-      p: Math.random() * Math.PI * 2
-    });
+    return {
+      x: p.x * cos - p.z * sin,
+      y: p.y,
+      z: p.x * sin + p.z * cos
+    };
   }
 
-  const sx = x => x * canvas.width;
-  const sy = y => y * canvas.height;
+  function project(p) {
+    const scale = FOV / (FOV + p.z * 120);
 
-  // =============================
-  // CONNECTIVITY (MEG-LIKE FIELD)
-  // =============================
-  function connect(a, b, state) {
-
-    const dx = a.x - b.x;
-    const dy = a.y - b.y;
-    const d = Math.sqrt(dx * dx + dy * dy);
-
-    const spatial = Math.exp(-d * 6);
-
-    const hemiBoost = a.hemi !== b.hemi ? 0.7 : 1.0;
-
-    const phase =
-      0.5 + 0.5 * Math.sin(t * 0.02 + a.phase - b.phase);
-
-    return spatial * hemiBoost * phase * state.gain;
+    return {
+      x: CENTER_X() + p.x * 160 * scale,
+      y: CENTER_Y() + p.y * 160 * scale,
+      scale
+    };
   }
 
+  // =============================
+  // STATE CONTROL
+  // =============================
   window.setBrainState = function (s) {
     if (STATES[s]) BRAIN_STATE = s;
   };
@@ -112,13 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const state = STATES[BRAIN_STATE];
 
-    // background (MEG scanner dark field)
+    // background
     const g = ctx.createRadialGradient(
-      canvas.width * 0.5,
-      canvas.height * 0.5,
+      CENTER_X(),
+      CENTER_Y(),
       10,
-      canvas.width * 0.5,
-      canvas.height * 0.5,
+      CENTER_X(),
+      CENTER_Y(),
       canvas.width
     );
 
@@ -128,89 +123,83 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // =============================
-    // BRAIN SILHOUETTE (IMPORTANT FIX)
-    // =============================
-    ctx.beginPath();
-    ctx.ellipse(
-      canvas.width * 0.5,
-      canvas.height * 0.52,
-      canvas.width * 0.28,
-      canvas.height * 0.32,
-      0,
-      0,
-      Math.PI * 2
-    );
-    ctx.strokeStyle = "rgba(255,255,255,0.05)";
-    ctx.lineWidth = 1;
-    ctx.stroke();
+    const rotated = [];
 
     // =============================
-    // DOTTED CORTEX (INSIDE BRAIN ONLY)
+    // ROTATE POINT CLOUD
     // =============================
-    for (let d of dots) {
+    for (let p of points) {
 
-      const x = sx(d.x);
-      const y = sy(d.y);
+      const r = rotateY(p, angle);
 
-      const a = 0.05 + 0.15 * (0.5 + 0.5 * Math.sin(t * 0.02 + d.p));
+      // subtle oscillation (brain rhythm)
+      r.x += 0.02 * Math.sin(t * 0.01 + p.phase);
+      r.y += 0.02 * Math.cos(t * 0.01 + p.phase);
 
-      ctx.beginPath();
-      ctx.arc(x, y, 1.2, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0,255,200,${a})`;
-      ctx.fill();
+      rotated.push(r);
     }
 
+    // sort by depth (important for 3D illusion)
+    rotated.sort((a, b) => a.z - b.z);
+
     // =============================
-    // CONNECTIVITY (CORTICAL FIELD)
+    // DRAW CONNECTIONS (SPARSE MEG STYLE)
     // =============================
-    for (let i = 0; i < N; i++) {
-      for (let j = i + 1; j < N; j++) {
+    for (let i = 0; i < rotated.length; i += 6) {
+      for (let j = i + 6; j < rotated.length; j += 18) {
 
-        const w = connect(nodes[i], nodes[j], state);
-        if (w < 0.08) continue;
+        const a = rotated[i];
+        const b = rotated[j];
 
-        const x1 = sx(nodes[i].x);
-        const y1 = sy(nodes[i].y);
-        const x2 = sx(nodes[j].x);
-        const y2 = sy(nodes[j].y);
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dz = a.z - b.z;
 
-        const mx = (x1 + x2) / 2;
-        const my = (y1 + y2) / 2;
+        const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+
+        if (dist > 1.2) continue;
+
+        const pa = project(a);
+        const pb = project(b);
+
+        const alpha = (1 - dist) * 0.25;
 
         ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        ctx.quadraticCurveTo(
-          mx + Math.sin(t * 0.01) * 10,
-          my + Math.cos(t * 0.01) * 10,
-          x2,
-          y2
-        );
+        ctx.moveTo(pa.x, pa.y);
+        ctx.lineTo(pb.x, pb.y);
 
-        ctx.strokeStyle = `hsla(${state.hue}, 90%, 60%, ${w * 0.5})`;
-        ctx.lineWidth = 0.5 + w * 2;
+        ctx.strokeStyle = `hsla(${state.hue}, 90%, 60%, ${alpha})`;
+        ctx.lineWidth = 1 * pa.scale;
 
         ctx.stroke();
       }
     }
 
     // =============================
-    // NODES (DIPOLE SOURCES)
+    // DRAW NODES (DIPOLE SOURCES)
     // =============================
-    for (let n of nodes) {
+    for (let p of rotated) {
 
-      const a = 0.5 + 0.5 * Math.sin(t * 0.03 + n.phase);
+      const proj = project(p);
 
-      const x = sx(n.x);
-      const y = sy(n.y);
+      const activity =
+        0.5 + 0.5 * Math.sin(t * 0.02 + p.phase);
+
+      const size = (2 + activity * 3) * proj.scale;
 
       ctx.beginPath();
-      ctx.arc(x, y, 2 + a * 2.5, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0,255,210,${0.3 + a * 0.6})`;
+      ctx.arc(proj.x, proj.y, size, 0, Math.PI * 2);
+
+      ctx.fillStyle = `rgba(0,255,210,${0.25 + activity * 0.5})`;
       ctx.fill();
     }
 
-    t++;
+    // =============================
+    // ANIMATION STEP
+    // =============================
+    angle += 0.003; // slow brain rotation
+    t += 1;
+
     requestAnimationFrame(draw);
   }
 
