@@ -6,7 +6,7 @@ title: Malan Lab
 {% include hero.html %}
 
 <div class="container">
-<h2>About the Lab</h2>
+<h2>Understanding the Brain</h2>
   
 <div class="card">
 Malan Lab is a computational neuroscience and neuroengineering research group at IIT Jammu. We study neural circuits, brain dynamics, and neurotechnology using multimodal data and computational modeling.
