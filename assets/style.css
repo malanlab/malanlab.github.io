@@ -80,18 +80,19 @@ a:hover {
 }
 .brain-overlay {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0;
+  right: 0;
 
-  width: 320px;   /* 🔥 bigger */
+  width: min(45vw, 520px);   /* 🔥 responsive BIG brain */
   height: auto;
 
-  opacity: 0.9;
   z-index: 2;
+
+  opacity: 0.95;
 
   pointer-events: none;
 
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+  filter: drop-shadow(0 25px 60px rgba(0,0,0,0.55));
 }
 .brain-overlay {
   animation: brainGlow 4s ease-in-out infinite;
