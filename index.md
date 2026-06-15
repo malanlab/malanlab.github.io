@@ -5,8 +5,6 @@ title: Malan Lab
 
 {% include hero.html %}
 
-<div class="container">
-
 ## About the Lab
 
 <div class="about-grid">
@@ -51,9 +49,7 @@ To build next-generation neurotechnology bridging neuroscience, AI, and clinical
 
 <div class="card">
 <h3>Motor Control & Disorders</h3>
-<p>Parkinson’s disease, freezing of gait, DBS modulation, and motor learning.</p>
-</div>
-
+<p>Parkinson's disease, freezing of gait, DBS modulation, and motor learning.</p>
 </div>
 
 </div>
