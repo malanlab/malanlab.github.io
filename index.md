@@ -7,7 +7,7 @@ title: Malan Lab
 
 <div class="container">
 
-## About the Lab
+<h2>About the Lab</h2>
 
 <div class="about-grid">
 
@@ -17,25 +17,25 @@ title: Malan Lab
 
 </div>
 
----
+<hr>
 
-## Mission
+<h2>Mission</h2>
 
 <div class="card">
 To advance understanding of brain function using computational neuroscience and neuroengineering approaches.
 </div>
 
----
+<hr>
 
-## Vision
+<h2>Vision</h2>
 
 <div class="card">
 To build next-generation neurotechnology bridging neuroscience, AI, and clinical applications.
 </div>
 
----
+<hr>
 
-## Core Expertise
+<h2>Core Expertise</h2>
 
 <div class="grid">
 
