@@ -147,22 +147,24 @@ FOG reflects a **network failure of motor state transitions** across cortical an
 
 <script>
 function startMiniCarousels() {
+
   document.querySelectorAll(".mini-carousel").forEach(carousel => {
 
     const imgs = carousel.querySelectorAll("img");
     let index = 0;
 
+    if (imgs.length <= 1) return;
+
     setInterval(() => {
 
       imgs[index].classList.remove("active");
-
       index = (index + 1) % imgs.length;
-
       imgs[index].classList.add("active");
 
-    }, 2500); // change every 2.5s
+    }, 2500);
 
   });
+
 }
 
 document.addEventListener("DOMContentLoaded", startMiniCarousels);
