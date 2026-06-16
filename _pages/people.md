@@ -10,8 +10,6 @@ permalink: /people/
 
 ## Principal Investigator
 
-## Principal Investigator
-
 <div class="pi-card">
 
   <div class="pi-photo">
@@ -40,7 +38,7 @@ permalink: /people/
   </div>
 
 </div>
-
+---
 ## PhD Scholars
 
 <div class="grid">
