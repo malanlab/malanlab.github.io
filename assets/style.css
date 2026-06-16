@@ -313,7 +313,20 @@ a:hover {
   transform: translateY(-5px);
   border-left-color: var(--accent);
 }
+.card.markdown-body h3 {
+  margin-top: 14px;
+  margin-bottom: 8px;
+  color: #0b1f3a;
+}
 
+.card.markdown-body ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.card.markdown-body li {
+  margin-bottom: 6px;
+}
 
 /* =========================
    PI CARD
