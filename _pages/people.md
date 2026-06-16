@@ -13,7 +13,7 @@ permalink: /people/
 <div class="pi-card">
 
   <div class="pi-photo">
-    <img src="{{ '/assets/images/nitesh.jpg' | relative_url }}" alt="Nitesh Singh Malan">
+    <img src="{{ '/assets/images/nitesh.png' | relative_url }}" alt="Nitesh Singh Malan">
   </div>
 
   <div class="pi-info">
