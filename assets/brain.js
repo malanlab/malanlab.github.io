@@ -15,23 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const WAVE_COUNT = 8;
 
-  // =========================
-  // ELECTRODE LABELS (NEW)
-  // =========================
   const electrodeNames = [
-    "Fp1",
-    "Fp2",
-    "F3",
-    "F4",
-    "C3",
-    "C4",
-    "P3",
-    "P4"
+    "Fp1", "Fp2", "F3", "F4",
+    "C3", "C4", "P3", "P4"
   ];
 
   const waves = [];
 
-  // initialize noise buffers
   for (let i = 0; i < WAVE_COUNT; i++) {
     waves.push({
       buffer: Array.from({ length: 300 }, () => Math.random() * 2 - 1),
@@ -46,83 +36,99 @@ document.addEventListener("DOMContentLoaded", () => {
     const w = canvas.width;
     const h = canvas.height;
 
-    // soft dark background
-    ctx.fillStyle = "rgba(8, 14, 28, 0.55)";
+    // softer deep background (more premium)
+    ctx.fillStyle = "rgba(5, 10, 20, 0.45)";
     ctx.fillRect(0, 0, w, h);
 
-    // =========================
-    // LEFT SIDE ONLY REGION
-    // =========================
     const drawWidth = w * 0.45;
 
-    // font settings for labels
-    ctx.font = "12px monospace";
+    // =========================
+    // IMPROVED TYPOGRAPHY (EEG UI STYLE)
+    // =========================
+    ctx.font = "500 13px Inter, system-ui, -apple-system, Segoe UI, Roboto";
     ctx.textAlign = "right";
     ctx.textBaseline = "middle";
 
-    // =========================
-    // EEG SIGNAL LINES (NOISE-BASED)
-    // =========================
     for (let i = 0; i < WAVE_COUNT; i++) {
 
       const wave = waves[i];
       const baseY = (h / (WAVE_COUNT + 1)) * (i + 1);
 
       // =========================
-      // ELECTRODE LABEL (NEW)
+      // ELECTRODE LABEL (IMPROVED)
       // =========================
-      ctx.fillStyle = "rgba(120, 200, 255, 0.75)";
-      ctx.fillText(electrodeNames[i] || `CH${i + 1}`, 40, baseY);
+      ctx.fillStyle = "rgba(140, 200, 255, 0.85)";
+      ctx.fillText(electrodeNames[i] || `CH${i + 1}`, 45, baseY);
+
+      // =========================
+      // SIGNAL STYLING (GLOW LAYER)
+      // =========================
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = "rgba(0, 255, 210, 0.06)";
+      ctx.shadowBlur = 18;
+      ctx.shadowColor = "rgba(0, 255, 210, 0.25)";
 
       ctx.beginPath();
 
-      for (let x = 0; x < drawWidth; x += 3) {
+      for (let x = 0; x < drawWidth; x += 2) {
 
         const idx = Math.floor((x / drawWidth) * wave.buffer.length);
 
-        // noise dynamics
-        wave.buffer[idx] += (Math.random() - 0.5) * 0.25;
-        wave.buffer[idx] *= 0.92;
+        // smoother biological noise (less jittery, more organic)
+        wave.buffer[idx] += (Math.random() - 0.5) * 0.18;
+        wave.buffer[idx] *= 0.94;
 
         const noise = wave.buffer[idx];
 
-        // traveling burst (confined to left side)
         const burstCenter = (t * 3) % drawWidth;
 
-        const burst = Math.sin((t * 0.02 + i) * 0.7) *
-          Math.exp(-((x - burstCenter) ** 2) / 20000);
+        const burst =
+          Math.sin((t * 0.02 + i) * 0.6) *
+          Math.exp(-((x - burstCenter) ** 2) / 22000);
+
+        // smoother waveform (slightly damped)
+        const smooth = Math.sin(x * 0.008 + i * 0.8) * 2;
 
         const y =
           baseY +
-          noise * 35 +
-          burst * 20 +
-          Math.sin(x * 0.01 + i) * 3;
+          noise * 28 +
+          burst * 18 +
+          smooth;
 
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
 
-      ctx.strokeStyle = `rgba(20, 184, 166, ${0.35 + i * 0.04})`;
-      ctx.lineWidth = 1.4;
+      ctx.stroke();
+
+      // =========================
+      // BRIGHT CORE SIGNAL (SECOND PASS)
+      // =========================
+      ctx.shadowBlur = 0;
+      ctx.strokeStyle = "rgba(0, 255, 220, 0.35)";
+      ctx.lineWidth = 1.2;
+
       ctx.stroke();
     }
 
     // =========================
-    // SPIKE EVENTS (LEFT SIDE ONLY)
+    // SPIKES (SOFTER + MORE NEURAL LOOK)
     // =========================
     for (let i = 0; i < 5; i++) {
 
       const x = (t * 6 + i * 180) % drawWidth;
       const y = h * (0.2 + i * 0.15);
 
-      const r = 2 + Math.random() * 6;
-
       ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.arc(x, y, 1.5 + Math.random() * 4, 0, Math.PI * 2);
 
-      ctx.fillStyle = "rgba(255,255,255,0.25)";
+      ctx.fillStyle = "rgba(255,255,255,0.18)";
+      ctx.shadowBlur = 12;
+      ctx.shadowColor = "rgba(255,255,255,0.25)";
       ctx.fill();
     }
+
+    ctx.shadowBlur = 0;
 
     t++;
     requestAnimationFrame(draw);
