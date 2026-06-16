@@ -6,71 +6,104 @@ permalink: /research/
 
 # Research
 
----
-
-## 🧠 Which cortical oscillatory features and brain regions are associated with chronic pain severity? 
+## 🧠 Can brain rhythms explain and predict chronic pain?
 
 <div class="research-block">
 
   <!-- TEXT SIDE -->
   <div class="card">
 
-    <h3>Problem</h3>
+    <h3>The problem</h3>
     <p>
-      Chronic pain is associated with abnormal cortical rhythms, particularly in the alpha band (8–12 Hz).
-      However, how peak alpha frequency (PAF) and alpha power change across brain regions,
-      and how they relate to pain severity, remains unclear.
+      Chronic pain is not only a symptom of injury—it also reflects how the brain processes and amplifies pain signals.
+      Many studies show changes in brain rhythms, especially in the alpha band (8–12 Hz), but we still do not fully understand:
+      <b>which brain regions change, and how these changes relate to how much pain a person feels.</b>
+    </p>
+
+    <h3>Our approach</h3>
+    <p>
+      We study whether brain signals such as <b>Peak Alpha Frequency (PAF)</b> and alpha power can act as measurable biomarkers of pain.
+      We also relate these brain features to subjective pain intensity across individuals.
     </p>
 
     <h3>What we studied</h3>
     <ul>
-      <li>Resting-state MEG in CRPS patients and healthy controls</li>
-      <li>Peak alpha frequency (PAF)</li>
-      <li>Alpha-band power across cortex</li>
-      <li>Functional connectivity in alpha networks</li>
-      <li>Relation with subjective pain severity</li>
+      <li>Resting-state MEG recordings from CRPS patients and healthy controls</li>
+      <li>Peak Alpha Frequency (PAF) — speed of dominant brain rhythm</li>
+      <li>Alpha-band power across cortical regions</li>
+      <li>Functional connectivity within pain-related brain networks</li>
+      <li>Relationship between brain signals and reported pain severity</li>
     </ul>
 
   </div>
 
   <!-- IMAGE SIDE -->
-<div class="research-media">
+  <div class="research-media">
 
-  <div class="mini-carousel">
+    <div class="mini-carousel">
 
-    <img class="active" src="{{ '/assets/images/research/crps_brain.png' | relative_url }}">
-    <img src="{{ '/assets/images/research/crps_corr.png' | relative_url }}">
-    <img src="{{ '/assets/images/research/alpha_connectivity.png' | relative_url }}">
+      <img class="active" src="{{ '/assets/images/research/crps_brain.png' | relative_url }}">
+      <img src="{{ '/assets/images/research/crps_corr.png' | relative_url }}">
+      <img src="{{ '/assets/images/research/alpha_connectivity.png' | relative_url }}">
+
+    </div>
+
   </div>
 
 </div>
 
-</div>
-
+---
 
 <div class="grid">
 
   <div class="card">
-    <h3>Key findings</h3>
+    <h3>What we found</h3>
     <ul>
-      <li>CRPS shows global slowing of peak alpha frequency (PAF)</li>
-      <li>Reduced alpha power in precuneus, paracentral, superior parietal cortex</li>
-      <li>Pain severity correlates with PFC and OFC alpha disruption</li>
-      <li>Increased alpha connectivity in PFC–OFC networks</li>
+      <li>Brain rhythms slow down in chronic pain (reduced PAF)</li>
+      <li>Alpha power decreases in key sensory and association areas</li>
+      <li>Changes are strongest in regions involved in body representation and attention to pain</li>
+      <li>Pain severity is linked to abnormal activity in prefrontal and orbitofrontal regions</li>
     </ul>
   </div>
 
   <div class="card">
-    <h3>Interpretation</h3>
+    <h3>What it means</h3>
     <ul>
-      <li>Posteromedial cortex → sensory processing</li>
-      <li>Prefrontal / OFC → pain intensity encoding</li>
-      <li>Network hyperconnectivity → maladaptive affect integration</li>
+      <li>Posterior brain regions reflect how sensory pain is processed</li>
+      <li>Prefrontal and orbitofrontal cortex contribute to how unpleasant pain feels</li>
+      <li>Altered connectivity suggests the brain may get “stuck” in persistent pain states</li>
     </ul>
   </div>
 
 </div>
 
+---
+
+<div class="card">
+
+  <h3>Big picture: towards predictive pain neuroscience</h3>
+
+  <p>
+    Our long-term goal is to move beyond describing brain differences and build a <b>normative model of brain activity</b>.
+  </p>
+
+  <p>
+    By learning what “typical” brain activity looks like from large EEG/MEG datasets, we can measure how much each individual deviates from this norm.
+    These deviations may help us:
+  </p>
+
+  <ul>
+    <li>Predict pain severity from brain activity</li>
+    <li>Identify early neural markers of chronic pain</li>
+    <li>Support diagnosis of neuropathic pain conditions</li>
+    <li>Guide personalized neuromodulation and rehabilitation strategies</li>
+  </ul>
+
+  <p>
+    In simple terms: <b>we aim to turn brain rhythms into a predictive tool for understanding and treating pain.</b>
+  </p>
+
+</div>
 ## ⚡ How does the human cerebellum interact with cortex during motor error processing?
 
 <div class="card" markdown="1">
