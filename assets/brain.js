@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const canvas = document.querySelector(".brain-canvas");
+  const canvas = document.querySelector(".eeg-canvas");
+  
   if (!canvas) return;
 
   const ctx = canvas.getContext("2d");
@@ -13,11 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
   resize();
   window.addEventListener("resize", resize);
 
-  const WAVE_COUNT = 8;
-
+  const WAVE_COUNT = 4;
+  
   const electrodeNames = [
-    "Fp1", "Fp2", "F3", "F4",
-    "C3", "C4", "P3", "P4"
+    "Fp1",
+    "C3",
+    "P3",
+    "Oz"
   ];
 
   const waves = [];
@@ -40,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.fillStyle = "rgba(5, 10, 20, 0.45)";
     ctx.fillRect(0, 0, w, h);
 
-    const drawWidth = w * 0.45;
+    const drawWidth = w - 70;
 
     // =========================
     // IMPROVED TYPOGRAPHY (EEG UI STYLE)
@@ -52,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < WAVE_COUNT; i++) {
 
       const wave = waves[i];
-      const baseY = (h / (WAVE_COUNT + 1)) * (i + 1);
+      const baseY = 25 + i * 28;
 
       // =========================
       // ELECTRODE LABEL (IMPROVED)
