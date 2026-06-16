@@ -6,10 +6,30 @@ title: Malan Lab
 {% include hero.html %}
 
 <div class="container">
+
 <h2>Understanding the Brain</h2>
   
 <div class="card">
-Malan Lab is a computational neuroscience and neuroengineering research group at IIT Jammu. We study neural circuits, brain dynamics, and neurotechnology using multimodal data and computational modeling.
+
+<p>
+The <strong>Malan Lab</strong> at IIT Jammu studies how large-scale brain networks
+and neural circuits generate movement and behavior.
+We focus on the physiological and computational mechanisms underlying brain
+dynamics in both healthy and neurological conditions.
+</p>
+
+<p>
+Our research combines EEG, MEG, and deep brain stimulation (DBS) local field
+potentials (LFPs) with advanced signal processing and computational modeling
+to investigate neural oscillations, functional connectivity, and network
+interactions.
+</p>
+
+<p>
+We are particularly interested in Parkinson’s disease, freezing of gait,
+motor control, and brain stimulation–based neuromodulation.
+</p>
+
 </div>
 
 <hr>
