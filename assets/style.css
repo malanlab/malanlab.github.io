@@ -314,6 +314,68 @@ a:hover {
   border-left-color: var(--accent);
 }
 
+
+/* =========================
+   PI CARD
+========================= */
+
+.pi-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 35px;
+
+  background: white;
+  padding: 30px;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(20,184,166,0.12);
+  border-left: 4px solid var(--primary);
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+
+  align-items: center;
+}
+
+.pi-photo img {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.pi-info h3 {
+  margin-bottom: 10px;
+}
+
+.pi-info ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.pi-info li {
+  margin-bottom: 6px;
+}
+
+@media (max-width: 900px) {
+
+  .pi-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .pi-photo {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .pi-info ul {
+    text-align: left;
+  }
+}
+
+
 /* =========================
    ABOUT GRID
 ========================= */
