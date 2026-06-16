@@ -155,7 +155,7 @@ a:hover {
   position: relative;
   overflow: hidden;
 
-  min-height: 520px;
+  min-height: 750px;
   width: 100%;
 
   margin-bottom: var(--space-5);
