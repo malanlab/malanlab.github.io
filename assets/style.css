@@ -212,7 +212,15 @@ a:hover {
 
 
 .hero-left {
-  padding: 45px 80px;
+  position: absolute;
+  top: 55px;
+  left: 0;
+
+  padding-left: 90px;
+
+  max-width: 700px;
+
+  z-index: 10;
 }
 
 /* =========================
