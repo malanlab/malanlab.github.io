@@ -300,7 +300,7 @@ a:hover {
 .brain-image {
   position: absolute;
   right: 20px;
-  top: 55%;
+  top: 60%;
   transform: translateY(-50%);
 
   width: min(580px, 42vw);
