@@ -4,99 +4,144 @@ title: Research
 permalink: /research/
 ---
 
-# Research
+<div class="container">
 
----
+<h1>Research</h1>
 
-## 🧠 Which cortical oscillatory features and brain regions are associated with chronic pain severity?
+<p>
+Our research integrates neuroscience, engineering, and computational methods to understand brain function and neurological disorders.
+</p>
 
-<div class="card" markdown="1">
+<!-- ========================= -->
+<h2>🧠 Chronic Pain & Cortical Oscillations</h2>
 
-### Problem
-Chronic pain is associated with abnormal cortical rhythms, particularly in the alpha band (8–12 Hz). However, it remains unclear how peak alpha frequency (PAF) and alpha power change across brain regions, and how these changes relate to subjective pain severity.
+<div class="grid">
 
-### What we studied
-We used resting-state MEG in CRPS patients and healthy controls to estimate:
+  <div class="card">
+    <h3>Problem</h3>
+    <p>
+      Chronic pain is associated with abnormal cortical rhythms, particularly in the alpha band (8–12 Hz).
+      However, it remains unclear how peak alpha frequency (PAF) and alpha power change across brain regions
+      and how these changes relate to subjective pain severity.
+    </p>
+  </div>
 
-- Peak alpha frequency (PAF)
-- Alpha-band power across cortex
-- Functional connectivity in alpha networks
-- Relationship with pain severity
+  <div class="card">
+    <h3>What we studied</h3>
+    <p>We used resting-state MEG in CRPS patients and healthy controls to estimate:</p>
+    <ul>
+      <li>Peak alpha frequency (PAF)</li>
+      <li>Alpha-band power across cortex</li>
+      <li>Functional connectivity in alpha networks</li>
+      <li>Relationship with pain severity</li>
+    </ul>
+  </div>
 
-### Key findings
-- CRPS shows **global slowing of peak alpha frequency (PAF)**
-- **Reduced alpha power**, especially in:
-  - Precuneus  
-  - Paracentral cortex  
-  - Superior parietal cortex  
+  <div class="card">
+    <h3>Key findings</h3>
+    <ul>
+      <li>CRPS shows global slowing of peak alpha frequency (PAF)</li>
+      <li>Reduced alpha power in precuneus, paracentral, and superior parietal cortex</li>
+      <li>Pain severity relates to reduced PFC and OFC PAF power</li>
+      <li>Increased alpha connectivity in PFC–OFC networks</li>
+    </ul>
+  </div>
 
-- Pain severity is linked to:
-  - Reduced PAF power in **prefrontal cortex (PFC)** and **orbitofrontal cortex (OFC)**
-  - Increased alpha-band connectivity in PFC–OFC networks
-
-### Interpretation
-Alpha oscillations reflect both sensory and affective dimensions of chronic pain:
-
-- Posteromedial cortex → sensory processing  
-- Prefrontal / OFC → pain intensity  
-- Network hyperconnectivity → maladaptive affect integration  
-
-</div>
-
----
-
-## ⚡ How does the human cerebellum interact with cortex during motor error processing?
-
-<div class="card" markdown="1">
-
-### Problem
-The cerebellum is essential for motor learning and error correction, but its real-time interaction with cortex in humans is still unclear.
-
-### What we study
-We use:
-
-- EEG / MEG recordings  
-- Motor error paradigms  
-- Connectivity analysis  
-- Computational modeling  
-
-### Key questions
-- How does cerebellum send error signals to cortex?
-- Which cortical regions encode motor updates?
-- How does learning reshape these circuits?
-
-### Interpretation
-Cerebello–cortical loops support:
-
-- Error detection  
-- Motor adaptation  
-- Learning-driven updating  
+  <div class="card">
+    <h3>Interpretation</h3>
+    <p>
+      Alpha oscillations encode both sensory and affective dimensions of chronic pain:
+    </p>
+    <ul>
+      <li>Posteromedial cortex → sensory-discriminative processing</li>
+      <li>Prefrontal / OFC → subjective pain intensity</li>
+      <li>Network hyperconnectivity → maladaptive affect integration</li>
+    </ul>
+  </div>
 
 </div>
 
----
+<!-- ========================= -->
+<h2>⚡ Cerebello–Cortical Interaction in Motor Error Processing</h2>
 
-## 🚶 How does cortico–subcortical network dysfunction lead to freezing of gait in Parkinson’s disease?
+<div class="grid">
 
-<div class="card" markdown="1">
+  <div class="card">
+    <h3>Problem</h3>
+    <p>
+      The cerebellum is essential for motor learning and error correction,
+      but how cerebello–cortical networks interact during real-time motor error processing in humans remains unclear.
+    </p>
+  </div>
 
-### Problem
-Freezing of gait (FOG) is caused by transient motor block, but its network mechanism is unclear.
+  <div class="card">
+    <h3>What we study</h3>
+    <p>We investigate using EEG/MEG and behavioral motor error paradigms:</p>
+    <ul>
+      <li>Oscillatory coupling</li>
+      <li>Functional connectivity analysis</li>
+      <li>Computational modeling of error correction</li>
+    </ul>
+  </div>
 
-### What we study
-We use:
+  <div class="card">
+    <h3>Key questions</h3>
+    <ul>
+      <li>How does cerebellum communicate error signals to cortex?</li>
+      <li>Which cortical regions encode motor correction?</li>
+      <li>How does learning reshape this interaction?</li>
+    </ul>
+  </div>
 
-- EEG + LFP recordings  
-- DBS data  
-- Motor paradigms  
-- Beta burst / connectivity analysis  
+  <div class="card">
+    <h3>Interpretation</h3>
+    <p>
+      We aim to explain how cerebello–cortical loops enable adaptive motor learning and trial-by-trial error correction.
+    </p>
+  </div>
 
-### Key hypotheses
-- FOG = cortico–basal ganglia disconnection
-- Beta bursts reflect unstable motor switching
-- DBS restores network dynamics
+</div>
 
-### Interpretation
-FOG reflects a **network failure of motor state transitions** across cortical and subcortical circuits.
+<!-- ========================= -->
+<h2>🚶 Freezing of Gait in Parkinson’s Disease</h2>
+
+<div class="grid">
+
+  <div class="card">
+    <h3>Problem</h3>
+    <p>
+      Freezing of gait (FOG) is a disabling symptom of Parkinson’s disease,
+      but its network-level mechanism is still not fully understood.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>What we study</h3>
+    <p>We analyze cortico–subcortical dynamics using:</p>
+    <ul>
+      <li>EEG and LFP recordings</li>
+      <li>Deep brain stimulation (DBS)</li>
+      <li>Motor task paradigms</li>
+      <li>Beta bursts and oscillatory dynamics</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Key hypotheses</h3>
+    <ul>
+      <li>FOG arises from cortico–basal ganglia disconnection</li>
+      <li>Abnormal beta bursts reflect motor switching failure</li>
+      <li>DBS restores network flexibility</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Interpretation</h3>
+    <p>
+      Freezing of gait is modeled as a breakdown of motor state transitions across cortico–subcortical networks.
+    </p>
+  </div>
+
+</div>
 
 </div>
