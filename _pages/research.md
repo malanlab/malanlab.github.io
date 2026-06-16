@@ -6,63 +6,61 @@ permalink: /research/
 
 # Research
 
-The Malan Lab investigates the neural mechanisms underlying chronic pain, motor control, and neurological disorders using neurophysiology, computational neuroscience, and neuroengineering approaches.
-
 ---
 
-<div class="grid">
+<div class="container">
+
+## 🧠 Chronic Pain and Cortical Alpha Dysregulation
 
 <div class="card">
 
-<h3>🧠 Which cortical oscillatory features and brain regions are associated with chronic pain severity?</h3>
+### Problem
 
-<p>
-Chronic pain is associated with large-scale alterations in brain activity and network organization. We use EEG and MEG to identify cortical oscillatory signatures and brain regions linked to pain perception and symptom severity in Complex Regional Pain Syndrome (CRPS).
-</p>
-
-<p>
-Our goal is to develop objective neurophysiological biomarkers that can improve diagnosis, patient stratification, and treatment monitoring.
-</p>
-
-<p>
-<b>Methods:</b> EEG, MEG, source localization, spectral analysis, functional connectivity, machine learning.
-</p>
+Chronic pain is not only a sensory condition but also a disorder of large-scale brain rhythms. However, how cortical alpha activity (8–12 Hz)—especially peak alpha frequency (PAF) and alpha power—changes in chronic pain remains unclear. Previous studies report conflicting findings across pain phenotypes, and the relationship between these oscillatory changes and pain severity is still not well understood.
 
 </div>
 
 <div class="card">
 
-<h3>⚡ How does the human cerebellum interact with cortex during motor error processing?</h3>
+### What we studied
 
-<p>
-The cerebellum plays a fundamental role in motor adaptation and error correction. We investigate cerebello-cortical communication during movement and motor learning to understand how the brain detects and corrects motor errors.
-</p>
+We investigated patients with Complex Regional Pain Syndrome (CRPS) using resting-state magnetoencephalography (MEG) and compared them with healthy controls.
 
-<p>
-This research aims to reveal neural mechanisms underlying adaptive behavior and sensorimotor control in humans.
-</p>
+We estimated:
 
-<p>
-<b>Methods:</b> EEG, MEG, behavioral paradigms, connectivity analysis, computational modeling.
-</p>
+- Peak alpha frequency (PAF)
+- Alpha-band power across cortex
+- Functional connectivity in alpha band
+- Relationship with subjective pain severity
 
 </div>
 
 <div class="card">
 
-<h3>🚶 How does cortico–subcortical network dysfunction lead to freezing of gait in Parkinson’s disease?</h3>
+### Key findings
 
-<p>
-Freezing of gait (FOG) is one of the most disabling symptoms of Parkinson’s disease. We study how abnormal interactions between cortical and subcortical networks contribute to gait impairment and motor dysfunction.
-</p>
+- CRPS patients show **slower peak alpha frequency (PAF)**
+- **Reduced alpha power**, especially in:
+  - Precuneus  
+  - Paracentral cortex  
+  - Superior parietal regions  
 
-<p>
-We also investigate how deep brain stimulation (DBS) modifies these networks and restores motor function.
-</p>
+- Pain severity correlates with **reduced PAF power in prefrontal and orbitofrontal cortex**
+- These same regions show **increased alpha-band hyperconnectivity**
+- Posteromedial cortex reflects sensory aspects of pain
+- Prefrontal cortex encodes **subjective pain intensity**
 
-<p>
-<b>Methods:</b> EEG, Local Field Potentials (LFP), DBS, beta burst analysis, network connectivity, neural decoding.
-</p>
+</div>
+
+<div class="card">
+
+### Interpretation
+
+Chronic pain involves both:
+- Disruption of sensory-discriminative alpha networks (posteromedial cortex)
+- Altered affective-motivational processing (prefrontal–orbitofrontal networks)
+
+This suggests that alpha rhythms are not just slowed globally, but reorganized into region-specific signatures encoding both pain intensity and emotional experience.
 
 </div>
 
