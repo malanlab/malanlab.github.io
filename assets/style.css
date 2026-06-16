@@ -201,23 +201,6 @@ a:hover {
 }
 
 
-
-.hero-inner {
-  position: absolute;   /* REQUIRED */
-  inset: 0;
-
-  z-index: 5;           /* ABOVE overlay, BELOW image */
-
-  padding: 45px 50px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 16px;
-
-  text-align: left;
-}
-
 .hero-content,
 .hero-lab,
 .hero h1,
@@ -227,9 +210,6 @@ a:hover {
   z-index: 6;
 }
 
-.hero-inner {
-  outline: 2px solid red;
-}
 
 .hero-left {
   padding: 45px 80px;
