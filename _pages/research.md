@@ -39,15 +39,9 @@ permalink: /research/
   <div class="mini-carousel">
 
     <img class="active" src="{{ '/assets/images/research/crps_brain.png' | relative_url }}">
-    <img src="{{ '/assets/images/research/alpha_connectivity.png' | relative_url }}">
     <img src="{{ '/assets/images/research/crps_corr.png' | relative_url }}">
-
-
+    <img src="{{ '/assets/images/research/alpha_connectivity.png' | relative_url }}">
   </div>
-
-  <p class="img-caption">
-    Cortical alpha alterations in chronic pain (MEG source-space mapping)
-  </p>
 
 </div>
 
