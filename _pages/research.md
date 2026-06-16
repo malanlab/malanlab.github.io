@@ -104,32 +104,127 @@ permalink: /research/
   </p>
 
 </div>
-## ⚡ How does the human cerebellum interact with cortex during motor error processing?
+---
 
-<div class="card" markdown="1">
+## 🧠 How does the cerebellum help the brain correct movement errors?
 
-### Problem
-The cerebellum is essential for motor learning and error correction, but its real-time interaction with cortex in humans is still unclear.
+<div class="research-block">
 
-### What we study
-We use:
+  <!-- TEXT SIDE -->
+  <div class="card">
 
-- EEG / MEG recordings  
-- Motor error paradigms  
-- Connectivity analysis  
-- Computational modeling  
+    <h3>The problem</h3>
+    <p>
+      Every movement we make involves small errors — we miss the target, overshoot, or undershoot.
+      The cerebellum is thought to detect these errors and help the brain adjust future movements.
+    </p>
 
-### Key questions
-- How does cerebellum send error signals to cortex?
-- Which cortical regions encode motor updates?
-- How does learning reshape these circuits?
+    <p>
+      But in humans, it is still not clear <b>how the cerebellum and cortex communicate in real time during error correction</b>.
+    </p>
 
-### Interpretation
-Cerebello–cortical loops support:
+    <h3>Our approach</h3>
+    <p>
+      We study how brain networks update movements using a combination of:
+    </p>
 
-- Error detection  
-- Motor adaptation  
-- Learning-driven updating  
+    <ul>
+      <li>Simultaneous EEG and deep cerebellar recordings (dentate nucleus)</li>
+      <li>Motor error / adaptation tasks</li>
+      <li>Time–frequency and connectivity analysis</li>
+      <li>Computational modeling of learning signals</li>
+    </ul>
+
+    <h3>Key questions</h3>
+    <ul>
+      <li>How does the cerebellum send “error signals” to the cortex?</li>
+      <li>Which cortical regions update motor plans during correction?</li>
+      <li>How do these brain circuits change as learning improves performance?</li>
+    </ul>
+
+  </div>
+
+  <!-- IMAGE SIDE -->
+  <div class="research-media">
+
+    <div class="mini-carousel">
+
+      <img class="active" src="{{ '/assets/images/research/cerebello_task.png' | relative_url }}">
+      <img src="{{ '/assets/images/research/cerebello_coherence.png' | relative_url }}">
+      <img src="{{ '/assets/images/research/cerebello_timefreq.png' | relative_url }}">
+
+    </div>
+
+  </div>
+
+</div>
+
+---
+
+<div class="grid">
+
+  <div class="card">
+    <h3>What we found</h3>
+    <ul>
+      <li>Unexpected movements (errors) trigger strong cortical responses in centro-parietal regions</li>
+      <li>Both cortex and cerebellum show changes in alpha and low-beta rhythms during correction</li>
+      <li>Connectivity between cortex and cerebellum increases during error-driven learning</li>
+      <li>Communication is bidirectional — both regions influence each other</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>What it means</h3>
+    <ul>
+      <li>Cerebellum acts like a <b>prediction engine</b> for movement outcomes</li>
+      <li>Cortex updates motor plans based on cerebellar error feedback</li>
+      <li>Alpha/beta rhythms may carry learning and correction signals</li>
+    </ul>
+  </div>
+
+</div>
+
+---
+
+<div class="card">
+
+  <h3>Big picture: how the brain learns from mistakes</h3>
+
+  <p>
+    This work supports the idea that the cerebellum and cortex form a tightly coupled learning system —
+    continuously comparing expected vs actual movement outcomes.
+  </p>
+
+  <p>
+    We show that motor learning is not just a local process, but a <b>network-level interaction</b>
+    involving rhythmic communication between cerebellum and cortex.
+  </p>
+
+  <h3>Why this matters</h3>
+
+  <ul>
+    <li>Helps explain motor learning after stroke or injury</li>
+    <li>Provides biomarkers for rehabilitation progress</li>
+    <li>Supports development of brain stimulation-based therapies (e.g., DBS, neurofeedback)</li>
+    <li>Links physiology with computational models of error-driven learning</li>
+  </ul>
+
+  <p>
+    In simple terms: <b>the cerebellum helps the brain learn from mistakes by constantly talking to the cortex in rhythmic brain signals.</b>
+  </p>
+
+</div>
+
+---
+
+<div class="card">
+
+  <h3>Reference</h3>
+  <p>
+    Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke<br>
+    Malan N.S., Gopalakrishnan R., Cunningham D., Hogue O., Baker K.B., Machado A.G.<br>
+    DOI: 10.1002/hbm.70227
+  </p>
 
 </div>
 
