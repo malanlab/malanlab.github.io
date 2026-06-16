@@ -147,7 +147,7 @@ a:hover {
 }
 
 /* =========================
-   HERO BASE LAYOUT
+   HERO (FINAL CLEAN SYSTEM)
 ========================= */
 
 .hero {
@@ -157,13 +157,11 @@ a:hover {
   min-height: 520px;
   width: 100%;
 
-  display: block;
-
   margin-bottom: var(--space-5);
 }
 
 /* =========================
-   CANVAS LAYER
+   BACKGROUND CANVAS
 ========================= */
 
 .brain-canvas {
@@ -174,12 +172,12 @@ a:hover {
 
   z-index: 1;
 
-  opacity: 0.55;
-  filter: contrast(1.15) brightness(1.1);
+  opacity: 0.5;
+  filter: contrast(1.2) brightness(1.05);
 }
 
 /* =========================
-   OVERLAY LAYER (READABILITY)
+   SOFT READABILITY LAYER
 ========================= */
 
 .hero::before {
@@ -190,11 +188,11 @@ a:hover {
 
   background:
     radial-gradient(circle at 20% 25%, rgba(0,0,0,0.35), transparent 60%),
-    radial-gradient(circle at 80% 60%, rgba(20,184,166,0.10), transparent 55%);
+    radial-gradient(circle at 80% 60%, rgba(20,184,166,0.08), transparent 55%);
 }
 
 /* =========================
-   MAIN LAYOUT CONTAINER
+   CONTENT LAYER
 ========================= */
 
 .hero-inner {
@@ -202,13 +200,12 @@ a:hover {
   inset: 0;
   z-index: 10;
 
-  padding: 40px 50px;
+  padding: 45px 50px;
 
   display: flex;
   flex-direction: column;
-
   justify-content: flex-start;
-  gap: 18px;
+  gap: 16px;
 
   text-align: left;
 }
@@ -219,37 +216,38 @@ a:hover {
 
 .hero-content {
   max-width: 650px;
-  margin: 0;
 }
 
 /* =========================
-   TYPOGRAPHY
+   TYPOGRAPHY (CLEAN)
 ========================= */
 
 .hero-lab {
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 4px;
   font-weight: 700;
-  color: #ffffff;
+  color: #fff;
   opacity: 0.9;
 }
 
 .hero h1 {
-  color: #ffffff;
+  color: #fff;
   margin: 0;
+
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.1;
-  text-shadow: 0 0 25px rgba(255,255,255,0.12);
+
+  text-shadow: 0 0 20px rgba(255,255,255,0.12);
 }
 
 .tagline {
-  color: #ffffff;
+  color: #fff;
   opacity: 0.9;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 }
 
 .subtitle {
-  color: #ffffff;
+  color: #fff;
   opacity: 0.75;
   max-width: 700px;
   line-height: 1.6;
@@ -265,21 +263,20 @@ a:hover {
   top: 50%;
   transform: translateY(-50%);
 
-  width: min(760px, 55vw);
+  width: min(720px, 52vw);
 
   z-index: 3;
 
-  opacity: 0.65;
+  opacity: 0.6;
 
   pointer-events: none;
 
   filter:
-    drop-shadow(0 60px 140px rgba(0,0,0,0.75))
-    contrast(1.3)
-    brightness(1.15)
+    drop-shadow(0 60px 140px rgba(0,0,0,0.7))
+    contrast(1.25)
+    brightness(1.1)
     saturate(1.2);
 }
-
 /* =========================
    CARDS
 ========================= */
