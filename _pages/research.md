@@ -8,7 +8,7 @@ permalink: /research/
 
 ---
 
-## 🧠 Which cortical oscillatory features and brain regions are associated with chronic pain severity?
+## 🧠 Which cortical oscillatory features and brain regions are associated with chronic pain severity? 
 
 <div class="research-block">
 
