@@ -255,21 +255,20 @@ a:hover {
 ========================= */
 
 .hero-lab {
-  font-size: 12px;
-  letter-spacing: 4px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 2px;
   color: #fff;
-  opacity: 0.9;
+  opacity: 1;
+  margin-bottom: 12px;
 }
-
 .hero h1 {
   color: #fff;
   margin: 0;
 
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.1;
-
-  text-shadow: 0 0 20px rgba(255,255,255,0.12);
+  text-shadow: none;
 }
 
 .tagline {
@@ -292,7 +291,7 @@ a:hover {
 .brain-image {
   position: absolute;
   right: 20px;
-  top: 60%;
+  top: 68%;
   transform: translateY(-50%);
 
   width: min(580px, 42vw);
@@ -310,6 +309,19 @@ a:hover {
     saturate(1.2);
 }
 
+/* =========================
+   EEG trace
+========================= */
+
+.eeg-line {
+  width: 420px;
+  height: 80px;
+  margin-top: 25px;
+
+  background: url('/assets/images/eeg.svg') center/contain no-repeat;
+
+  opacity: 0.9;
+}
 
 /* =========================
    CARDS
