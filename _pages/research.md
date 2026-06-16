@@ -6,115 +6,64 @@ permalink: /research/
 
 # Research
 
-Our research integrates neuroscience, engineering, and computational methods to understand brain function and neurological disorders.
+The Malan Lab investigates the neural mechanisms underlying chronic pain, motor control, and neurological disorders using neurophysiology, computational neuroscience, and neuroengineering approaches.
 
 ---
-
-## Research 
 
 <div class="grid">
 
 <div class="card">
-<h3>Neural Biomarker for Complex Regional Pain Syndrome (CRPS)</h3>
 
-EEG, MEG, EMG, and Local Field Potential (LFP) analysis for decoding neural activity and characterizing brain states.
+<h3>🧠 Which cortical oscillatory features and brain regions are associated with chronic pain severity?</h3>
 
-</div>
+<p>
+Chronic pain is associated with large-scale alterations in brain activity and network organization. We use EEG and MEG to identify cortical oscillatory signatures and brain regions linked to pain perception and symptom severity in Complex Regional Pain Syndrome (CRPS).
+</p>
 
-<div class="card">
-<h3>Brain Dynamics & Connectivity</h3>
+<p>
+Our goal is to develop objective neurophysiological biomarkers that can improve diagnosis, patient stratification, and treatment monitoring.
+</p>
 
-Oscillatory activity, functional connectivity, neural synchrony, and large-scale brain network interactions.
-
-</div>
-
-<div class="card">
-<h3>Movement Disorders</h3>
-
-Neural mechanisms of Parkinson’s disease, freezing of gait, deep brain stimulation, and motor rehabilitation.
+<p>
+<b>Methods:</b> EEG, MEG, source localization, spectral analysis, functional connectivity, machine learning.
+</p>
 
 </div>
 
 <div class="card">
-<h3>Computational Neuroscience</h3>
 
-Data-driven modeling, machine learning, neural biomarkers, and quantitative approaches to brain function.
+<h3>⚡ How does the human cerebellum interact with cortex during motor error processing?</h3>
 
-</div>
+<p>
+The cerebellum plays a fundamental role in motor adaptation and error correction. We investigate cerebello-cortical communication during movement and motor learning to understand how the brain detects and corrects motor errors.
+</p>
 
-<div class="card">
-<h3>Brain–Computer Interfaces</h3>
+<p>
+This research aims to reveal neural mechanisms underlying adaptive behavior and sensorimotor control in humans.
+</p>
 
-Motor imagery decoding, neurofeedback systems, and adaptive human-machine interaction.
-
-</div>
-
-<div class="card">
-<h3>Neurorehabilitation</h3>
-
-Neural mechanisms of recovery after stroke and development of objective biomarkers.
-
-</div>
-
-</div>
-
----
-
-## Current Research Programs
-
-<div class="grid">
-
-<div class="card">
-<h3>Parkinson's Disease & Freezing of Gait</h3>
-
-Studying cortical and subcortical neural signatures using EEG, DBS-LFP recordings, and immersive virtual reality paradigms.
+<p>
+<b>Methods:</b> EEG, MEG, behavioral paradigms, connectivity analysis, computational modeling.
+</p>
 
 </div>
 
 <div class="card">
-<h3>Brain Oscillations in Chronic Pain</h3>
 
-Investigating alpha oscillations and functional connectivity as biomarkers of chronic pain.
+<h3>🚶 How does cortico–subcortical network dysfunction lead to freezing of gait in Parkinson’s disease?</h3>
 
-</div>
+<p>
+Freezing of gait (FOG) is one of the most disabling symptoms of Parkinson’s disease. We study how abnormal interactions between cortical and subcortical networks contribute to gait impairment and motor dysfunction.
+</p>
 
-<div class="card">
-<h3>Human Cerebello-Cortical Dynamics</h3>
+<p>
+We also investigate how deep brain stimulation (DBS) modifies these networks and restores motor function.
+</p>
 
-Understanding motor adaptation, error processing, and motor learning.
+<p>
+<b>Methods:</b> EEG, Local Field Potentials (LFP), DBS, beta burst analysis, network connectivity, neural decoding.
+</p>
 
-</div>
-
-</div>
-
----
-
-## Methods
-
-<div class="grid">
-
-<div class="card">
-EEG & High-Density EEG
-</div>
-
-<div class="card">
-Magnetoencephalography (MEG)
-</div>
-
-<div class="card">
-Deep Brain Stimulation (DBS)
-</div>
-
-<div class="card">
-Local Field Potentials (LFP)
-</div>
-
-<div class="card">
-Machine Learning & AI
-</div>
-
-<div class="card">
-Network Neuroscience
 </div>
 
 </div>
