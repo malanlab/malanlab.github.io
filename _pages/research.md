@@ -149,9 +149,7 @@ permalink: /research/
 
     <div class="mini-carousel">
 
-      <img class="active" src="{{ '/assets/images/research/cerebello_task.png' | relative_url }}">
-      <img src="{{ '/assets/images/research/cerebello_coherence.png' | relative_url }}">
-      <img src="{{ '/assets/images/research/cerebello_timefreq.png' | relative_url }}">
+      <img class="active" src="{{ '/assets/images/research/oddball1.png' | relative_url }}">
 
     </div>
 
