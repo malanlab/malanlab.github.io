@@ -313,12 +313,12 @@ a:hover {
    EEG trace
 ========================= */
 
-.eeg-line {
-  width: 420px;
-  height: 80px;
-  margin-top: 25px;
+.eeg-canvas {
+  width: 500px;
+  height: 90px;
 
-  background: url('/assets/images/eeg.svg') center/contain no-repeat;
+  display: block;
+  margin-top: 20px;
 
   opacity: 0.9;
 }
