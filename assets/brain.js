@@ -31,9 +31,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const w = canvas.width;
     const h = canvas.height;
 
-    // soft dark background (important for visibility)
+    // soft dark background
     ctx.fillStyle = "rgba(8, 14, 28, 0.55)";
     ctx.fillRect(0, 0, w, h);
+
+    // =========================
+    // LEFT SIDE ONLY REGION
+    // =========================
+    const drawWidth = w * 0.45;
 
     // =========================
     // EEG SIGNAL LINES (NOISE-BASED)
@@ -45,24 +50,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
       ctx.beginPath();
 
-      for (let x = 0; x < w; x += 3) {
+      for (let x = 0; x < drawWidth; x += 3) {
 
-        const idx = Math.floor((x / w) * wave.buffer.length);
+        const idx = Math.floor((x / drawWidth) * wave.buffer.length);
 
-        // --- FAST RANDOM + SMOOTHING (key EEG realism)
+        // noise dynamics
         wave.buffer[idx] += (Math.random() - 0.5) * 0.25;
-        wave.buffer[idx] *= 0.92; // decay (important)
+        wave.buffer[idx] *= 0.92;
 
         const noise = wave.buffer[idx];
 
-        // micro oscillation + noise + burst
-        const burst = Math.sin((t * 0.02 + i) * 0.7) * Math.exp(-((x - (t*3)%w)**2)/20000);
+        // traveling burst (confined to left side)
+        const burstCenter = (t * 3) % drawWidth;
+
+        const burst = Math.sin((t * 0.02 + i) * 0.7) *
+          Math.exp(-((x - burstCenter) ** 2) / 20000);
 
         const y =
           baseY +
-          noise * 35 +       // main EEG noise
-          burst * 20 +       // traveling burst
-          Math.sin(x * 0.01 + i) * 3; // tiny rhythm
+          noise * 35 +
+          burst * 20 +
+          Math.sin(x * 0.01 + i) * 3;
 
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
@@ -74,11 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =========================
-    // SPIKE EVENTS (REAL EEG FEEL)
+    // SPIKE EVENTS (LEFT SIDE ONLY)
     // =========================
     for (let i = 0; i < 5; i++) {
 
-      const x = (t * 6 + i * 180) % w;
+      const x = (t * 6 + i * 180) % drawWidth; // LEFT ONLY
       const y = h * (0.2 + i * 0.15);
 
       const r = 2 + Math.random() * 6;
