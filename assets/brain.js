@@ -14,6 +14,21 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", resize);
 
   const WAVE_COUNT = 8;
+
+  // =========================
+  // ELECTRODE LABELS (NEW)
+  // =========================
+  const electrodeNames = [
+    "Fp1",
+    "Fp2",
+    "F3",
+    "F4",
+    "C3",
+    "C4",
+    "P3",
+    "P4"
+  ];
+
   const waves = [];
 
   // initialize noise buffers
@@ -40,6 +55,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
     const drawWidth = w * 0.45;
 
+    // font settings for labels
+    ctx.font = "12px monospace";
+    ctx.textAlign = "right";
+    ctx.textBaseline = "middle";
+
     // =========================
     // EEG SIGNAL LINES (NOISE-BASED)
     // =========================
@@ -47,6 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const wave = waves[i];
       const baseY = (h / (WAVE_COUNT + 1)) * (i + 1);
+
+      // =========================
+      // ELECTRODE LABEL (NEW)
+      // =========================
+      ctx.fillStyle = "rgba(120, 200, 255, 0.75)";
+      ctx.fillText(electrodeNames[i] || `CH${i + 1}`, 40, baseY);
 
       ctx.beginPath();
 
@@ -86,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
     for (let i = 0; i < 5; i++) {
 
-      const x = (t * 6 + i * 180) % drawWidth; // LEFT ONLY
+      const x = (t * 6 + i * 180) % drawWidth;
       const y = h * (0.2 + i * 0.15);
 
       const r = 2 + Math.random() * 6;
