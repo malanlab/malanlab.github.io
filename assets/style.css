@@ -303,7 +303,7 @@ a:hover {
   top: 50%;
   transform: translateY(-50%);
 
-  width: min(720px, 52vw);
+  width: min(620px, 45vw);
 
   z-index: 3;
 
@@ -317,6 +317,8 @@ a:hover {
     brightness(1.1)
     saturate(1.2);
 }
+
+
 /* =========================
    CARDS
 ========================= */
