@@ -38,9 +38,8 @@ permalink: /research/
 
   <div class="mini-carousel">
 
-    <img class="active" src="{{ '/assets/images/research/crps_1.png' | relative_url }}">
-    <img src="{{ '/assets/images/research/crps_2.png' | relative_url }}">
-    <img src="{{ '/assets/images/research/crps_3.png' | relative_url }}">
+    <img class="active" src="{{ '/assets/images/research/crps_brain.png' | relative_url }}">
+    <img src="{{ '/assets/images/research/alpha_connectivity.png' | relative_url }}">
 
   </div>
 
