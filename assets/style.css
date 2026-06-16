@@ -147,7 +147,7 @@ a:hover {
 }
 
 /* =========================
-   HERO
+   HERO BASE LAYOUT
 ========================= */
 
 .hero {
@@ -157,31 +157,10 @@ a:hover {
   min-height: 520px;
   width: 100%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
 
   margin-bottom: var(--space-5);
-
-  background: linear-gradient(
-    135deg,
-    #081528 0%,
-    #0b1f3a 40%,
-    #0d3b53 70%,
-    #14b8a6 100%
-  );
 }
-
-.hero {
-  background:
-    radial-gradient(circle at 70% 50%, rgba(255,255,255,0.07), transparent 42%),
-    linear-gradient(135deg,
-      #081528 0%,
-      #0b1f3a 40%,
-      #0d3b53 70%,
-      #14b8a6 100%);
-}
-
 
 /* =========================
    CANVAS LAYER
@@ -195,16 +174,12 @@ a:hover {
 
   z-index: 1;
 
-  opacity: 0.70;  /* BIG IMPROVEMENT */
-
-  filter:
-    contrast(1.15)
-    brightness(1.1);
+  opacity: 0.55;
+  filter: contrast(1.15) brightness(1.1);
 }
 
-
 /* =========================
-   OVERLAY LAYER
+   OVERLAY LAYER (READABILITY)
 ========================= */
 
 .hero::before {
@@ -214,29 +189,74 @@ a:hover {
   z-index: 2;
 
   background:
-    radial-gradient(circle at 25% 35%, rgba(20,184,166,0.25), transparent 55%),
-    radial-gradient(circle at 75% 60%, rgba(255,255,255,0.08), transparent 45%),
-    radial-gradient(circle at 60% 50%, rgba(20,184,166,0.12), transparent 60%);
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: radial-gradient(
-    circle at 75% 50%,
-    rgba(255,255,255,0.10),
-    rgba(20,184,166,0.08),
-    transparent 60%
-  );
-
-  z-index: 2.5;
-  pointer-events: none;
+    radial-gradient(circle at 20% 25%, rgba(0,0,0,0.35), transparent 60%),
+    radial-gradient(circle at 80% 60%, rgba(20,184,166,0.10), transparent 55%);
 }
 
 /* =========================
-   BRAIN IMAGE (FIXED)
+   MAIN LAYOUT CONTAINER
+========================= */
+
+.hero-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+
+  padding: 40px 50px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+  gap: 18px;
+
+  text-align: left;
+}
+
+/* =========================
+   TEXT BLOCK
+========================= */
+
+.hero-content {
+  max-width: 650px;
+  margin: 0;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.hero-lab {
+  font-size: 13px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.hero h1 {
+  color: #ffffff;
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  text-shadow: 0 0 25px rgba(255,255,255,0.12);
+}
+
+.tagline {
+  color: #ffffff;
+  opacity: 0.9;
+  font-size: 1.15rem;
+}
+
+.subtitle {
+  color: #ffffff;
+  opacity: 0.75;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* =========================
+   BRAIN IMAGE
 ========================= */
 
 .brain-image {
@@ -247,135 +267,18 @@ a:hover {
 
   width: min(760px, 55vw);
 
-  opacity: 0.85;   /* 🔥 BIG CHANGE */
-
   z-index: 3;
+
+  opacity: 0.65;
 
   pointer-events: none;
 
   filter:
-    drop-shadow(0 60px 140px rgba(0,0,0,0.85))
-    contrast(1.35)
-    brightness(1.2)
-    saturate(1.3);
+    drop-shadow(0 60px 140px rgba(0,0,0,0.75))
+    contrast(1.3)
+    brightness(1.15)
+    saturate(1.2);
 }
-
-
-
-
-/* =========================
-   HERO CONTENT
-========================= */
-
-.hero-inner {
-  position: relative;
-  z-index: 3;
-
-  width: 100%;
-  max-width: 1100px;
-  padding: 80px 24px;
-
-  text-align: center;
-}
-
-.hero-content {
-  max-width: 850px;
-  margin: 0 auto;
-}
-
-.hero-lab {
-  font-size: 13px;
-  letter-spacing: 3px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.9);
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  color: white;
-  margin-bottom: 20px;
-}
-
-.tagline {
-  color: rgba(255,255,255,0.92);
-  font-size: 1.2rem;
-  margin-bottom: 18px;
-}
-
-.subtitle {
-  color: rgba(255,255,255,0.85);
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-
-
-/* =========================
-   HERO LEFT ALIGN OVERRIDE
-   (NEW LAYOUT FIX)
-========================= */
-
-.hero {
-  justify-content: flex-start; /* override center */
-  align-items: flex-start;
-  gap: 20px;
-}
-
-/* turn hero-inner into full overlay layer */
-.hero-inner {
-  position: absolute;
-  inset: 0;
-  padding: 40px 50px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* top + bottom split */
-
-  text-align: left; /* override center */
-}
-
-
-
-
-/* LEFT TOP TEXT */
-.hero-content {
-  max-width: 650px;
-  margin: 0; /* remove centering */
-}
-
-/* MOVE CONTROLS TO BOTTOM LEFT */
-.brain-controls {
-  justify-content: flex-start;
-  margin-top: 0;
-}
-/* =========================
-   HERO TEXT PURE WHITE OVERRIDE
-========================= */
-
-.hero,
-.hero h1,
-.hero h2,
-.hero h3,
-.hero p,
-.hero-lab,
-.tagline,
-.subtitle {
-  color: #ffffff !important;
-}
-
-/* keep subtle hierarchy (optional but recommended) */
-.tagline {
-  opacity: 0.92;
-}
-
-.subtitle {
-  opacity: 0.85;
-}
-
-.hero-lab {
-  opacity: 0.95;
-}
-
 
 /* =========================
    CARDS
