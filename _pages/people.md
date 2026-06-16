@@ -9,7 +9,7 @@ permalink: /people/
 <h1>People</h1>
 
 <h2>Principal Investigator</h2>
-
+<div class="grid">
 <div class="pi-card">
 
   <div class="pi-photo">
@@ -38,7 +38,7 @@ permalink: /people/
   </div>
 
 </div>
-
+</div>
 <h2>PhD Scholars</h2>
 
 <div class="grid">
