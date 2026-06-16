@@ -1,127 +1,41 @@
 ---
-
 layout: default
 title: Malan Lab
-----------------
+---
 
 {% include hero.html %}
 
 <div class="container">
-
-  <!-- ABOUT -->
-
-  <h2>Computational Neuroscience & Neuroengineering</h2>
-
-  <div class="card">
-    <p>
-      The <strong>Malan Lab</strong> at IIT Jammu investigates how neural
-      circuits and brain networks generate movement, cognition, and behavior.
-      We combine neurophysiology, signal processing, computational modeling,
-      and artificial intelligence to understand brain function across health
-      and neurological disease.
-    </p>
-
-```
-<p>
-  Using multimodal recordings including EEG, MEG, and deep brain
-  stimulation (DBS) local field potentials, we study neural dynamics
-  underlying motor control, movement disorders, neuromodulation,
-  and brain network interactions.
-</p>
-```
-
-  </div>
-
-  <!-- RESEARCH THEMES -->
-
-  <h2>Research Areas</h2>
-
-  <div class="grid">
-
-```
+<h2>Understanding the Brain</h2>
+  
 <div class="card">
-  <h3>🧠 Brain Dynamics</h3>
-  <p>
-    Neural oscillations, brain rhythms, and large-scale network
-    activity underlying movement and cognition.
-  </p>
+Malan Lab is a computational neuroscience and neuroengineering research group at IIT Jammu. We study neural circuits, brain dynamics, and neurotechnology using multimodal data and computational modeling.
 </div>
 
+<hr>
+<h2>Mission</h2>
 <div class="card">
-  <h3>⚡ Neuroengineering</h3>
-  <p>
-    Computational methods for analyzing, decoding,
-    and interpreting neural signals.
-  </p>
+To advance understanding of brain function using computational neuroscience and neuroengineering approaches.
 </div>
-
+<hr>
+<h2>Vision</h2>
 <div class="card">
-  <h3>🚶 Movement Disorders</h3>
-  <p>
-    Parkinson's disease, freezing of gait,
-    motor impairment, and rehabilitation.
-  </p>
+To build next-generation neurotechnology bridging neuroscience, AI, and clinical applications.
 </div>
-
+<hr>
+<h2>Core Expertise</h2>
+<div class="grid">
 <div class="card">
-  <h3>🎯 Deep Brain Stimulation</h3>
-  <p>
-    Understanding mechanisms of therapeutic
-    neuromodulation and brain-network interactions.
-  </p>
+<h3>Neural Signal Processing</h3>
+<p>EEG, MEG, LFP analysis, spectral decomposition, and time-frequency modeling.</p>
 </div>
-
 <div class="card">
-  <h3>🔗 Network Neuroscience</h3>
-  <p>
-    Functional and directional connectivity across
-    distributed cortical and subcortical networks.
-  </p>
+<h3>Functional Connectivity</h3>
+<p>WPLI, coherence, phase synchrony, and network neuroscience methods.</p>
 </div>
-
 <div class="card">
-  <h3>📈 AI & Biomarkers</h3>
-  <p>
-    Machine learning and computational approaches
-    for biomarker discovery and clinical translation.
-  </p>
+<h3>Motor Control & Disorders</h3>
+<p>Parkinson's disease, freezing of gait, DBS modulation, and motor learning.</p>
 </div>
-```
-
-  </div>
-
-  <!-- IMPACT -->
-
-  <h2>From Brain Signals to Clinical Impact</h2>
-
-  <div class="card">
-    <p>
-      Our research seeks to transform complex neural recordings into
-      meaningful biological insights and clinically relevant biomarkers.
-      By integrating neurophysiology, data science, and neurotechnology,
-      we aim to advance diagnosis, monitoring, and personalized
-      interventions for neurological disorders.
-    </p>
-  </div>
-
-  <!-- JOIN -->
-
-  <h2>Join the Lab</h2>
-
-  <div class="card">
-    <p>
-      We welcome students, researchers, and collaborators interested in
-      computational neuroscience, neuroengineering, biomedical signal
-      processing, machine learning, and neurotechnology.
-    </p>
-
-```
-<p>
-  Interested in joining the lab or collaborating on research?
-  Please visit the Team and Contact pages to learn more.
-</p>
-```
-
-  </div>
-
+</div>
 </div>
