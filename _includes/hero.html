@@ -1,10 +1,13 @@
 <div class="hero">
 
   <canvas class="brain-canvas"></canvas>
-  
-  <img src="{{ '/assets/images/brain.png' | relative_url }}" class="brain-image" />
-  <div class="hero-inner">
 
+  <img src="{{ '/assets/images/brain.png' | relative_url }}" class="brain-image" />
+
+  <!-- LEFT COLUMN (NEW STRUCTURE) -->
+  <div class="hero-left">
+
+    <!-- TOP LEFT TEXT -->
     <div class="hero-content">
 
       <div class="hero-lab">
@@ -25,6 +28,7 @@
 
     </div>
 
+    <!-- BOTTOM LEFT SIGNAL CONTROLS -->
     <div class="brain-controls">
       <button onclick="setBrainState('REST')">REST</button>
       <button onclick="setBrainState('DBS_OFF')">DBS OFF</button>
