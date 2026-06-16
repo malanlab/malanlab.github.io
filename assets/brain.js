@@ -13,67 +13,86 @@ document.addEventListener("DOMContentLoaded", () => {
   resize();
   window.addEventListener("resize", resize);
 
+  const WAVE_COUNT = 8;
+  const waves = [];
+
+  // initialize noise buffers
+  for (let i = 0; i < WAVE_COUNT; i++) {
+    waves.push({
+      buffer: Array.from({ length: 300 }, () => Math.random() * 2 - 1),
+      phase: Math.random() * 1000
+    });
+  }
+
   let t = 0;
 
-  function drawEEG() {
+  function draw() {
 
     const w = canvas.width;
     const h = canvas.height;
 
-    // DARK but visible background overlay
-    ctx.fillStyle = "rgba(8, 18, 35, 0.35)";
+    // soft dark background (important for visibility)
+    ctx.fillStyle = "rgba(8, 14, 28, 0.55)";
     ctx.fillRect(0, 0, w, h);
 
     // =========================
-    // EEG WAVES (multi-channel)
+    // EEG SIGNAL LINES (NOISE-BASED)
     // =========================
-    const channels = 6;
+    for (let i = 0; i < WAVE_COUNT; i++) {
 
-    for (let c = 0; c < channels; c++) {
+      const wave = waves[i];
+      const baseY = (h / (WAVE_COUNT + 1)) * (i + 1);
 
       ctx.beginPath();
 
-      const baseY = (h / (channels + 1)) * (c + 1);
+      for (let x = 0; x < w; x += 3) {
 
-      for (let x = 0; x < w; x += 2) {
+        const idx = Math.floor((x / w) * wave.buffer.length);
 
-        const freq = 0.015 + c * 0.003;
+        // --- FAST RANDOM + SMOOTHING (key EEG realism)
+        wave.buffer[idx] += (Math.random() - 0.5) * 0.25;
+        wave.buffer[idx] *= 0.92; // decay (important)
+
+        const noise = wave.buffer[idx];
+
+        // micro oscillation + noise + burst
+        const burst = Math.sin((t * 0.02 + i) * 0.7) * Math.exp(-((x - (t*3)%w)**2)/20000);
 
         const y =
           baseY +
-          Math.sin(x * freq + t * 0.02 + c) * 20 +
-          Math.sin(x * 0.008 + t * 0.01) * 8;
+          noise * 35 +       // main EEG noise
+          burst * 20 +       // traveling burst
+          Math.sin(x * 0.01 + i) * 3; // tiny rhythm
 
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       }
 
-      ctx.strokeStyle = `rgba(20, 184, 166, ${0.35 + c * 0.05})`;
-      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = `rgba(20, 184, 166, ${0.35 + i * 0.04})`;
+      ctx.lineWidth = 1.4;
       ctx.stroke();
     }
 
     // =========================
-    // TRAVELING NEURAL BURSTS
+    // SPIKE EVENTS (REAL EEG FEEL)
     // =========================
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
 
-      const x = (t * 2 + i * 300) % w;
+      const x = (t * 6 + i * 180) % w;
+      const y = h * (0.2 + i * 0.15);
 
-      const y = h * (0.2 + i * 0.2);
-
-      const pulse = 10 + Math.sin(t * 0.05 + i) * 8;
+      const r = 2 + Math.random() * 6;
 
       ctx.beginPath();
-      ctx.arc(x, y, pulse, 0, Math.PI * 2);
+      ctx.arc(x, y, r, 0, Math.PI * 2);
 
-      ctx.fillStyle = "rgba(255, 255, 255, 0.25)";
+      ctx.fillStyle = "rgba(255,255,255,0.25)";
       ctx.fill();
     }
 
     t++;
-    requestAnimationFrame(drawEEG);
+    requestAnimationFrame(draw);
   }
 
-  drawEEG();
+  draw();
 });
