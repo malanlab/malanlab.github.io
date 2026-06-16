@@ -353,25 +353,17 @@ a:hover {
   justify-content: center;
 }
 
-/* carousel container */
 .mini-carousel {
-  position: relative;
-  width: 100%;
-  height: 280px;   /* important: locks card size */
-  overflow: hidden;
-  border-radius: 12px;
+  height: auto;
+  overflow: visible;
 }
 
-/* images stack on top of each other */
 .mini-carousel img {
-  position: absolute;
-  inset: 0;
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  height: auto;
+  object-fit: unset;
+  opacity: 1;
 }
 
 /* active image */
