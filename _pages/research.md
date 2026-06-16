@@ -10,40 +10,79 @@ permalink: /research/
 
 ## 🧠 Which cortical oscillatory features and brain regions are associated with chronic pain severity?
 
-<div class="card" markdown="1">
+<div class="research-block">
 
-### Problem
-Chronic pain is associated with abnormal cortical rhythms, particularly in the alpha band (8–12 Hz). However, it remains unclear how peak alpha frequency (PAF) and alpha power change across brain regions, and how these changes relate to subjective pain severity.
+  <!-- TEXT SIDE -->
+  <div class="card">
 
-### What we studied
-We used resting-state MEG in CRPS patients and healthy controls to estimate:
+    <h3>Problem</h3>
+    <p>
+      Chronic pain is associated with abnormal cortical rhythms, particularly in the alpha band (8–12 Hz).
+      However, how peak alpha frequency (PAF) and alpha power change across brain regions,
+      and how they relate to pain severity, remains unclear.
+    </p>
 
-- Peak alpha frequency (PAF)
-- Alpha-band power across cortex
-- Functional connectivity in alpha networks
-- Relationship with pain severity
+    <h3>What we studied</h3>
+    <ul>
+      <li>Resting-state MEG in CRPS patients and healthy controls</li>
+      <li>Peak alpha frequency (PAF)</li>
+      <li>Alpha-band power across cortex</li>
+      <li>Functional connectivity in alpha networks</li>
+      <li>Relation with subjective pain severity</li>
+    </ul>
 
-### Key findings
-- CRPS shows **global slowing of peak alpha frequency (PAF)**
-- **Reduced alpha power**, especially in:
-  - Precuneus  
-  - Paracentral cortex  
-  - Superior parietal cortex  
+  </div>
 
-- Pain severity is linked to:
-  - Reduced PAF power in **prefrontal cortex (PFC)** and **orbitofrontal cortex (OFC)**
-  - Increased alpha-band connectivity in PFC–OFC networks
+  <!-- IMAGE SIDE -->
+  <div class="research-media">
 
-### Interpretation
-Alpha oscillations reflect both sensory and affective dimensions of chronic pain:
+    <img src="{{ '/assets/images/research/crps_brain.png' | relative_url }}"
+         alt="CRPS cortical alpha abnormalities">
 
-- Posteromedial cortex → sensory processing  
-- Prefrontal / OFC → pain intensity  
-- Network hyperconnectivity → maladaptive affect integration  
+    <p class="img-caption">
+      Example of cortical alpha alterations in chronic pain (MEG source-space mapping)
+    </p>
+
+  </div>
 
 </div>
 
----
+
+<!-- FULL WIDTH FIGURE -->
+<div class="research-figure">
+
+  <img src="{{ '/assets/images/research/alpha_connectivity.png' | relative_url }}"
+       alt="Alpha connectivity networks">
+
+  <p class="img-caption">
+    Alpha-band connectivity changes in prefrontal–orbitofrontal networks associated with pain severity
+  </p>
+
+</div>
+
+
+<div class="grid">
+
+  <div class="card">
+    <h3>Key findings</h3>
+    <ul>
+      <li>CRPS shows global slowing of peak alpha frequency (PAF)</li>
+      <li>Reduced alpha power in precuneus, paracentral, superior parietal cortex</li>
+      <li>Pain severity correlates with PFC and OFC alpha disruption</li>
+      <li>Increased alpha connectivity in PFC–OFC networks</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>Interpretation</h3>
+    <ul>
+      <li>Posteromedial cortex → sensory processing</li>
+      <li>Prefrontal / OFC → pain intensity encoding</li>
+      <li>Network hyperconnectivity → maladaptive affect integration</li>
+    </ul>
+  </div>
+
+</div>
 
 ## ⚡ How does the human cerebellum interact with cortex during motor error processing?
 
