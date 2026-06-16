@@ -231,6 +231,10 @@ a:hover {
   outline: 2px solid red;
 }
 
+.hero-left {
+  padding: 45px 80px;
+}
+
 /* =========================
    CONTENT LAYER
 ========================= */
