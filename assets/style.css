@@ -331,43 +331,60 @@ a:hover {
 /* =========================
    RESEARCH LAYOUT (NEW)
 ========================= */
-
-/* =========================
-   MINI SIDE CAROUSEL
-========================= */
-
-.research-media {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.research-block {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* text | image */
+  gap: 30px;
+  align-items: stretch;
+  margin: 30px 0;
 }
 
+/* image side card */
+.research-media {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+
+  border: 1px solid rgba(20,184,166,0.12);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* carousel container */
 .mini-carousel {
   position: relative;
   width: 100%;
-  height: 260px;   /* adjust if needed */
+  height: 280px;   /* important: locks card size */
   overflow: hidden;
-
-  border-radius: 14px;
-  background: #f8fafc;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border-radius: 12px;
 }
 
-/* stacked images */
+/* images stack on top of each other */
 .mini-carousel img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-
   object-fit: contain;
 
   opacity: 0;
-  transition: opacity 0.6s ease;
+  transition: opacity 0.8s ease-in-out;
 }
 
+/* active image */
 .mini-carousel img.active {
   opacity: 1;
+}
+
+/* caption */
+.img-caption {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #64748b;
+  text-align: center;
 }
 
 /* =========================
