@@ -10,25 +10,36 @@ permalink: /people/
 
 ## Principal Investigator
 
-<div class="card">
+## Principal Investigator
 
-<h3>Nitesh Singh Malan</h3>
+<div class="pi-card">
 
-<p><b>Assistant Professor / Principal Investigator</b><br>
-Malan Lab, IIT Jammu</p>
+  <div class="pi-photo">
+    <img src="{{ '/assets/images/nitesh.jpg' | relative_url }}" alt="Nitesh Singh Malan">
+  </div>
 
-<p><b>Research Interests:</b></p>
+  <div class="pi-info">
 
-<ul>
-  <li>Neural signal processing (EEG, MEG, LFP)</li>
-  <li>Brain dynamics and network connectivity</li>
-  <li>Movement disorders (Parkinson’s disease, FOG)</li>
-  <li>Brain–Computer Interfaces (BCI)</li>
-  <li>Neural biomarkers and computational modeling</li>
-</ul>
+    <h3>Nitesh Singh Malan</h3>
+
+    <p>
+      <b>Assistant Professor / Principal Investigator</b><br>
+      Malan Lab, IIT Jammu
+    </p>
+
+    <p><b>Research Interests:</b></p>
+
+    <ul>
+      <li>Neural signal processing (EEG, MEG, LFP)</li>
+      <li>Brain dynamics and network connectivity</li>
+      <li>Movement disorders (Parkinson’s disease, FOG)</li>
+      <li>Brain–Computer Interfaces (BCI)</li>
+      <li>Neural biomarkers and computational modeling</li>
+    </ul>
+
+  </div>
 
 </div>
----
 
 ## PhD Scholars
 
