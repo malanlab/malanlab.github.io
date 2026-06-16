@@ -308,6 +308,8 @@ a:hover {
   margin: 0 auto;
 }
 
+
+
 /* =========================
    HERO LEFT ALIGN OVERRIDE
    (NEW LAYOUT FIX)
@@ -346,7 +348,33 @@ a:hover {
   justify-content: flex-start;
   margin-top: 0;
 }
+/* =========================
+   HERO TEXT PURE WHITE OVERRIDE
+========================= */
 
+.hero,
+.hero h1,
+.hero h2,
+.hero h3,
+.hero p,
+.hero-lab,
+.tagline,
+.subtitle {
+  color: #ffffff !important;
+}
+
+/* keep subtle hierarchy (optional but recommended) */
+.tagline {
+  opacity: 0.92;
+}
+
+.subtitle {
+  opacity: 0.85;
+}
+
+.hero-lab {
+  opacity: 0.95;
+}
 
 
 /* =========================
