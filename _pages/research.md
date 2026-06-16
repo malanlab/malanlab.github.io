@@ -34,16 +34,21 @@ permalink: /research/
   </div>
 
   <!-- IMAGE SIDE -->
-  <div class="research-media">
+<div class="research-media">
 
-    <img src="{{ '/assets/images/research/crps_brain.png' | relative_url }}"
-         alt="CRPS cortical alpha abnormalities">
+  <div class="mini-carousel">
 
-    <p class="img-caption">
-      Example of cortical alpha alterations in chronic pain (MEG source-space mapping)
-    </p>
+    <img class="active" src="{{ '/assets/images/research/crps_1.png' | relative_url }}">
+    <img src="{{ '/assets/images/research/crps_2.png' | relative_url }}">
+    <img src="{{ '/assets/images/research/crps_3.png' | relative_url }}">
 
   </div>
+
+  <p class="img-caption">
+    Cortical alpha alterations in chronic pain (MEG source-space mapping)
+  </p>
+
+</div>
 
 </div>
 
