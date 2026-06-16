@@ -316,6 +316,7 @@ a:hover {
 .hero {
   justify-content: flex-start; /* override center */
   align-items: flex-start;
+  gap: 20px;
 }
 
 /* turn hero-inner into full overlay layer */
@@ -331,6 +332,9 @@ a:hover {
   text-align: left; /* override center */
 }
 
+
+
+
 /* LEFT TOP TEXT */
 .hero-content {
   max-width: 650px;
@@ -344,33 +348,6 @@ a:hover {
 }
 
 
-/* =========================
-   CONTROLS
-========================= */
-
-.brain-controls {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.brain-controls button {
-  padding: 10px 14px;
-  border-radius: 10px;
-
-  border: 1px solid rgba(255,255,255,0.18);
-  background: rgba(255,255,255,0.08);
-
-  color: white;
-  cursor: pointer;
-
-  backdrop-filter: blur(10px);
-}
-
-.brain-controls button:hover {
-  background: rgba(20,184,166,0.35);
-}
 
 /* =========================
    CARDS
