@@ -52,19 +52,6 @@ permalink: /research/
 </div>
 
 
-<!-- FULL WIDTH FIGURE -->
-<div class="research-figure">
-
-  <img src="{{ '/assets/images/research/alpha_connectivity.png' | relative_url }}"
-       alt="Alpha connectivity networks">
-
-  <p class="img-caption">
-    Alpha-band connectivity changes in prefrontal–orbitofrontal networks associated with pain severity
-  </p>
-
-</div>
-
-
 <div class="grid">
 
   <div class="card">
