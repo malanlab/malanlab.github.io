@@ -197,7 +197,32 @@ a:hover {
 }
 
 .hero-inner {
-  z-index: 20;
+  position: absolute;   /* REQUIRED */
+  inset: 0;
+
+  z-index: 5;           /* ABOVE overlay, BELOW image */
+
+  padding: 45px 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+
+  text-align: left;
+}
+
+.hero-content,
+.hero-lab,
+.hero h1,
+.tagline,
+.subtitle {
+  position: relative;
+  z-index: 6;
+}
+
+.hero-inner {
+  outline: 2px solid red;
 }
 
 /* =========================
