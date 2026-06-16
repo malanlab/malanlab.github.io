@@ -10,12 +10,12 @@ Our research integrates neuroscience, engineering, and computational methods to 
 
 ---
 
-## Research Areas
+## Research 
 
 <div class="grid">
 
 <div class="card">
-<h3>Neural Signal Processing</h3>
+<h3>Neural Biomarker for Complex Regional Pain Syndrome (CRPS)</h3>
 
 EEG, MEG, EMG, and Local Field Potential (LFP) analysis for decoding neural activity and characterizing brain states.
 
