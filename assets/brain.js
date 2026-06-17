@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
   resize();
   window.addEventListener("resize", resize);
 
-  const WAVE_COUNT = 4;
+  const WAVE_COUNT = 8;
   
   const electrodeNames = [
-    "Fp1",
-    "C3",
-    "P3",
-    "Oz"
+    "Fp1", "Fp2",
+    "F3", "F4",
+    "C3", "C4",
+    "P3", "P4"
   ];
 
   const waves = [];
@@ -55,8 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < WAVE_COUNT; i++) {
 
       const wave = waves[i];
-      const baseY = 25 + i * 28;
-
+      const baseSpacing = h / (WAVE_COUNT + 1);
+      const baseY = baseSpacing * (i + 1);
       // =========================
       // ELECTRODE LABEL (IMPROVED)
       // =========================
