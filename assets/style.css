@@ -119,6 +119,7 @@ a:hover {
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
+
 .nav-container {
   max-width: 1150px;
   margin: 0 auto;
@@ -129,12 +130,14 @@ a:hover {
   padding: 14px 24px;
 }
 
+/* LEFT SIDE: logo stays left */
 .logo {
-  margin-left: 120px;   /* aligns exactly with hero text */
   font-weight: 800;
   font-size: 18px;
   color: #fff;
 }
+
+/* RIGHT SIDE: push everything right */
 .nav-links {
   margin-left: auto;
   display: flex;
