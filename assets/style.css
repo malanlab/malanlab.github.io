@@ -129,18 +129,16 @@ a:hover {
   padding: 14px 24px;
 }
 
-/* push nav links to far right */
-.nav-links {
-  margin-left: 120px;
-  display: flex;
-  gap: 80px;
-}
-
 .logo {
+  margin-left: 120px;   /* aligns exactly with hero text */
   font-weight: 800;
   font-size: 18px;
-  margin-right: 40px;
-  color: #ffffff;
+  color: #fff;
+}
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  gap: 40px;
 }
 
 .nav-links a {
