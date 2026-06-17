@@ -210,15 +210,14 @@ a:hover {
   z-index: 6;
 }
 
-
 .hero-left {
   position: absolute;
   top: 55px;
   left: 0;
 
-  padding-left: 90px;
+  padding-left: 120px;   /* more breathing space */
 
-  max-width: 700px;
+  max-width: 900px;      /* wider content zone */
 
   z-index: 10;
 }
@@ -247,7 +246,7 @@ a:hover {
 ========================= */
 
 .hero-content {
-  max-width: 650px;
+  max-width: 850px;
 }
 
 /* =========================
@@ -315,14 +314,13 @@ a:hover {
 
 .eeg-canvas {
   width: 100%;          /* full available width */
-  height: 320px;        /* increase height */
+  height: 360px;        /* increase height */
 
   display: block;
-  margin-top: 24px;
+  margin-top: 28px;
 
-  opacity: 0.95;
+  opacity: 1;
 }
-
 
 
 /* =========================
