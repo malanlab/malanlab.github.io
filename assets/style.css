@@ -315,7 +315,7 @@ a:hover {
 
 .eeg-canvas {
   width: 100%;          /* full available width */
-  height: 240px;        /* increase height */
+  height: 320px;        /* increase height */
 
   display: block;
   margin-top: 24px;
