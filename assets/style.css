@@ -121,14 +121,19 @@ a:hover {
 
 .nav-container {
   max-width: 1150px;
-  margin-left: 120px;   /* aligns with hero text */
-  margin-right: auto;
+  margin: 0 auto;
 
   display: flex;
-  justify-content: space-between;
   align-items: center;
 
   padding: 14px 24px;
+}
+
+/* push nav links to far right */
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  gap: 40px;
 }
 
 .logo {
@@ -147,10 +152,7 @@ a:hover {
   color: var(--accent);
 }
 
-.nav-links {
-  display: flex;
-  gap: 40px;   /* more breathing space */
-}
+
 
 
 /* =========================
