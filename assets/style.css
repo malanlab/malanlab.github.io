@@ -314,13 +314,14 @@ a:hover {
 ========================= */
 
 .eeg-canvas {
-  width: 500px;
-  height: 90px;
+  width: 100%;          /* full available width */
+  max-width: 900px;     /* optional limit for large screens */
+  height: 140px;        /* increase height */
 
   display: block;
-  margin-top: 20px;
+  margin-top: 24px;
 
-  opacity: 0.9;
+  opacity: 0.95;
 }
 
 /* =========================
