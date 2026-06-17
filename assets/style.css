@@ -119,7 +119,6 @@ a:hover {
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-
 .nav-container {
   max-width: 1150px;
   margin: 0 auto;
@@ -127,8 +126,9 @@ a:hover {
   display: flex;
   align-items: center;
 
-  padding: 14px 24px;
+  padding: 14px 24px 14px 120px; /* match hero */
 }
+
 
 /* LEFT SIDE: logo stays left */
 .logo {
