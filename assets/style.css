@@ -315,14 +315,15 @@ a:hover {
 
 .eeg-canvas {
   width: 100%;          /* full available width */
-  max-width: 900px;     /* optional limit for large screens */
-  height: 140px;        /* increase height */
+  height: 240px;        /* increase height */
 
   display: block;
   margin-top: 24px;
 
   opacity: 0.95;
 }
+
+
 
 /* =========================
    CARDS
