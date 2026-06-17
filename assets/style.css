@@ -131,9 +131,9 @@ a:hover {
 
 /* push nav links to far right */
 .nav-links {
-  margin-left: auto;
+  margin-left: 120px;
   display: flex;
-  gap: 40px;
+  gap: 80px;
 }
 
 .logo {
