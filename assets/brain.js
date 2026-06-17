@@ -164,19 +164,27 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
     // NEURAL SPIKES
     // =========================
-    for (let i = 0; i < 5; i++) {
 
-      const x = (t * 6 + i * 180) % drawWidth;
-      const y = h * (0.2 + i * 0.15);
-
+    for (let i = 0; i < 6; i++) {
+    
+      const x = (t * 4 + i * 160) % drawWidth;
+      const y = h * (0.15 + i * 0.14);
+    
+      const size = 2.2; // FIXED size (no randomness)
+    
       ctx.beginPath();
-      ctx.arc(x, y, 1.5 + Math.random() * 4, 0, Math.PI * 2);
-
-      ctx.fillStyle = "rgba(255,255,255,0.18)";
-      ctx.shadowBlur = 12;
-      ctx.shadowColor = "rgba(255,255,255,0.25)";
+      ctx.moveTo(x - 4, y);
+      ctx.lineTo(x, y - 8);
+      ctx.lineTo(x + 4, y);
+      ctx.lineTo(x, y + 8);
+      ctx.closePath();
+    
+      ctx.fillStyle = "rgba(255,255,255,0.12)";
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = "rgba(255,255,255,0.15)";
       ctx.fill();
     }
+
 
     ctx.shadowBlur = 0;
 
