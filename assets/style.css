@@ -121,15 +121,15 @@ a:hover {
 
 .nav-container {
   max-width: 1150px;
-  margin: auto;
+  margin-left: 120px;   /* aligns with hero text */
+  margin-right: auto;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: 14px 24px 14px 120px;  /* LEFT padding applied correctly */
+  padding: 14px 24px;
 }
-
 
 .logo {
   font-weight: 800;
