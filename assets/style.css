@@ -127,8 +127,9 @@ a:hover {
   justify-content: space-between;
   align-items: center;
 
-  padding: 14px 24px;
+  padding: 14px 24px 14px 0;
 }
+
 
 .logo {
   font-weight: 800;
@@ -145,6 +146,10 @@ a:hover {
   color: var(--accent);
 }
 
+.nav-links {
+  display: flex;
+  gap: 40px;   /* more breathing space */
+}
 
 /* =========================
    HERO
