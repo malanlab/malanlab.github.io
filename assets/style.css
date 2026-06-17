@@ -122,12 +122,12 @@ a:hover {
 .nav-container {
   max-width: 1150px;
   margin: auto;
-  padding-left: 120px;  /* match hero text start */
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: 14px 24px 14px 0;
+  padding: 14px 24px 14px 120px;  /* LEFT padding applied correctly */
 }
 
 
