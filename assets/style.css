@@ -218,6 +218,7 @@ a:hover {
   max-width: 900px;      /* wider content zone */
 
   z-index: 10;
+  width: 100%;
 }
 
 /* =========================
@@ -313,6 +314,7 @@ a:hover {
 
 .eeg-canvas {
   width: 100%;          /* full available width */
+  max-width: 850px;
   height: 360px;        /* increase height */
 
   display: block;
