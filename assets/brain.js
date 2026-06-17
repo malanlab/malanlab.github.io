@@ -33,7 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let t = 0;
+        let blink = {
+          active: false,
+          start: 0,
+          duration: 0
+        };
 
+  
   function draw() {
 
     const w = canvas.width;
@@ -44,7 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.fillRect(0, 0, w, h);
 
     const drawWidth = w - 70;
-
+    if (!blink.active && Math.random() < 0.003) {
+    blink.active = true;
+    blink.start = t;
+    blink.duration = 25 + Math.random() * 20; // blink length
+}
     // =========================
     // IMPROVED TYPOGRAPHY (EEG UI STYLE)
     // =========================
@@ -83,6 +93,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const noise = wave.buffer[idx];
 
+        // =========================
+        // EYE BLINK ARTIFACT (FRONTAL ONLY)
+        // =========================
+        let blinkSignal = 0;
+        
+        if (blink.active) {
+        
+          const blinkProgress = (t - blink.start) / blink.duration;
+        
+          if (blinkProgress > 1) {
+            blink.active = false;
+          } else {
+            // smooth bell-shaped blink (Gaussian-like)
+            const peak = Math.exp(-Math.pow((blinkProgress - 0.4) / 0.18, 2));
+        
+            // strongest in frontal electrodes
+            const frontalWeight = i < 2 ? 1.8 : (i < 4 ? 0.6 : 0.2);
+        
+            blinkSignal = peak * 80 * frontalWeight;
+          }
+        }
+
         const burstCenter = (t * 3) % drawWidth;
 
         const burst =
@@ -94,9 +126,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const y =
           baseY +
-          noise * 40 +
-          burst * 20 +
-          smooth;
+          noise * 35 +
+          burst * 18 +
+          smooth +
+          blinkSignal;
 
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
