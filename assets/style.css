@@ -126,7 +126,7 @@ a:hover {
   display: flex;
   align-items: center;
 
-  padding: 14px 24px 14px 120px; /* match hero */
+  padding: 14px 24px 14px 20px; /* match hero */
 }
 
 
