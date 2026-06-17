@@ -294,7 +294,7 @@ a:hover {
   top: 58%;
   transform: translateY(-50%);
 
-  width: min(580px, 42vw);
+  width: min(750px, 55vw);  /* increased from 580px */
 
   z-index: 3;
 
