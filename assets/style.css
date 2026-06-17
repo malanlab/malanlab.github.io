@@ -34,6 +34,7 @@ html, body {
   --space-3: 20px;
   --space-4: 40px;
   --space-5: 70px;
+  --content-x: 120px;
 }
 
 /* =========================
@@ -120,13 +121,11 @@ a:hover {
 }
 
 .nav-container {
-  max-width: 1150px;
-  margin: 0 auto;
-
+  width: 100%;
   display: flex;
   align-items: center;
 
-  padding: 14px 24px 14px 20px; /* match hero */
+  padding: 14px var(--content-x);
 }
 
 
@@ -220,12 +219,7 @@ a:hover {
 
 
 .hero-left {
-  position: relative;
-
-  padding: 80px 0 0 120px;
-
-  display: flex;
-  justify-content: flex-start;
+  padding-left: var(--content-x);
 }
 
 /* =========================
