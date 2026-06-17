@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < WAVE_COUNT; i++) {
 
       const wave = waves[i];
-      const baseSpacing = h / 10;
+      const baseSpacing = h / 9;
       const baseY = baseSpacing * (i + 1);
       // =========================
       // ELECTRODE LABEL (IMPROVED)
@@ -94,8 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const y =
           baseY +
-          noise * 45 +
-          burst * 25 +
+          noise * 40 +
+          burst * 20 +
           smooth;
 
         if (x === 0) ctx.moveTo(x, y);
