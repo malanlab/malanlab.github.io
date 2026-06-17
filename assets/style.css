@@ -185,7 +185,6 @@ a:hover {
    SOFT READABILITY LAYER
 ========================= */
 
-
 .hero::before {
   content: "";
   position: absolute;
@@ -199,7 +198,6 @@ a:hover {
     rgba(0,0,0,0.00) 100%
   );
 }
-
 
 .hero-content,
 .hero-lab,
@@ -247,6 +245,7 @@ a:hover {
 
 .hero-content {
   max-width: 850px;
+  width: 100%;
 }
 
 /* =========================
@@ -321,7 +320,6 @@ a:hover {
 
   opacity: 1;
 }
-
 
 /* =========================
    CARDS
