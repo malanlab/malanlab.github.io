@@ -556,3 +556,89 @@ a:hover {
     justify-content: center;
   }
 }
+/* =========================
+   MOBILE HERO
+========================= */
+@media (max-width: 900px) {
+
+  .nav-container {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .nav-links {
+    margin-left: 0;
+    justify-content: center;
+    gap: 16px;
+  }
+
+}
+@media (max-width: 900px) {
+
+  .hero {
+    min-height: auto;
+    padding: 40px 20px 60px;
+  }
+
+  .hero-left {
+    position: relative;
+    top: auto;
+    left: auto;
+
+    padding-left: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+
+   .hero-content {
+     width: 100%;
+     max-width: 100%;
+     text-align: center;
+   }
+
+   .hero h1 {
+     font-size: clamp(1.8rem, 8vw, 2.4rem);
+   }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .subtitle {
+    max-width: 100%;
+  }
+
+  .brain-image {
+    position: relative;
+
+    top: auto;
+    right: auto;
+    transform: none;
+
+    display: block;
+
+    width: min(320px, 80vw);
+
+    margin: 30px auto 0;
+
+    opacity: 0.25;
+  }
+
+  .eeg-canvas {
+    width: 100%;
+    height: 220px;
+
+    margin-top: 24px;
+  }
+
+  .nav-container {
+    padding: 14px 20px;
+  }
+
+  .nav-links {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
