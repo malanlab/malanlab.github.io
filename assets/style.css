@@ -285,7 +285,7 @@ a:hover {
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
 
   .hero {
     grid-template-columns: 1fr;
