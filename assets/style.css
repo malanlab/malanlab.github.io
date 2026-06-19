@@ -167,7 +167,7 @@ a:hover {
 
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
-  align-items: center;
+  align-items: start;
   gap: 40px;
   overflow-x: clip;
 }
@@ -219,6 +219,7 @@ a:hover {
 .hero-left {
   padding-left: var(--content-x);
   padding-right: 40px;
+  padding-top: 120px;
   grid-column: 1;
   position: relative;
   align-self: center;
@@ -237,7 +238,7 @@ a:hover {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* =========================
