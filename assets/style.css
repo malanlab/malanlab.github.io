@@ -172,6 +172,17 @@ a:hover {
   /* PURE BLACK BASE */
   background: #000000;
 }
+.hero {
+  position: relative;
+  overflow: hidden;
+
+  background: #000;
+  min-height: 750px;
+
+  display: flex;
+  align-items: center;
+}
+
 
 
 /* =========================
@@ -221,7 +232,14 @@ a:hover {
 .hero-left {
   padding-left: var(--content-x);
 }
+.hero-left {
+  width: 100%;
+  padding-left: var(--content-x);
+  padding-right: 40px;
 
+  position: relative;
+  z-index: 10;
+}
 /* =========================
    CONTENT LAYER
 ========================= */
