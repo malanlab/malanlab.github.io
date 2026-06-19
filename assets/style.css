@@ -221,6 +221,7 @@ a:hover {
   padding-right: 40px;
   grid-column: 1;
   position: relative;
+  align-self: center;
   z-index: 10;
 }
 
@@ -276,9 +277,7 @@ a:hover {
 
 .brain-image {
   position: relative;
-
   width: min(750px, 100%);
-
   justify-self: center;
   align-self: center;
   grid-column: 2;
