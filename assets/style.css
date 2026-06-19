@@ -158,20 +158,19 @@ a:hover {
    HERO
 ========================= */
 
+
 .hero {
   position: relative;
   overflow: hidden;
-
   background: #000;
-  min-height: 750px;
+
+  min-height: 100vh; /* IMPORTANT: viewport-based instead of fixed */
 
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
-  align-items: start;
+  align-items: center;
   gap: 40px;
-  overflow-x: clip;
 }
-
 /* =========================
    BACKGROUND CANVAS
 ========================= */
@@ -219,26 +218,18 @@ a:hover {
 .hero-left {
   padding-left: var(--content-x);
   padding-right: 40px;
-  padding-top: 120px;
-  grid-column: 1;
-  position: relative;
-  align-self: center;
-  z-index: 10;
+  align-self: start;
+  padding-top: 80px; /* small controlled spacing only */
 }
-
 
 /* =========================
    TEXT BLOCK
 ========================= */
 
-
 .hero-content {
-  max-width: 850px;
-  width: 100%;
-  min-width: 0;
+  justify-content: flex-start;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
 }
 
 /* =========================
