@@ -166,8 +166,9 @@ a:hover {
   min-height: 750px;
 
   display: grid;
-  grid-template-columns: minmax(450px, 850px) 1fr;
+  grid-template-columns: minmax(0, 850px) minmax(300px, 1fr);
   align-items: center;
+  gap: 40px;
 }
 
 /* =========================
@@ -224,25 +225,6 @@ a:hover {
 
 
 /* =========================
-   CONTENT LAYER
-========================= */
-
-.hero-inner {
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-
-  padding: 45px 50px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 16px;
-
-  text-align: left;
-}
-
-/* =========================
    TEXT BLOCK
 ========================= */
 
@@ -291,17 +273,15 @@ a:hover {
 ========================= */
 
 .brain-image {
-  position: absolute;
-  right: 2%;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
 
-  width: min(750px, 55vw);  /* increased from 580px */
+  width: min(750px, 55vw);
 
-  z-index: 3;
+  justify-self: center;
+  align-self: center;
 
   opacity: 0.3;
-
+  z-index: 3;
 }
 
 
