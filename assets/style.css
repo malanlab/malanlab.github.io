@@ -167,7 +167,7 @@ a:hover {
 
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
-  align-items: center;
+  align-items: stretch;
   gap: 40px;
   overflow-x: clip;
 }
