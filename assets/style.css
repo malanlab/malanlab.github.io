@@ -311,18 +311,20 @@ a:hover {
     saturate(1.2);
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1200px) {
+
+  :root {
+    --content-x: 60px;
+  }
 
   .brain-image {
-    width: min(600px, 42vw);
-    right: -20px;
+    width: min(500px, 40vw);
   }
 
   .hero-content {
-    max-width: 700px;
+    max-width: 650px;
   }
 }
-
 
 /* =========================
    EEG trace
