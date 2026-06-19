@@ -166,7 +166,7 @@ a:hover {
   min-height: 750px;
 
   display: grid;
-  grid-template-columns: minmax(0, 850px) minmax(300px, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
   align-items: center;
   gap: 40px;
   overflow-x: clip;
@@ -277,7 +277,7 @@ a:hover {
 .brain-image {
   position: relative;
 
-  width: min(750px, 55vw);
+  width: min(750px, 100%);
 
   justify-self: center;
   align-self: center;
