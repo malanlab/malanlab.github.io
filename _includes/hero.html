@@ -1,35 +1,39 @@
 <div class="hero">
 
-  <canvas class="brain-canvas"></canvas>
+    <canvas class="brain-canvas"></canvas>
 
-  <img src="{{ '/assets/images/brain.png' | relative_url }}" class="brain-image" />
+    <!-- LEFT COLUMN -->
+    <div class="hero-left">
 
-  <div class="hero-left">
+        <div class="hero-content">
 
-    <div class="hero-content">
+            <div class="hero-lab">
+                MALAN LAB • IIT JAMMU
+            </div>
 
-      <div class="hero-lab">
-        MALAN LAB • IIT JAMMU
-      </div>
+            <h1>
+                Computational Neuroscience & Neuroengineering
+            </h1>
 
-      <h1>
-        Computational Neuroscience & Neuroengineering
-      </h1>
+            <p class="tagline">
+                Neural Signals • Brain Dynamics • Brain–Computer Interfaces • Neurorehabilitation
+            </p>
 
-      <p class="tagline">
-        Neural Signals • Brain Dynamics • Brain–Computer Interfaces • Neurorehabilitation
-      </p>
+            <p class="subtitle">
+                Investigating brain activity through multimodal neurophysiology,
+                signal processing, and computational modeling.
+            </p>
 
-      <p class="subtitle">
-        Investigating brain activity through multimodal neurophysiology,
-        signal processing, and computational modeling.
-      </p>
+            <canvas class="eeg-canvas"></canvas>
 
-      <!-- EEG SIGNAL HERE -->
-      <canvas class="eeg-canvas"></canvas>
+        </div>
 
     </div>
 
-  </div>
+    <!-- RIGHT COLUMN -->
+    <div class="hero-right">
+        <img src="{{ '/assets/images/brain.png' | relative_url }}"
+             class="brain-image">
+    </div>
 
 </div>
