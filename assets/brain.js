@@ -18,7 +18,7 @@ window.addEventListener("resize", resize);
 // =======================================================
 
 const CHANNELS = 8;
-const BUFFER_SIZE = 320;
+const BUFFER_SIZE = 150;
 
 const electrodeNames = [
     "Fp1","Fp2",
@@ -321,7 +321,7 @@ function draw(){
     ctx.lineWidth = 1;
 
     const markerSpacing = 160;
-    const speed = 2;
+    const speed = 8;
 
     for (let i = -1; i < Math.ceil(w / markerSpacing) + 1; i++) {
 
