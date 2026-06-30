@@ -243,11 +243,10 @@ function draw(){
         // Add one new sample
         // -----------------------------------------------
 
-        wave.samples.push(
-            generateSample(wave,ch)
-        );
-
-        wave.samples.shift();
+        for (let k = 0; k < 2; k++) {
+            wave.samples.push(generateSample(wave, ch));
+            wave.samples.shift();
+        }
 
         // -----------------------------------------------
         // Channel label
