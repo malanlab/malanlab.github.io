@@ -155,93 +155,62 @@ document.addEventListener("DOMContentLoaded", () => {
             // Draw waveform
             // ------------------------------------
 
-            ctx.beginPath();
-
-            ctx.lineWidth=2;
-
-            ctx.strokeStyle="rgba(0,255,210,.08)";
-
-            ctx.shadowBlur=18;
-            ctx.shadowColor="rgba(0,255,210,.25)";
-
-            for(let x=0;x<w;x+=2){
-
-                const idx=Math.floor(
-                    x/w*wave.buffer.length
-                );
-
-                const noise=wave.buffer[idx];
-
-                const burstCenter=(t*4)%w;
-
-                const burst=
-                    Math.sin((t*0.02+i)*0.6)
-                    *
-                    Math.exp(
-                        -((x-burstCenter)**2)/20000
-                    );
-
-                const smooth=
-                    Math.sin(x*0.008+i*0.8)*2;
-
-                let muscle=0;
-
-                if(Math.random()<0.00035){
-
-                    muscle=
-                        Math.sin(x*0.45+t)
-                        *
-                        Math.exp(
-                            -((x-w*0.7)**2)/1500
-                        )
-                        *8;
-
+            ctx.lineWidth = 1.6;
+            ctx.shadowBlur = 12;
+            ctx.shadowColor = "rgba(0,255,220,0.18)";
+            
+            for (let x = 0; x < drawWidth - 2; x += 2) {
+            
+                const idx1 = Math.floor((x / drawWidth) * wave.buffer.length);
+                const idx2 = Math.floor(((x + 2) / drawWidth) * wave.buffer.length);
+            
+                // Update noise
+                wave.buffer[idx1] += (Math.random() - 0.5) * 0.18;
+                wave.buffer[idx1] *= 0.97;
+            
+                wave.buffer[idx2] += (Math.random() - 0.5) * 0.18;
+                wave.buffer[idx2] *= 0.97;
+            
+                const getSignal = (idx, xx) => {
+            
+                    const noise = wave.buffer[idx];
+            
+                    const burstCenter = (t * 3) % drawWidth;
+            
+                    const burst =
+                        Math.sin((t * 0.02 + i) * 0.6) *
+                        Math.exp(-((xx - burstCenter) ** 2) / 22000);
+            
+                    const smooth =
+                        Math.sin(xx * 0.008 + i * 0.8) * 2;
+            
+                    return noise * 35 +
+                           burst * 18 +
+                           smooth +
+                           blinkSignalAtChannel;
+                };
+            
+                const y1 = baseY + getSignal(idx1, x);
+                const y2 = baseY + getSignal(idx2, x + 2);
+            
+                // Fade only color in last 15%
+                let alpha = 0.35;
+            
+                const fadeStart = drawWidth * 0.85;
+            
+                if (x > fadeStart) {
+                    alpha *= 1 - (x - fadeStart) / (drawWidth - fadeStart);
                 }
-
-                // fade end
-
-                let fade=1;
-
-                const fadeStart=w*0.88;
-
-                if(x>fadeStart){
-
-                    fade=
-                        1-
-                        (x-fadeStart)/
-                        (w-fadeStart);
-
-                    fade=Math.max(fade,0);
-
-                }
-
-                const signal =
-                      noise*3.2
-                    + burst*16
-                    + smooth
-                    + muscle
-                    + blinkSignal;
-
-                const y=
-                    baseY+
-                    signal*fade;
-
-                if(x===0)
-                    ctx.moveTo(x,y);
-                else
-                    ctx.lineTo(x,y);
-
+            
+                ctx.strokeStyle = `rgba(0,255,220,${alpha})`;
+            
+                ctx.beginPath();
+                ctx.moveTo(x, y1);
+                ctx.lineTo(x + 2, y2);
+                ctx.stroke();
             }
-
-            ctx.stroke();
-
-            ctx.shadowBlur=0;
-
-            ctx.strokeStyle="rgba(0,255,220,.38)";
-            ctx.lineWidth=1.2;
-            ctx.stroke();
-
-        }
+            
+            ctx.shadowBlur = 0;
 
         // ============================================
         // Vertical timing markers
