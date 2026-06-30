@@ -277,49 +277,44 @@ function draw(){
         // Draw trace
         // -----------------------------------------------
 
-        for(let i=0;i<BUFFER_SIZE-1;i++){
-
-            const x1=60+i*dx;
-            const x2=60+(i+1)*dx;
-
-            const y1=baseY-wave.samples[i];
-            const y2=baseY-wave.samples[i+1];
-
-            // -------------------------------------------
-            // Fade last 15%
-            // -------------------------------------------
-
-            let alpha=0.36;
-
-            const fadeStart=w*0.84;
-
-            if(x1>fadeStart){
-
-            const fade =
-                (x1 - fadeStart) /
-                (w - fadeStart);
-            
-            alpha *= Math.pow(1 - fade, 2.4);
-            alpha=Math.max(alpha,0);
-
-            ctx.strokeStyle=
-                `rgba(0,255,220,${alpha})`;
-
+        for (let i = 0; i < BUFFER_SIZE - 1; i++) {
+        
+            const x1 = 60 + i * dx;
+            const x2 = 60 + (i + 1) * dx;
+        
+            const y1 = baseY - wave.samples[i];
+            const y2 = baseY - wave.samples[i + 1];
+        
+            let alpha = 0.36;
+        
+            const fadeStart = w * 0.84;
+        
+            if (x1 > fadeStart) {
+        
+                const fade =
+                    (x1 - fadeStart) /
+                    (w - fadeStart);
+        
+                alpha *= Math.pow(1 - fade, 2.4);
+        
+            }
+        
+            alpha = Math.max(alpha, 0);
+        
+            ctx.strokeStyle = `rgba(0,255,220,${alpha})`;
+        
             ctx.beginPath();
-
-            ctx.moveTo(x1,y1);
-            ctx.lineTo(x2,y2);
-
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
             ctx.stroke();
-
         }
-
-        ctx.shadowBlur=0;
+        
+        ctx.shadowBlur = 0;
 
     }
 
 
-        // ===================================================
+    // ===================================================
     // MOVING TIMING MARKERS
     // ===================================================
 
