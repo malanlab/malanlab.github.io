@@ -21,6 +21,7 @@ permalink: /people/
 
     <div class="affiliation">
       Assistant Professor<br>
+      Department of Biosciences and Bioengineering<br>
       Indian Institute of Technology Jammu
     </div>
 
