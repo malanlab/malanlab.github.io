@@ -80,9 +80,9 @@ let frame = 0;
 
 function generateSample(wave, ch){
 
-    wave.phase1 += 0.11;
-    wave.phase2 += 0.035;
-    wave.phase3 += 0.22;
+    wave.phase1 += 0.09;
+    wave.phase2 += 0.025;
+    wave.phase3 += 0.18;
     // Slowly changing alpha envelope
 
     wave.alphaEnvelope += (Math.random()-0.5)*0.01;
@@ -111,7 +111,7 @@ function generateSample(wave, ch){
     // Pink-ish noise
 
     signal += (Math.random()-0.5)*2.2;
-    signal += Math.sin(frame * 0.006 + ch) * 3;
+    signal += Math.sin(frame * 0.005 + ch) * 2;
 
     // ===================================================
     // Eye blink
