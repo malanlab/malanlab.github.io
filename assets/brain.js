@@ -18,11 +18,8 @@ window.addEventListener("resize", resize);
 // =======================================================
 
 const CHANNELS = 8;
-    
-const BUFFER_SIZE = Math.round(
-    Math.max(180, window.innerWidth / 7)
-);
-    
+const BUFFER_SIZE = 320;
+
 const electrodeNames = [
     "Fp1","Fp2",
     "F3","F4",
@@ -282,7 +279,7 @@ function generateSample(wave, ch){
 // =======================================================
 
 function draw(){
-    const SCALE = Math.max(0.7, h / 700);
+
     const w = canvas.width;
     const h = canvas.height;
 
@@ -366,27 +363,41 @@ function draw(){
         // -----------------------------------------------
         // Draw trace
         // -----------------------------------------------
-        ctx.strokeStyle = "rgba(0,255,220,0.35)";
-        ctx.lineWidth = 1.8;
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "rgba(0,255,220,0.25)";
-        ctx.beginPath();
+
+        for (let i = 0; i < BUFFER_SIZE - 1; i++) {
         
-        ctx.moveTo(
-            60,
-            baseY - wave.samples[0] * SCALE
-        );
+            const x1 = 60 + i * dx;
+            const x2 = 60 + (i + 1) * dx;
         
-        for(let i = 1; i < BUFFER_SIZE; i++){
+            const SCALE = 0.9;   // pixels per "µV"
+            
+            const y1 = baseY - wave.samples[i] * SCALE;
+            const y2 = baseY - wave.samples[i + 1] * SCALE;
         
-            const x = 60 + i * dx;
-            const y = baseY - wave.samples[i] * SCALE;
+            let alpha = 0.36;
         
-            ctx.lineTo(x, y);
+            const fadeStart = w * 0.84;
+        
+            if (x1 > fadeStart) {
+        
+                const fade =
+                    (x1 - fadeStart) /
+                    (w - fadeStart);
+        
+                alpha *= Math.pow(1 - fade, 2.4);
+        
+            }
+        
+            alpha = Math.max(alpha, 0);
+        
+            ctx.strokeStyle = `rgba(0,255,220,${alpha})`;
+        
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
         }
         
-        ctx.stroke();
-       
         ctx.shadowBlur = 0;
 
     }
@@ -396,27 +407,28 @@ function draw(){
     // MOVING TIMING MARKERS
     // ===================================================
 
-    ctx.strokeStyle = "rgba(255,255,255,0.12)";
+    ctx.strokeStyle = "rgba(255,255,255,0.18)";
     ctx.lineWidth = 1;
-    
-    const markerSpacing = Math.max(140, w / 10);
-    const speed = 4;
-    
+
+    const markerSpacing = 160;
+    const speed = 8;
+
     for (let i = -1; i < Math.ceil(w / markerSpacing) + 1; i++) {
-    
-        const total = w + markerSpacing;
-    
+
+        const totalWidth = w + markerSpacing;
+        
         const x =
-            total -
-            ((frame * speed + i * markerSpacing) % total);
-    
+            totalWidth -
+            ((frame * speed + i * markerSpacing) % totalWidth);
+
         if (x < 55 || x > w) continue;
-    
+
         ctx.beginPath();
         ctx.moveTo(x, 20);
         ctx.lineTo(x, h - 20);
         ctx.stroke();
     }
+
     // ===================================================
     // ADVANCE FRAME
     // ===================================================
