@@ -155,6 +155,10 @@ function generateSample(wave, ch){
 
     }
 
+
+
+
+    
     // ===================================================
     // EMG burst
     // ===================================================
@@ -181,3 +185,177 @@ function generateSample(wave, ch){
     return signal;
 
 }
+
+// =======================================================
+// DRAW
+// =======================================================
+
+function draw(){
+
+    const w = canvas.width;
+    const h = canvas.height;
+
+    ctx.fillStyle = "rgba(5,10,20,0.45)";
+    ctx.fillRect(0,0,w,h);
+
+    const spacing = h/(CHANNELS+1);
+
+    // ---------------------------------------------------
+    // Random artefacts
+    // ---------------------------------------------------
+
+    if(!blink.active && Math.random()<0.003){
+
+        blink.active=true;
+        blink.start=frame;
+        blink.duration=22+Math.random()*12;
+
+    }
+
+    if(!emg.active && Math.random()<0.001){
+
+        emg.active=true;
+        emg.start=frame;
+        emg.duration=35+Math.random()*20;
+        emg.channel=Math.floor(Math.random()*CHANNELS);
+
+    }
+
+    // ---------------------------------------------------
+    // Labels
+    // ---------------------------------------------------
+
+    ctx.font="500 13px Inter, sans-serif";
+    ctx.textAlign="right";
+    ctx.textBaseline="middle";
+
+    // ===================================================
+    // CHANNEL LOOP
+    // ===================================================
+
+    for(let ch=0; ch<CHANNELS; ch++){
+
+        const wave = waves[ch];
+
+        const baseY = spacing*(ch+1);
+
+        // -----------------------------------------------
+        // Add one new sample
+        // -----------------------------------------------
+
+        wave.samples.push(
+            generateSample(wave,ch)
+        );
+
+        wave.samples.shift();
+
+        // -----------------------------------------------
+        // Channel label
+        // -----------------------------------------------
+
+        ctx.fillStyle="rgba(140,200,255,.9)";
+        ctx.fillText(
+            electrodeNames[ch],
+            46,
+            baseY
+        );
+
+        // -----------------------------------------------
+        // Glow
+        // -----------------------------------------------
+
+        ctx.shadowBlur=10;
+        ctx.shadowColor="rgba(0,255,220,.25)";
+        ctx.lineWidth=1.7;
+
+        const dx=(w-70)/(BUFFER_SIZE-1);
+
+        // -----------------------------------------------
+        // Draw trace
+        // -----------------------------------------------
+
+        for(let i=0;i<BUFFER_SIZE-1;i++){
+
+            const x1=60+i*dx;
+            const x2=60+(i+1)*dx;
+
+            const y1=baseY-wave.samples[i];
+            const y2=baseY-wave.samples[i+1];
+
+            // -------------------------------------------
+            // Fade last 15%
+            // -------------------------------------------
+
+            let alpha=0.36;
+
+            const fadeStart=w*0.84;
+
+            if(x1>fadeStart){
+
+                alpha*=1-
+                    (x1-fadeStart)/
+                    (w-fadeStart);
+
+            }
+
+            alpha=Math.max(alpha,0);
+
+            ctx.strokeStyle=
+                `rgba(0,255,220,${alpha})`;
+
+            ctx.beginPath();
+
+            ctx.moveTo(x1,y1);
+            ctx.lineTo(x2,y2);
+
+            ctx.stroke();
+
+        }
+
+        ctx.shadowBlur=0;
+
+    }
+
+
+        // ===================================================
+    // MOVING TIMING MARKERS
+    // ===================================================
+
+    ctx.strokeStyle = "rgba(255,255,255,0.18)";
+    ctx.lineWidth = 1;
+
+    const markerSpacing = 160;
+    const speed = 2;
+
+    for (let i = -1; i < Math.ceil(w / markerSpacing) + 1; i++) {
+
+        const x =
+            w -
+            ((frame * speed + i * markerSpacing) % (markerSpacing * 8));
+
+        if (x < 55 || x > w) continue;
+
+        ctx.beginPath();
+        ctx.moveTo(x, 20);
+        ctx.lineTo(x, h - 20);
+        ctx.stroke();
+    }
+
+    // ===================================================
+    // ADVANCE FRAME
+    // ===================================================
+
+    frame++;
+
+    requestAnimationFrame(draw);
+
+}
+
+// =======================================================
+// START
+// =======================================================
+
+draw();
+
+});
+                          
