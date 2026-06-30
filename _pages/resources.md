@@ -80,6 +80,19 @@ This page contains useful software, datasets, tutorials, documentation, and lear
 
 ## Code Repository
 
-Our analysis pipelines and software will be released here.
+<div class="card">
 
-GitHub (Coming Soon)
+<h3>Code Repository</h3>
+
+<p>
+Our open-source software, analysis pipelines, and computational tools are
+being actively developed and will be made publicly available through GitHub.
+</p>
+
+<p>
+<a href="https://github.com/NiteshMalan" target="_blank">
+Visit our GitHub →
+</a>
+</p>
+
+</div>
