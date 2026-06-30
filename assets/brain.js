@@ -102,7 +102,10 @@ function generateSample(wave, ch){
     wave.phase3 += wave.betaFreq;
         
     // Slowly changing alpha envelope
+    if (Math.random() < 0.002)
+        wave.alphaEnvelope *= 0.35;
 
+    
     wave.alphaEnvelope +=
         (Math.random()-0.5)*0.08;
     
@@ -132,15 +135,14 @@ function generateSample(wave, ch){
     signal += Math.sin(wave.phase2) * 2.2;
     
     // Beta
-    signal +=
-        Math.sin(wave.phase3) *
-        2.5;
+    wave.betaEnvelope += (Math.random()-0.5)*0.05;
+    wave.betaEnvelope *= 0.985;
+    wave.betaEnvelope = Math.max(0.1, Math.min(1.5, wave.betaEnvelope));
     
     signal +=
-        0.7*Math.sin(wave.phase3*1.8);
-    
-    signal +=
-        0.35*Math.sin(wave.phase3*3.5);
+        Math.sin(wave.phase3)
+        * wave.betaEnvelope
+        * 2.5;
     
     // Gamma texture
     signal += Math.sin(wave.phase3*2.7) * 0.7;
@@ -250,6 +252,13 @@ function generateSample(wave, ch){
     
     }
     signal *= wave.channelGain;
+
+    signal =
+        0.75*wave.lastSignal +
+        0.25*signal;
+    
+    wave.lastSignal = signal;
+    
     return signal;
 
 }
