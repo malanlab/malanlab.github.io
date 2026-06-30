@@ -281,8 +281,10 @@ function draw(){
             const x1 = 60 + i * dx;
             const x2 = 60 + (i + 1) * dx;
         
-            const y1 = baseY - wave.samples[i];
-            const y2 = baseY - wave.samples[i + 1];
+            const SCALE = 1.2;   // pixels per "µV"
+            
+            const y1 = baseY - wave.samples[i] * SCALE;
+            const y2 = baseY - wave.samples[i + 1] * SCALE;
         
             let alpha = 0.36;
         
