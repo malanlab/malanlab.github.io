@@ -90,7 +90,7 @@ being actively developed and will be made publicly available through GitHub.
 </p>
 
 <p>
-<a href="https://github.com/NiteshMalan" target="_blank">
+<a href="https://github.com/NiteshMalan?tab=repositories" target="_blank">
 Visit our GitHub →
 </a>
 </p>
