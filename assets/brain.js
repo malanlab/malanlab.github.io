@@ -88,17 +88,17 @@ let frame = 0;
 
 function generateSample(wave, ch){
 
-    wave.phase1 +=
-        wave.alphaFreq +
-        (Math.random()-0.5)*0.02;
+    wave.alphaFreq += (Math.random()-0.5)*0.002;
+    wave.thetaFreq += (Math.random()-0.5)*0.001;
+    wave.betaFreq  += (Math.random()-0.5)*0.004;
     
-    wave.phase2 +=
-        wave.thetaFreq +
-        (Math.random()-0.5)*0.01;
+    wave.alphaFreq = Math.max(0.10, Math.min(0.18, wave.alphaFreq));
+    wave.thetaFreq = Math.max(0.03, Math.min(0.07, wave.thetaFreq));
+    wave.betaFreq  = Math.max(0.22, Math.min(0.50, wave.betaFreq));
     
-    wave.phase3 +=
-        wave.betaFreq +
-        (Math.random()-0.5)*0.05;
+    wave.phase1 += wave.alphaFreq;
+    wave.phase2 += wave.thetaFreq;
+    wave.phase3 += wave.betaFreq;
         
     // Slowly changing alpha envelope
 
@@ -118,9 +118,13 @@ function generateSample(wave, ch){
     
     // Alpha burst
     signal +=
-        Math.sin(wave.phase1) *
+        (
+            Math.sin(wave.phase1) +
+            0.25*Math.sin(wave.phase1*2.2) +
+            0.18*Math.sin(wave.phase1*3.7)
+        ) *
         wave.alphaEnvelope *
-        (7 + Math.random()*4);
+        8;
     
     // Theta
     signal +=
@@ -130,7 +134,13 @@ function generateSample(wave, ch){
     // Beta
     signal +=
         Math.sin(wave.phase3) *
-        (1 + Math.random()*2);
+        2.5;
+    
+    signal +=
+        0.7*Math.sin(wave.phase3*1.8);
+    
+    signal +=
+        0.35*Math.sin(wave.phase3*3.5);
     
     // Gamma texture
     signal +=
@@ -138,8 +148,13 @@ function generateSample(wave, ch){
         (0.4 + Math.random());
     
     // Colored noise
-    signal +=
-        (Math.random()-0.5)*5;
+    const noise =
+        wave.lastSignal*0.85 +
+        (Math.random()-0.5)*2.8;
+    
+    wave.lastSignal = noise;
+    
+    signal += noise;
     
     // Slow drift
     signal +=
