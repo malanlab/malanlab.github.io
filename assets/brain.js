@@ -418,21 +418,23 @@ function draw(){
     const markerSpacing = 160;
     const speed = 8;
 
-    for (let i = -1; i < Math.ceil(w / markerSpacing) + 1; i++) {
-
-        const totalWidth = w + markerSpacing;
-        
-        const x =
-            totalWidth -
-            ((frame * speed + i * markerSpacing) % totalWidth);
-
-        if (x < 55 || x > w) continue;
-
-        ctx.beginPath();
-        ctx.moveTo(x, 20);
-        ctx.lineTo(x, h - 20);
-        ctx.stroke();
+    ctx.beginPath();
+    
+    ctx.moveTo(
+        60,
+        baseY - wave.samples[0]*SCALE
+    );
+    
+    for(let i=1;i<BUFFER_SIZE;i++){
+    
+        ctx.lineTo(
+            60+i*dx,
+            baseY-wave.samples[i]*SCALE
+        );
+    
     }
+    
+    ctx.stroke();
 
     // ===================================================
     // ADVANCE FRAME
