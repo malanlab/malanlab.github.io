@@ -116,17 +116,7 @@ function generateSample(wave, ch){
 
 
     let signal = 0;
-    const alpha =
-        
-        0.8*Math.sin(wave.phase1)
-        
-        +0.25*Math.sin(wave.phase1*2.1)
-        
-        +0.15*Math.sin(wave.phase1*3.3);
-        
-    signal += alpha*wave.alphaEnvelope*8;
-        
-        
+       
             
     // Alpha burst
     signal +=
@@ -139,9 +129,7 @@ function generateSample(wave, ch){
         8;
     
     // Theta
-    signal +=
-        Math.sin(wave.phase2) *
-        (1.5 + Math.random()*2);
+    signal += Math.sin(wave.phase2) * 2.2;
     
     // Beta
     signal +=
@@ -155,9 +143,7 @@ function generateSample(wave, ch){
         0.35*Math.sin(wave.phase3*3.5);
     
     // Gamma texture
-    signal +=
-        Math.sin(wave.phase3*2.7) *
-        (0.4 + Math.random());
+    signal += Math.sin(wave.phase3*2.7) * 0.7;
     
     // Colored noise
     const n = wave.noiseIndex;
@@ -165,26 +151,24 @@ function generateSample(wave, ch){
     wave.noise[n] += (Math.random()-0.5)*0.18;
     wave.noise[n] *= 0.94;
     
-    signal += wave.noise[n]*12;
+    signal += wave.noise[n]*6;
     
     wave.noiseIndex =
         (n+1)%wave.noise.length;
     
     //traveling alpha bursts
-    
+
     const burst =
-        Math.exp(
-            -Math.pow(
-                ((frame % 500)-250)/80,
-                2
-            )
-        );
+    Math.exp(
+        -Math.pow(
+            ((frame + ch*18)%500 - 250)/80,
+            2
+        )
+    );
     
-    signal +=
-        burst *
-        Math.sin(wave.phase1) *
-        10;
-    
+    signal += burst * Math.sin(wave.phase1) * 8;
+
+   
     
     // Slow drift
     signal +=
