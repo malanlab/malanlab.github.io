@@ -101,14 +101,25 @@ document.addEventListener("DOMContentLoaded", () => {
         if (blinkProgress > 1) {
           blink.active = false;
         } else {
-          const peak = Math.exp(
-            -Math.pow((blinkProgress - 0.4) / 0.18, 2)
-          );
+          const p = blinkProgress;
+          
+          let spike = 0;
+          
+          // sharp rise
+          if (p < 0.25) {
+              spike = p / 0.25;
+          }
+          // sharp fall
+          else if (p < 0.45) {
+              spike = 1 - (p - 0.25) / 0.20;
+          }
+          // overshoot
+          else if (p < 0.65) {
+              spike = -0.35 * (p - 0.45) / 0.20;
+          }
+          
+          blinkSignalAtChannel = spike * 95 * frontalWeight;
 
-          // frontal dominance
-          const frontalWeight = i < 2 ? 1.8 : (i < 4 ? 0.6 : 0.2);
-
-          blinkSignalAtChannel = peak * 80 * frontalWeight;
         }
       }
 
@@ -141,12 +152,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const smooth =
           Math.sin(x * 0.008 + i * 0.8) * 2;
 
-        const y =
-          baseY +
-          noise * 35 +
-          burst * 18 +
-          smooth +
-          blinkSignalAtChannel;
+        // Fade during last 12% of canvas
+        let fade = 1;
+        
+        const fadeStart = drawWidth * 0.88;
+        
+        if (x > fadeStart) {
+            fade = 1 - (x - fadeStart) / (drawWidth - fadeStart);
+            fade = Math.max(0, fade);
+        }
+        
+        const signal =
+              noise * 35 +
+              burst * 18 +
+              smooth +
+              blinkSignalAtChannel;
+        
+        const y = baseY + signal * fade;
 
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
