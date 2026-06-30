@@ -14,4 +14,4 @@ We are looking for motivated students in:
 - Neuroengineering
 - Machine learning in neuroscience
 
-Contact: malanlab@gmail.com
+Contact: nitesh.malan@iitjammu.ac.in
