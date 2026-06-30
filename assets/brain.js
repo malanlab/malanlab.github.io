@@ -80,10 +80,9 @@ let frame = 0;
 
 function generateSample(wave, ch){
 
-    wave.phase1 += 0.08;
-    wave.phase2 += 0.028;
-    wave.phase3 += 0.17;
-
+    wave.phase1 += 0.11;
+    wave.phase2 += 0.035;
+    wave.phase3 += 0.22;
     // Slowly changing alpha envelope
 
     wave.alphaEnvelope += (Math.random()-0.5)*0.01;
@@ -95,7 +94,7 @@ function generateSample(wave, ch){
     // Alpha rhythm (10 Hz look)
 
     let signal =
-        Math.sin(wave.phase1)*12*wave.alphaEnvelope;
+        Math.sin(wave.phase1) * (10 + 3*Math.sin(wave.phase2*0.2))*12*wave.alphaEnvelope;
 
     // Theta
 
@@ -329,9 +328,11 @@ function draw(){
 
     for (let i = -1; i < Math.ceil(w / markerSpacing) + 1; i++) {
 
+        const totalWidth = w + markerSpacing;
+        
         const x =
-            w -
-            ((frame * speed + i * markerSpacing) % (markerSpacing * 8));
+            totalWidth -
+            ((frame * speed + i * markerSpacing) % totalWidth);
 
         if (x < 55 || x > w) continue;
 
