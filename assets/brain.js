@@ -111,6 +111,7 @@ function generateSample(wave, ch){
     // Pink-ish noise
 
     signal += (Math.random()-0.5)*2.2;
+    signal += Math.sin(frame * 0.006 + ch) * 3;
 
     // ===================================================
     // Eye blink
