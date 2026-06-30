@@ -18,8 +18,11 @@ window.addEventListener("resize", resize);
 // =======================================================
 
 const CHANNELS = 8;
-const BUFFER_SIZE = 240;
-
+    
+const BUFFER_SIZE = Math.round(
+    Math.max(180, window.innerWidth / 7)
+);
+    
 const electrodeNames = [
     "Fp1","Fp2",
     "F3","F4",
@@ -369,7 +372,9 @@ function draw(){
             const x1 = 60 + i * dx;
             const x2 = 60 + (i + 1) * dx;
         
-            const SCALE = 0.9;   // pixels per "µV"
+            const SCALE =
+                Math.min(1.2,
+                Math.max(0.75, h/700));
             
             const y1 = baseY - wave.samples[i] * SCALE;
             const y2 = baseY - wave.samples[i + 1] * SCALE;
