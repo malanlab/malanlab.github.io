@@ -80,12 +80,13 @@ let frame = 0;
 
 function generateSample(wave, ch){
 
-    wave.phase1 += 0.18;
-    wave.phase2 += 0.08;
-    wave.phase3 += 0.42;
+    wave.phase1 += 0.14 + Math.random()*0.015;   // alpha
+    wave.phase2 += 0.055 + Math.random()*0.010;  // theta
+    wave.phase3 += 0.38 + Math.random()*0.05;    // beta
+        
     // Slowly changing alpha envelope
 
-    wave.alphaEnvelope += (Math.random()-0.5)*0.03;
+    wave.alphaEnvelope += (Math.random()-0.5)*0.05;
     wave.alphaEnvelope = Math.max(0.2, Math.min(1.5, wave.alphaEnvelope));
 
 
