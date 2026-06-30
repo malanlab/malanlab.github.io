@@ -34,15 +34,23 @@ const waves = [];
 for (let ch = 0; ch < CHANNELS; ch++) {
 
     waves.push({
-
+    
         samples: new Array(BUFFER_SIZE).fill(0),
-
+    
         phase1: Math.random() * Math.PI * 2,
         phase2: Math.random() * Math.PI * 2,
         phase3: Math.random() * Math.PI * 2,
-
-        alphaEnvelope: 0.5 + Math.random()*0.5
-
+    
+        alphaEnvelope: 0.5 + Math.random() * 0.5,
+    
+        alphaFreq: 0.12 + Math.random() * 0.04,
+        thetaFreq: 0.045 + Math.random() * 0.02,
+        betaFreq: 0.32 + Math.random() * 0.12,
+    
+        channelGain: 0.8 + Math.random() * 0.4,
+    
+        lastSignal: 0
+    
     });
 
 }
@@ -79,13 +87,6 @@ let frame = 0;
 // =======================================================
 
 function generateSample(wave, ch){
-
-    channelGain: 0.8 + Math.random()*0.5,
-    
-    alphaFreq: 0.12 + Math.random()*0.04,
-    thetaFreq: 0.045 + Math.random()*0.02,
-    betaFreq: 0.32 + Math.random()*0.12,
-    
 
     wave.phase1 +=
         wave.alphaFreq +
@@ -219,6 +220,7 @@ function generateSample(wave, ch){
             Math.sin(frame*0.8);
     
     }
+    signal *= wave.channelGain;
     return signal;
 
 }
