@@ -33,6 +33,22 @@ This page contains useful software, datasets, tutorials, documentation, and lear
 </div>
 
 ---
+## Code Repository
+
+<div class="card">
+
+<h3>Code Repository</h3>
+
+<p>
+Our open-source software, analysis pipelines, and computational tools are
+being actively developed and will be made publicly available through GitHub.
+</p>
+
+<p>
+<a href="https://github.com/NiteshMalan?tab=repositories" target="_blank">
+Visit our GitHub →
+
+---
 
 ## Public Datasets
 
@@ -78,20 +94,6 @@ This page contains useful software, datasets, tutorials, documentation, and lear
 
 ---
 
-## Code Repository
-
-<div class="card">
-
-<h3>Code Repository</h3>
-
-<p>
-Our open-source software, analysis pipelines, and computational tools are
-being actively developed and will be made publicly available through GitHub.
-</p>
-
-<p>
-<a href="https://github.com/NiteshMalan?tab=repositories" target="_blank">
-Visit our GitHub →
 </a>
 </p>
 
