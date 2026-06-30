@@ -94,7 +94,9 @@ function generateSample(wave, ch){
     // Alpha rhythm (10 Hz look)
 
     let signal =
-        Math.sin(wave.phase1) * (10 + 3*Math.sin(wave.phase2*0.2))*12*wave.alphaEnvelope;
+        Math.sin(wave.phase1) *
+        (8 + 2*Math.sin(wave.phase2*0.2))
+        *wave.alphaEnvelope;
 
     // Theta
 
@@ -108,8 +110,7 @@ function generateSample(wave, ch){
 
     // Pink-ish noise
 
-    signal +=
-        (Math.random()-0.5)*4;
+    signal += (Math.random()-0.5)*2.2;
 
     // ===================================================
     // Eye blink
@@ -148,13 +149,11 @@ function generateSample(wave, ch){
                 0.2;
 
             signal +=
-                spike*70*frontalWeight;
+                spike*55*frontalWeight;
 
         }
 
     }
-
-
 
 
     
@@ -174,8 +173,9 @@ function generateSample(wave, ch){
         }else if(ch===emg.channel){
 
             signal +=
-                Math.sin(frame*1.8)*
-                (8+Math.random()*6);
+                (Math.random() - 0.5) *
+                18 *
+                Math.sin(frame * 2.2);
 
         }
 
@@ -263,8 +263,11 @@ function draw(){
         // Glow
         // -----------------------------------------------
 
-        ctx.shadowBlur=10;
-        ctx.shadowColor="rgba(0,255,220,.25)";
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+        
+        ctx.shadowBlur = 14;
+        ctx.shadowColor = "rgba(0,255,220,.32)";
         ctx.lineWidth=1.7;
 
         const dx=(w-70)/(BUFFER_SIZE-1);
@@ -291,12 +294,11 @@ function draw(){
 
             if(x1>fadeStart){
 
-                alpha*=1-
-                    (x1-fadeStart)/
-                    (w-fadeStart);
-
-            }
-
+            const fade =
+                (x1 - fadeStart) /
+                (w - fadeStart);
+            
+            alpha *= Math.pow(1 - fade, 2.4);
             alpha=Math.max(alpha,0);
 
             ctx.strokeStyle=
