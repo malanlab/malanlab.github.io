@@ -158,7 +158,6 @@ a:hover {
    HERO
 ========================= */
 
-
 .hero {
   position: relative;
   overflow: hidden;
@@ -169,7 +168,7 @@ a:hover {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 }
 /* =========================
    BACKGROUND CANVAS
