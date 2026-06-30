@@ -18,7 +18,7 @@ window.addEventListener("resize", resize);
 // =======================================================
 
 const CHANNELS = 8;
-const BUFFER_SIZE = 110;
+const BUFFER_SIZE = 320;
 
 const electrodeNames = [
     "Fp1","Fp2",
