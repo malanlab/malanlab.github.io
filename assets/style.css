@@ -164,7 +164,7 @@ a:hover {
   overflow: hidden;
   background: #000;
 
-  min-height: 100vh; /* IMPORTANT: viewport-based instead of fixed */
+  min-height: 80vh; /* IMPORTANT: viewport-based instead of fixed */
 
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
