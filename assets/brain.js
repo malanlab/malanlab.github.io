@@ -282,7 +282,7 @@ function generateSample(wave, ch){
 // =======================================================
 
 function draw(){
-
+    const SCALE = Math.max(0.7, h / 700);
     const w = canvas.width;
     const h = canvas.height;
 
@@ -366,43 +366,27 @@ function draw(){
         // -----------------------------------------------
         // Draw trace
         // -----------------------------------------------
-
-        for (let i = 0; i < BUFFER_SIZE - 1; i++) {
+        ctx.strokeStyle = "rgba(0,255,220,0.35)";
+        ctx.lineWidth = 1.8;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = "rgba(0,255,220,0.25)";
+        ctx.beginPath();
         
-            const x1 = 60 + i * dx;
-            const x2 = 60 + (i + 1) * dx;
+        ctx.moveTo(
+            60,
+            baseY - wave.samples[0] * SCALE
+        );
         
-            const SCALE =
-                Math.min(1.2,
-                Math.max(0.75, h/700));
-            
-            const y1 = baseY - wave.samples[i] * SCALE;
-            const y2 = baseY - wave.samples[i + 1] * SCALE;
+        for(let i = 1; i < BUFFER_SIZE; i++){
         
-            let alpha = 0.36;
+            const x = 60 + i * dx;
+            const y = baseY - wave.samples[i] * SCALE;
         
-            const fadeStart = w * 0.84;
-        
-            if (x1 > fadeStart) {
-        
-                const fade =
-                    (x1 - fadeStart) /
-                    (w - fadeStart);
-        
-                alpha *= Math.pow(1 - fade, 2.4);
-        
-            }
-        
-            alpha = Math.max(alpha, 0);
-        
-            ctx.strokeStyle = `rgba(0,255,220,${alpha})`;
-        
-            ctx.beginPath();
-            ctx.moveTo(x1, y1);
-            ctx.lineTo(x2, y2);
-            ctx.stroke();
+            ctx.lineTo(x, y);
         }
         
+        ctx.stroke();
+       
         ctx.shadowBlur = 0;
 
     }
@@ -412,30 +396,27 @@ function draw(){
     // MOVING TIMING MARKERS
     // ===================================================
 
-    ctx.strokeStyle = "rgba(255,255,255,0.18)";
+    ctx.strokeStyle = "rgba(255,255,255,0.12)";
     ctx.lineWidth = 1;
-
-    const markerSpacing = 160;
-    const speed = 8;
-
-    ctx.beginPath();
     
-    ctx.moveTo(
-        60,
-        baseY - wave.samples[0]*SCALE
-    );
+    const markerSpacing = Math.max(140, w / 10);
+    const speed = 4;
     
-    for(let i=1;i<BUFFER_SIZE;i++){
+    for (let i = -1; i < Math.ceil(w / markerSpacing) + 1; i++) {
     
-        ctx.lineTo(
-            60+i*dx,
-            baseY-wave.samples[i]*SCALE
-        );
+        const total = w + markerSpacing;
     
+        const x =
+            total -
+            ((frame * speed + i * markerSpacing) % total);
+    
+        if (x < 55 || x > w) continue;
+    
+        ctx.beginPath();
+        ctx.moveTo(x, 20);
+        ctx.lineTo(x, h - 20);
+        ctx.stroke();
     }
-    
-    ctx.stroke();
-
     // ===================================================
     // ADVANCE FRAME
     // ===================================================
