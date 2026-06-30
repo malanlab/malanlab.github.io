@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================
     // TRIGGER EYE BLINK
     // =========================
-    if (!blink.active && Math.random() < 0.003) {
+    if (!blink.active && Math.random() < 0.006) {
       blink.active = true;
       blink.start = t;
       blink.duration = 25 + Math.random() * 20;
@@ -152,6 +152,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const smooth =
           Math.sin(x * 0.008 + i * 0.8) * 2;
 
+        let muscle = 0;
+        
+        if (Math.random() < 0.0005) {
+            muscle =
+                Math.sin(x * 0.35 + t) *
+                Math.exp(-Math.pow((x - drawWidth * 0.75) / 50, 2)) *
+                10;
+        }
+                
+
         // Fade during last 12% of canvas
         let fade = 1;
         
@@ -166,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
               noise * 35 +
               burst * 18 +
               smooth +
+              muscle +
               blinkSignalAtChannel;
         
         const y = baseY + signal * fade;
