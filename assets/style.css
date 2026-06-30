@@ -275,7 +275,7 @@ a:hover {
   justify-self: center;
   align-self: center;
   grid-column: 2;
-  opacity: 0.3;
+  opacity: 0.75;
   z-index: 3;
 }
 
