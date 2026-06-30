@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
             i < 2 ? 1.8 :
             i < 4 ? 0.7 :
             0.2;
+          blinkSignalAtChannel = spike * 95 * frontalWeight;
 
         }
       }
@@ -147,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
             Math.sin(wave.phase + idx * 0.18) * 0.7 +
             Math.sin(wave.phase * 0.6 + idx * 0.05) * 0.4 +
             (Math.random() - 0.5) * 0.15;
-        const noise = wave.buffer[idx];
 
         const burstCenter = (t * 3) % drawWidth;
 
@@ -186,14 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.shadowBlur = 0;
       ctx.strokeStyle = "rgba(0, 255, 220, 0.35)";
       ctx.lineWidth = 1.2;
-      let alpha = 0.35;
 
-      if (x > fadeStart) {
-          alpha *= 1 - (x - fadeStart) / (drawWidth - fadeStart);
-      }
-      
-      ctx.strokeStyle = `rgba(0,255,220,${alpha})`;
-      ctx.stroke();
     }
 
     // =========================
