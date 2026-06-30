@@ -46,8 +46,9 @@ for (let ch = 0; ch < CHANNELS; ch++) {
         alphaFreq: 0.12 + Math.random()*0.04,
         thetaFreq: 0.045 + Math.random()*0.02,
         betaFreq: 0.32 + Math.random()*0.12,
-    
+        betaEnvelope: Math.random(),
         channelGain: 0.8 + Math.random()*0.4,
+        lastSignal:0,
     
         noise: Array.from({length:80},()=>Math.random()*2-1),
         noiseIndex:0
@@ -135,14 +136,16 @@ function generateSample(wave, ch){
     signal += Math.sin(wave.phase2) * 2.2;
     
     // Beta
-    wave.betaEnvelope += (Math.random()-0.5)*0.05;
-    wave.betaEnvelope *= 0.985;
-    wave.betaEnvelope = Math.max(0.1, Math.min(1.5, wave.betaEnvelope));
+
+    wave.betaEnvelope += (Math.random()-0.5)*0.04;
+    wave.betaEnvelope *= 0.992;
+    wave.betaEnvelope = Math.max(0.1,Math.min(1.6,wave.betaEnvelope));
     
     signal +=
         Math.sin(wave.phase3)
         * wave.betaEnvelope
-        * 2.5;
+        * 2.8;
+
     
     // Gamma texture
     signal += Math.sin(wave.phase3*2.7) * 0.7;
@@ -150,8 +153,9 @@ function generateSample(wave, ch){
     // Colored noise
     const n = wave.noiseIndex;
     
-    wave.noise[n] += (Math.random()-0.5)*0.18;
-    wave.noise[n] *= 0.94;
+    wave.noise[n] =
+        0.975 * wave.noise[n]
+        + (Math.random()-0.5)*0.12;
     
     signal += wave.noise[n]*6;
     
@@ -175,6 +179,13 @@ function generateSample(wave, ch){
     // Slow drift
     signal +=
         Math.sin(frame*0.01 + ch)*1.4;
+
+    signal =
+        0.8 * wave.lastSignal +
+        0.2 * signal;
+    
+    wave.lastSignal = signal;
+    
 
     // ===================================================
     // Eye blink
