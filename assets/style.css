@@ -496,14 +496,89 @@ a:hover {
    FOOTER
 ========================= */
 
-.footer {
-  margin-top: var(--space-5);
-  padding: 40px 20px;
-  text-align: center;
-  color: var(--muted);
-  background: white;
-  border-top: 1px solid #e5e7eb;
+.footer{
+
+    margin-top:80px;
+    background:#081425;
+    color:white;
 }
+
+.footer-grid{
+
+    display:grid;
+    grid-template-columns:
+        1.1fr
+        1fr
+        1.2fr
+        1.4fr;
+
+    gap:50px;
+
+    padding:60px 0;
+}
+
+.footer h3{
+
+    color:white;
+    margin-bottom:18px;
+}
+
+.footer p{
+
+    color:#d2dae6;
+    line-height:1.8;
+    margin-bottom:14px;
+}
+
+.footer a{
+
+    color:#7dd3fc;
+}
+
+.footer a:hover{
+
+    color:white;
+}
+
+.footer iframe{
+
+    width:100%;
+    height:220px;
+
+    border:none;
+    border-radius:12px;
+}
+
+.footer-bottom{
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    text-align:center;
+
+    padding:22px;
+
+    color:#9ca3af;
+}
+
+@media(max-width:1000px){
+
+.footer-grid{
+
+grid-template-columns:1fr;
+gap:35px;
+
+}
+
+.footer iframe{
+
+height:260px;
+
+}
+
+}
+
+
+
 
 /* =========================
    RESPONSIVE
