@@ -118,7 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
               spike = -0.35 * (p - 0.45) / 0.20;
           }
           
-          blinkSignalAtChannel = spike * 95 * frontalWeight;
+          const frontalWeight =
+            i < 2 ? 1.8 :
+            i < 4 ? 0.7 :
+            0.2;
 
         }
       }
@@ -138,9 +141,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const idx = Math.floor((x / drawWidth) * wave.buffer.length);
 
         // smooth biological noise
-        wave.buffer[idx] += (Math.random() - 0.5) * 0.18;
-        wave.buffer[idx] *= 0.94;
-
+        wave.phase += 0.02;
+        
+        const noise =
+            Math.sin(wave.phase + idx * 0.18) * 0.7 +
+            Math.sin(wave.phase * 0.6 + idx * 0.05) * 0.4 +
+            (Math.random() - 0.5) * 0.15;
         const noise = wave.buffer[idx];
 
         const burstCenter = (t * 3) % drawWidth;
@@ -168,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
               smooth +
               blinkSignalAtChannel;
         
-        const y = baseY + signal * fade;
+        const y = baseY + signal;
 
         if (x === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
@@ -180,6 +186,13 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.shadowBlur = 0;
       ctx.strokeStyle = "rgba(0, 255, 220, 0.35)";
       ctx.lineWidth = 1.2;
+      let alpha = 0.35;
+
+      if (x > fadeStart) {
+          alpha *= 1 - (x - fadeStart) / (drawWidth - fadeStart);
+      }
+      
+      ctx.strokeStyle = `rgba(0,255,220,${alpha})`;
       ctx.stroke();
     }
 
