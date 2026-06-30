@@ -80,46 +80,69 @@ let frame = 0;
 
 function generateSample(wave, ch){
 
-    wave.phase1 += 0.14 + Math.random()*0.015;   // alpha
-    wave.phase2 += 0.055 + Math.random()*0.010;  // theta
-    wave.phase3 += 0.38 + Math.random()*0.05;    // beta
+    channelGain: 0.8 + Math.random()*0.5,
+    
+    alphaFreq: 0.12 + Math.random()*0.04,
+    thetaFreq: 0.045 + Math.random()*0.02,
+    betaFreq: 0.32 + Math.random()*0.12,
+    
+
+    wave.phase1 +=
+        wave.alphaFreq +
+        (Math.random()-0.5)*0.02;
+    
+    wave.phase2 +=
+        wave.thetaFreq +
+        (Math.random()-0.5)*0.01;
+    
+    wave.phase3 +=
+        wave.betaFreq +
+        (Math.random()-0.5)*0.05;
         
     // Slowly changing alpha envelope
 
-    wave.alphaEnvelope += (Math.random()-0.5)*0.05;
-    wave.alphaEnvelope = Math.max(0.2, Math.min(1.5, wave.alphaEnvelope));
+    wave.alphaEnvelope +=
+        (Math.random()-0.5)*0.08;
+    
+    wave.alphaEnvelope *= 0.995;
+    
+    wave.alphaEnvelope =
+        Math.max(
+            0.15,
+            Math.min(1.8,wave.alphaEnvelope)
+        );
 
 
     let signal = 0;
-
-    // Alpha
+    
+    // Alpha burst
     signal +=
         Math.sin(wave.phase1) *
         wave.alphaEnvelope *
-        10;
+        (7 + Math.random()*4);
     
     // Theta
     signal +=
         Math.sin(wave.phase2) *
-        2.5;
+        (1.5 + Math.random()*2);
     
     // Beta
     signal +=
         Math.sin(wave.phase3) *
-        1.5;
+        (1 + Math.random()*2);
     
-    // High-frequency EEG texture
+    // Gamma texture
     signal +=
-        Math.sin(wave.phase3 * 2.3) * 0.8;
+        Math.sin(wave.phase3*2.7) *
+        (0.4 + Math.random());
     
-    // Random cortical noise
+    // Colored noise
     signal +=
-        (Math.random() - 0.5) * 3.5;
+        (Math.random()-0.5)*5;
     
     // Slow drift
     signal +=
-        Math.sin(frame * 0.015 + ch * 0.6) * 1.2;
-    
+        Math.sin(frame*0.01 + ch)*1.4;
 
     // ===================================================
     // Eye blink
@@ -189,7 +212,13 @@ function generateSample(wave, ch){
         }
 
     }
-
+    if (Math.random() < 0.02) {
+    
+        signal +=
+            (6 + Math.random()*8) *
+            Math.sin(frame*0.8);
+    
+    }
     return signal;
 
 }
