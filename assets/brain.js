@@ -95,23 +95,24 @@ function generateSample(wave, ch){
 
     let signal =
         Math.sin(wave.phase1) *
-        (8 + 2*Math.sin(wave.phase2*0.2))
+        (6 + 2*Math.sin(wave.phase2*0.2))
         *wave.alphaEnvelope;
 
     // Theta
 
     signal +=
-        Math.sin(wave.phase2)*5;
+        Math.sin(wave.phase2)*2;
 
     // Beta
 
     signal +=
-        Math.sin(wave.phase3)*2;
+        Math.sin(wave.phase3)*1;
 
     // Pink-ish noise
 
-    signal += (Math.random()-0.5)*2.2;
+    signal += (Math.random()-0.5)*1.2;
     signal += Math.sin(frame * 0.005 + ch) * 2;
+    
 
     // ===================================================
     // Eye blink
