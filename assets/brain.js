@@ -80,38 +80,44 @@ let frame = 0;
 
 function generateSample(wave, ch){
 
-    wave.phase1 += 0.09;
-    wave.phase2 += 0.025;
-    wave.phase3 += 0.18;
+    wave.phase1 += 0.18;
+    wave.phase2 += 0.08;
+    wave.phase3 += 0.42;
     // Slowly changing alpha envelope
 
-    wave.alphaEnvelope += (Math.random()-0.5)*0.01;
-    wave.alphaEnvelope = Math.max(
-        0.3,
-        Math.min(1.3,wave.alphaEnvelope)
-    );
+    wave.alphaEnvelope += (Math.random()-0.5)*0.03;
+    wave.alphaEnvelope = Math.max(0.2, Math.min(1.5, wave.alphaEnvelope));
 
-    // Alpha rhythm (10 Hz look)
 
-    let signal =
+    let signal = 0;
+
+    // Alpha
+    signal +=
         Math.sin(wave.phase1) *
-        (6 + 2*Math.sin(wave.phase2*0.2))
-        *wave.alphaEnvelope;
-
+        wave.alphaEnvelope *
+        10;
+    
     // Theta
-
     signal +=
-        Math.sin(wave.phase2)*2;
-
+        Math.sin(wave.phase2) *
+        2.5;
+    
     // Beta
-
     signal +=
-        Math.sin(wave.phase3)*1;
-
-    // Pink-ish noise
-
-    signal += (Math.random()-0.5)*1.2;
-    signal += Math.sin(frame * 0.005 + ch) * 2;
+        Math.sin(wave.phase3) *
+        1.5;
+    
+    // High-frequency EEG texture
+    signal +=
+        Math.sin(wave.phase3 * 2.3) * 0.8;
+    
+    // Random cortical noise
+    signal +=
+        (Math.random() - 0.5) * 3.5;
+    
+    // Slow drift
+    signal +=
+        Math.sin(frame * 0.015 + ch * 0.6) * 1.2;
     
 
     // ===================================================
