@@ -123,28 +123,15 @@ function generateSample(wave, ch){
        
             
     // Alpha burst
-    const alphaGain = [
-        0.45,
-        0.45,
-        0.65,
-        0.65,
-        0.9,
-        0.9,
-        1.35,
-        1.35
-    ];
-
-    signal += alphaGain[ch] *
-    (
-        Math.sin(wave.phase1)
-        +0.25*Math.sin(wave.phase1*2.2)
-        +0.18*Math.sin(wave.phase1*3.7)
-    )
-    *
-    wave.alphaEnvelope
-    *8;
+    signal +=
+        (
+            Math.sin(wave.phase1) +
+            0.25*Math.sin(wave.phase1*2.2) +
+            0.18*Math.sin(wave.phase1*3.7)
+        ) *
+        wave.alphaEnvelope *
+        8;
     
-   
     // Theta
     signal += Math.sin(wave.phase2) * 2.2;
     
@@ -191,7 +178,14 @@ function generateSample(wave, ch){
     
     // Slow drift
     signal +=
-        Math.sin(frame*0.01 + ch)*1.4;  
+        Math.sin(frame*0.01 + ch)*1.4;
+
+    signal =
+        0.8 * wave.lastSignal +
+        0.2 * signal;
+    
+    wave.lastSignal = signal;
+    
 
     // ===================================================
     // Eye blink
@@ -399,21 +393,8 @@ function draw(){
             ctx.strokeStyle = `rgba(0,255,220,${alpha})`;
         
             ctx.beginPath();
-            
-            ctx.moveTo(
-                60,
-                baseY - wave.samples[0] * SCALE
-            );
-            
-            for(let i=1;i<BUFFER_SIZE;i++){
-            
-                const x = 60 + i*dx;
-                const y = baseY - wave.samples[i]*SCALE;
-            
-                ctx.lineTo(x,y);
-            
-            }
-            
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
             ctx.stroke();
         }
         
