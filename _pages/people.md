@@ -6,91 +6,72 @@ permalink: /people/
 
 <div class="container">
 
-<h1>People</h1>
-
-<h2>Principal Investigator</h2>
+<h1>Team</h1>
 
 <div class="people-grid">
 
+  <!-- PI -->
+
   <div class="person-card">
-      <img src="{{ '/assets/images/nitesh.png' | relative_url }}" alt="Nitesh Singh Malan">
 
-      <h3>Nitesh Singh Malan</h3>
+    <img src="{{ '/assets/images/nitesh.png' | relative_url }}"
+         alt="Nitesh Singh Malan">
 
-      <div class="role">
-          Assistant Professor <br>
-          Principal Investigator
-      </div>
+    <h3>Nitesh Singh Malan</h3>
 
-      <p>
-          Neural signal processing, Computational neuroscience,
-          Brain–Computer Interfaces, Parkinson's disease,
-          Neural biomarkers.
-      </p>
+    <div class="affiliation">
+      Assistant Professor<br>
+      Indian Institute of Technology Jammu
+    </div>
 
   </div>
 
-</div>
+  <!-- Student -->
 
+  <div class="person-card">
 
-<h2>PhD Scholars</h2>
+    <img src="{{ '/assets/images/person-placeholder.jpg' | relative_url }}"
+         alt="Student">
 
-<div class="people-grid">
+    <h3>Student Name</h3>
 
-    <div class="person-card">
-
-        <img src="{{ '/assets/images/student-placeholder.jpg' | relative_url }}" alt="">
-
-        <h3>Student Name</h3>
-
-        <div class="role">
-            PhD Scholar
-        </div>
-
-        <p>
-            EEG signal analysis and motor control.
-        </p>
-
+    <div class="affiliation">
+      PhD Scholar<br>
+      IIT Jammu
     </div>
 
-    <div class="person-card">
+  </div>
 
-        <img src="{{ '/assets/images/student-placeholder.jpg' | relative_url }}" alt="">
+  <!-- Student -->
 
-        <h3>Student Name</h3>
+  <div class="person-card">
 
-        <div class="role">
-            PhD Scholar
-        </div>
+    <img src="{{ '/assets/images/person-placeholder.jpg' | relative_url }}"
+         alt="Student">
 
-        <p>
-            Deep Brain Stimulation and neural connectivity.
-        </p>
+    <h3>Student Name</h3>
 
+    <div class="affiliation">
+      PhD Scholar<br>
+      IIT Jammu
     </div>
 
-</div>
+  </div>
 
+  <!-- Collaborator -->
 
-<h2>Research Collaborators</h2>
+  <div class="person-card">
 
-<div class="people-grid">
+    <img src="{{ '/assets/images/person-placeholder.jpg' | relative_url }}"
+         alt="Collaborator">
 
-    <div class="person-card">
+    <h3>Collaborator Name</h3>
 
-        <img src="{{ '/assets/images/person-placeholder.jpg' | relative_url }}" alt="">
-
-        <h3>Collaborator Name</h3>
-
-        <div class="role">
-            Institution
-        </div>
-
-        <p>
-            Neuroengineering and Computational Neuroscience.
-        </p>
-
+    <div class="affiliation">
+      University Name
     </div>
+
+  </div>
 
 </div>
 
