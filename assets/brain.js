@@ -41,15 +41,16 @@ for (let ch = 0; ch < CHANNELS; ch++) {
         phase2: Math.random() * Math.PI * 2,
         phase3: Math.random() * Math.PI * 2,
     
-        alphaEnvelope: 0.5 + Math.random() * 0.5,
+        alphaEnvelope: 0.5 + Math.random()*0.5,
     
-        alphaFreq: 0.12 + Math.random() * 0.04,
-        thetaFreq: 0.045 + Math.random() * 0.02,
-        betaFreq: 0.32 + Math.random() * 0.12,
+        alphaFreq: 0.12 + Math.random()*0.04,
+        thetaFreq: 0.045 + Math.random()*0.02,
+        betaFreq: 0.32 + Math.random()*0.12,
     
-        channelGain: 0.8 + Math.random() * 0.4,
+        channelGain: 0.8 + Math.random()*0.4,
     
-        lastSignal: 0
+        noise: Array.from({length:80},()=>Math.random()*2-1),
+        noiseIndex:0
     
     });
 
@@ -115,7 +116,18 @@ function generateSample(wave, ch){
 
 
     let signal = 0;
-    
+    const alpha =
+        
+        0.8*Math.sin(wave.phase1)
+        
+        +0.25*Math.sin(wave.phase1*2.1)
+        
+        +0.15*Math.sin(wave.phase1*3.3);
+        
+    signal += alpha*wave.alphaEnvelope*8;
+        
+        
+            
     // Alpha burst
     signal +=
         (
@@ -148,13 +160,31 @@ function generateSample(wave, ch){
         (0.4 + Math.random());
     
     // Colored noise
-    const noise =
-        wave.lastSignal*0.85 +
-        (Math.random()-0.5)*2.8;
+    const n = wave.noiseIndex;
     
-    wave.lastSignal = noise;
+    wave.noise[n] += (Math.random()-0.5)*0.18;
+    wave.noise[n] *= 0.94;
     
-    signal += noise;
+    signal += wave.noise[n]*12;
+    
+    wave.noiseIndex =
+        (n+1)%wave.noise.length;
+    
+    //traveling alpha bursts
+    
+    const burst =
+        Math.exp(
+            -Math.pow(
+                ((frame % 500)-250)/80,
+                2
+            )
+        );
+    
+    signal +=
+        burst *
+        Math.sin(wave.phase1) *
+        10;
+    
     
     // Slow drift
     signal +=
