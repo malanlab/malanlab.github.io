@@ -1,218 +1,183 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const canvas = document.querySelector(".eeg-canvas");
-  if (!canvas) return;
+const canvas = document.querySelector(".eeg-canvas");
+if (!canvas) return;
 
-  const ctx = canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
 
-  function resize() {
+function resize() {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
-  }
+}
 
-  resize();
-  window.addEventListener("resize", resize);
+resize();
+window.addEventListener("resize", resize);
 
-  // =========================
-  // CONFIG
-  // =========================
-  const WAVE_COUNT = 8;
+// =======================================================
+// CONFIGURATION
+// =======================================================
 
-  const electrodeNames = [
-    "Fp1", "Fp2",
-    "F3", "F4",
-    "C3", "C4",
-    "P3", "P4"
-  ];
+const CHANNELS = 8;
+const BUFFER_SIZE = 320;
 
-  const waves = [];
+const electrodeNames = [
+    "Fp1","Fp2",
+    "F3","F4",
+    "C3","C4",
+    "P3","P4"
+];
 
-  for (let i = 0; i < WAVE_COUNT; i++) {
+// One buffer per EEG channel
+
+const waves = [];
+
+for (let ch = 0; ch < CHANNELS; ch++) {
+
     waves.push({
-      buffer: Array.from({ length: 300 }, () => Math.random() * 2 - 1),
-      phase: Math.random() * 1000
+
+        samples: new Array(BUFFER_SIZE).fill(0),
+
+        phase1: Math.random() * Math.PI * 2,
+        phase2: Math.random() * Math.PI * 2,
+        phase3: Math.random() * Math.PI * 2,
+
+        alphaEnvelope: 0.5 + Math.random()*0.5
+
     });
-  }
 
-  // =========================
-  // BLINK STATE
-  // =========================
-  let blink = {
-    active: false,
-    start: 0,
-    duration: 0
-  };
+}
 
-  let t = 0;
+// =======================================================
+// Eye Blink
+// =======================================================
 
-  // =========================
-  // DRAW LOOP
-  // =========================
-  function draw() {
+let blink = {
 
-    const w = canvas.width;
-    const h = canvas.height;
+    active:false,
+    start:0,
+    duration:0
 
-    // background
-    ctx.fillStyle = "rgba(5, 10, 20, 0.45)";
-    ctx.fillRect(0, 0, w, h);
+};
 
-    const drawWidth = w;
+// =======================================================
+// EMG Burst
+// =======================================================
 
-    // =========================
-    // TRIGGER EYE BLINK
-    // =========================
-    if (!blink.active && Math.random() < 0.003) {
-      blink.active = true;
-      blink.start = t;
-      blink.duration = 25 + Math.random() * 20;
-    }
+let emg = {
 
-    // =========================
-    // TEXT STYLE
-    // =========================
-    ctx.font = "500 13px Inter, system-ui, -apple-system, Segoe UI, Roboto";
-    ctx.textAlign = "right";
-    ctx.textBaseline = "middle";
+    active:false,
+    start:0,
+    duration:0,
+    channel:0
 
-    const baseSpacing = h / 9;
+};
 
-    // =========================
-    // CHANNEL LOOP
-    // =========================
-    for (let i = 0; i < WAVE_COUNT; i++) {
+let frame = 0;
 
-      const wave = waves[i];
-      const baseY = baseSpacing * (i + 1);
+// =======================================================
+// Generate one NEW sample
+// =======================================================
 
-      // electrode label
-      ctx.fillStyle = "rgba(140, 200, 255, 0.85)";
-      ctx.fillText(electrodeNames[i] || `CH${i + 1}`, 45, baseY);
+function generateSample(wave, ch){
 
-      // =========================
-      // BLINK (computed once per channel)
-      // =========================
-      let blinkSignalAtChannel = 0;
+    wave.phase1 += 0.08;
+    wave.phase2 += 0.028;
+    wave.phase3 += 0.17;
 
-      if (blink.active) {
+    // Slowly changing alpha envelope
 
-        const blinkProgress = (t - blink.start) / blink.duration;
+    wave.alphaEnvelope += (Math.random()-0.5)*0.01;
+    wave.alphaEnvelope = Math.max(
+        0.3,
+        Math.min(1.3,wave.alphaEnvelope)
+    );
 
-        if (blinkProgress > 1) {
-          blink.active = false;
-        } else {
-          const p = blinkProgress;
-          
-          let spike = 0;
-          
-          // sharp rise
-          if (p < 0.25) {
-              spike = p / 0.25;
-          }
-          // sharp fall
-          else if (p < 0.45) {
-              spike = 1 - (p - 0.25) / 0.20;
-          }
-          // overshoot
-          else if (p < 0.65) {
-              spike = -0.35 * (p - 0.45) / 0.20;
-          }
-          
-          const frontalWeight =
-            i < 2 ? 1.8 :
-            i < 4 ? 0.7 :
-            0.2;
-          blinkSignalAtChannel = spike * 95 * frontalWeight;
+    // Alpha rhythm (10 Hz look)
+
+    let signal =
+        Math.sin(wave.phase1)*12*wave.alphaEnvelope;
+
+    // Theta
+
+    signal +=
+        Math.sin(wave.phase2)*5;
+
+    // Beta
+
+    signal +=
+        Math.sin(wave.phase3)*2;
+
+    // Pink-ish noise
+
+    signal +=
+        (Math.random()-0.5)*4;
+
+    // ===================================================
+    // Eye blink
+    // ===================================================
+
+    if(blink.active){
+
+        const p =
+            (frame-blink.start)/blink.duration;
+
+        if(p>1){
+
+            blink.active=false;
+
+        }else{
+
+            let spike=0;
+
+            if(p<0.18){
+
+                spike=p/0.18;
+
+            }else if(p<0.34){
+
+                spike=1-(p-0.18)/0.16;
+
+            }else if(p<0.55){
+
+                spike=-0.35*(p-0.34)/0.21;
+
+            }
+
+            const frontalWeight =
+                ch<2 ? 1.9 :
+                ch<4 ? 0.7 :
+                0.2;
+
+            signal +=
+                spike*70*frontalWeight;
 
         }
-      }
 
-      // =========================
-      // WAVEFORM STYLING
-      // =========================
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = "rgba(0, 255, 210, 0.06)";
-      ctx.shadowBlur = 18;
-      ctx.shadowColor = "rgba(0, 255, 210, 0.25)";
+    }
 
-      ctx.beginPath();
+    // ===================================================
+    // EMG burst
+    // ===================================================
 
-      for (let x = 0; x < drawWidth; x += 2) {
+    if(emg.active){
 
-        const idx = Math.floor((x / drawWidth) * wave.buffer.length);
+        const p =
+            (frame-emg.start)/emg.duration;
 
-        // smooth biological noise
-        wave.phase += 0.02;
-        
-        const noise =
-            Math.sin(wave.phase + idx * 0.18) * 0.7 +
-            Math.sin(wave.phase * 0.6 + idx * 0.05) * 0.4 +
-            (Math.random() - 0.5) * 0.15;
+        if(p>1){
 
-        const burstCenter = (t * 3) % drawWidth;
+            emg.active=false;
 
-        const burst =
-          Math.sin((t * 0.02 + i) * 0.6) *
-          Math.exp(-((x - burstCenter) ** 2) / 22000);
+        }else if(ch===emg.channel){
 
-        const smooth =
-          Math.sin(x * 0.008 + i * 0.8) * 2;
+            signal +=
+                Math.sin(frame*1.8)*
+                (8+Math.random()*6);
 
-        // Fade during last 12% of canvas
-        let fade = 1;
-        
-        const fadeStart = drawWidth * 0.88;
-        
-        if (x > fadeStart) {
-            fade = 1 - (x - fadeStart) / (drawWidth - fadeStart);
-            fade = Math.max(0, fade);
         }
-        
-        const signal =
-              noise * 35 +
-              burst * 18 +
-              smooth +
-              blinkSignalAtChannel;
-        
-        const y = baseY + signal;
-
-        if (x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-
-      ctx.stroke();
-
-      // core signal
-      ctx.shadowBlur = 0;
-      ctx.strokeStyle = "rgba(0, 255, 220, 0.35)";
-      ctx.lineWidth = 1.2;
 
     }
 
-    // =========================
-    // NEURAL SPIKES
-    // =========================
+    return signal;
 
-    ctx.strokeStyle = "rgba(255,255,255,0.18)";
-    ctx.lineWidth = 1;
-    
-    for (let i = 0; i < 6; i++) {
-    
-      const x = (t * 4 + i * 160) % drawWidth;
-      const y = h * (0.15 + i * 0.14);
-    
-      ctx.beginPath();
-      ctx.moveTo(x, y - 10);
-      ctx.lineTo(x, y + 10);
-      ctx.stroke();
-    }
-
-
-    ctx.shadowBlur = 0;
-
-    t++;
-    requestAnimationFrame(draw);
-  }
-
-  draw();
-});
+}
