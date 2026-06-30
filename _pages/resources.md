@@ -47,6 +47,10 @@ being actively developed and will be made publicly available through GitHub.
 <p>
 <a href="https://github.com/NiteshMalan?tab=repositories" target="_blank">
 Visit our GitHub →
+</a>
+</p>
+
+</div>
 
 ---
 
@@ -94,7 +98,3 @@ Visit our GitHub →
 
 ---
 
-</a>
-</p>
-
-</div>
