@@ -107,10 +107,26 @@ function generateSample(wave, ch){
         wave.alphaEnvelope *= 0.35;
 
     
-    wave.alphaEnvelope +=
-        (Math.random()-0.5)*0.08;
+    if(Math.random()<0.003){
     
-    wave.alphaEnvelope *= 0.995;
+        wave.alphaEnvelope +=
+        Math.random()*0.8;
+    
+    }
+    
+    wave.alphaEnvelope +=
+    (Math.random()-0.5)*0.03;
+    
+    
+    wave.alphaEnvelope*=0.998;
+    
+    
+    wave.alphaEnvelope=
+    
+    Math.max(
+    0.08,
+    Math.min(1.4,wave.alphaEnvelope)
+    );
     
     wave.alphaEnvelope =
         Math.max(
@@ -144,7 +160,7 @@ function generateSample(wave, ch){
     signal +=
         Math.sin(wave.phase3)
         * wave.betaEnvelope
-        * 2.8;
+        * 1.1;
 
     
     // Gamma texture
@@ -154,10 +170,10 @@ function generateSample(wave, ch){
     const n = wave.noiseIndex;
     
     wave.noise[n] =
-        0.975 * wave.noise[n]
-        + (Math.random()-0.5)*0.12;
+        0.992 * wave.noise[n]
+        + (Math.random()-0.5)*0.05;
     
-    signal += wave.noise[n]*6;
+    signal += wave.noise[n]*3.5;
     
     wave.noiseIndex =
         (n+1)%wave.noise.length;
@@ -172,7 +188,7 @@ function generateSample(wave, ch){
         )
     );
     
-    signal += burst * Math.sin(wave.phase1) * 8;
+    signal += burst * Math.sin(wave.phase1) * 3.5;
 
    
     
@@ -185,6 +201,16 @@ function generateSample(wave, ch){
         0.2 * signal;
     
     wave.lastSignal = signal;
+
+    signal +=
+        (Math.random()-0.5)*1.8;
+               
+    signal +=
+    
+    Math.sin(
+    frame*0.035 +
+    Math.random()
+    )*0.4;
     
 
     // ===================================================
@@ -255,10 +281,10 @@ function generateSample(wave, ch){
         }
 
     }
-    if (Math.random() < 0.02) {
+    if (Math.random() < 0.005) {
     
         signal +=
-            (6 + Math.random()*8) *
+            (3 + Math.random()*4) *
             Math.sin(frame*0.8);
     
     }
@@ -369,7 +395,7 @@ function draw(){
             const x1 = 60 + i * dx;
             const x2 = 60 + (i + 1) * dx;
         
-            const SCALE = 0.9;   // pixels per "µV"
+            const SCALE = 0.65;   // pixels per "µV"
             
             const y1 = baseY - wave.samples[i] * SCALE;
             const y2 = baseY - wave.samples[i + 1] * SCALE;
