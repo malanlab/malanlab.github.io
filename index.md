@@ -85,7 +85,7 @@ rel="noopener noreferrer"
 ```
 <div class="publication-figure">
   <img
-    src="{{ '/assets/images/publications/selected_paper1.png' | relative_url }}"
+    src="{{ '/assets/images/publications/selected_paper1.jpg' | relative_url }}"
     alt="Altered cortical alpha modulations and connectivity in complex regional pain syndrome"
   >
 </div>
@@ -124,7 +124,7 @@ rel="noopener noreferrer"
 ```
 <div class="publication-figure">
   <img
-    src="{{ '/assets/images/publications/selected_paper2.png' | relative_url }}"
+    src="{{ '/assets/images/publications/selected_paper2.jpg' | relative_url }}"
     alt="Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke"
   >
 </div>
@@ -164,7 +164,7 @@ rel="noopener noreferrer"
 ```
 <div class="publication-figure">
   <img
-    src="{{ '/assets/images/publications/selected_paper3.png' | relative_url }}"
+    src="{{ '/assets/images/publications/selected_paper3.jpg' | relative_url }}"
     alt="Functional connectivity and power spectral density analysis of EEG signals in trained practitioners of Bhramari pranayama"
   >
 </div>
