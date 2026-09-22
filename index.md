@@ -12,27 +12,25 @@ title: Malan Lab
 <div class="card">
 
 <p>
-The <strong>Malan Lab</strong> at IIT Jammu studies how large-scale brain networks
-and neural circuits give rise to movement, cognition, and behavior.
-We investigate the physiological and computational mechanisms that shape brain
-dynamics across healthy and neurological conditions.
+The <strong>Malan Lab</strong> at IIT Jammu investigates how brain networks
+and neural circuits give rise to movement, learning, and behavior.
 </p>
 
 <p>
-Our work integrates EEG, MEG, and deep brain stimulation (DBS) local field
-potentials (LFPs) with advanced signal processing and computational modeling
-to study neural oscillations, functional connectivity, and network-level brain
-interactions.
+We combine multimodal neurophysiology with signal processing and
+computational modeling to study neural dynamics across healthy and
+neurological conditions. Our work spans <strong>EEG, MEG, and deep brain
+local field potentials</strong>, with a focus on neural oscillations,
+connectivity, motor control, and brain–computer interfaces.
 </p>
 
 <p>
-We are particularly interested in Parkinson’s disease, freezing of gait,
-motor control, and mechanisms of neuromodulation through brain stimulation.
+Our research seeks to connect measurable neural dynamics with
+computational mechanisms of brain function and ultimately translate
+these insights into biomarkers, neurotechnology, and neuromodulation.
 </p>
 
 </div>
-
-<hr>
 
 <hr>
 
