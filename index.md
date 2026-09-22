@@ -63,5 +63,76 @@ and motor impairment across cortico-subcortical circuits.
 </div>
 
 </div>
+<hr>
 
+<h2>Selected Publications</h2>
+
+<div class="publications-grid">
+
+  <a
+    href="https://www.sciencedirect.com/science/article/pii/S1526590025008223"
+    class="publication-card"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <div class="publication-year">2025</div>
+
+    <h3>
+      Neural Dynamics of Pain and Brain Network Alterations in Complex Regional Pain Syndrome
+    </h3>
+
+    <p class="publication-journal">
+      The Journal of Pain
+    </p>
+
+    <span class="publication-link">
+      View publication →
+    </span>
+  </a>
+
+
+  <a
+    href="https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.70227"
+    class="publication-card"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <div class="publication-year">2025</div>
+
+    <h3>
+      Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke
+    </h3>
+
+    <p class="publication-journal">
+      Human Brain Mapping
+    </p>
+
+    <span class="publication-link">
+      View publication →
+    </span>
+  </a>
+
+
+  <a
+    href="https://www.sciencedirect.com/science/article/pii/S1746809423004366"
+    class="publication-card"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <div class="publication-year">2023</div>
+
+    <h3>
+      Neural Dynamics of Motor Control and Brain–Computer Interfaces
+    </h3>
+
+    <p class="publication-journal">
+      Biomedical Signal Processing and Control
+    </p>
+
+    <span class="publication-link">
+      View publication →
+    </span>
+  </a>
+
+</div>
 </div>
