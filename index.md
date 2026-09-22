@@ -82,7 +82,6 @@ rel="noopener noreferrer"
 
 >
 
-```
 <div class="publication-figure">
   <img
     src="{{ '/assets/images/publications/selected_paper1.jpg' | relative_url }}"
@@ -107,7 +106,6 @@ rel="noopener noreferrer"
   <span>View publication →</span>
 
 </div>
-```
 
   </a>
 
@@ -121,7 +119,6 @@ rel="noopener noreferrer"
 
 >
 
-```
 <div class="publication-figure">
   <img
     src="{{ '/assets/images/publications/selected_paper2.jpg' | relative_url }}"
@@ -147,7 +144,6 @@ rel="noopener noreferrer"
   <span>View publication →</span>
 
 </div>
-```
 
   </a>
 
@@ -161,7 +157,6 @@ rel="noopener noreferrer"
 
 >
 
-```
 <div class="publication-figure">
   <img
     src="{{ '/assets/images/publications/selected_paper3.jpg' | relative_url }}"
@@ -187,10 +182,7 @@ rel="noopener noreferrer"
   <span>View publication →</span>
 
 </div>
-```
-
   </a>
 
 </div>
-
 </div>
