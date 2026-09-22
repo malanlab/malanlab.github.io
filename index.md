@@ -66,104 +66,131 @@ and motor impairment across cortico-subcortical circuits.
 <hr>
 <hr>
 
+<hr>
+
 <h2>Selected Publications</h2>
 
 <div class="publications-grid">
 
   <!-- Publication 1 -->
-  <a
-    href="https://www.sciencedirect.com/science/article/pii/S1526590025008223"
-    class="publication-card"
-    target="_blank"
-    rel="noopener noreferrer"
+
+<a
+href="https://www.sciencedirect.com/science/article/pii/S1526590025008223"
+class="publication-card"
+target="_blank"
+rel="noopener noreferrer"
+
+>
+
+```
+<div class="publication-figure">
+  <img
+    src="{{ '/assets/images/publications/paper1.png' | relative_url }}"
+    alt="Altered cortical alpha modulations and connectivity in complex regional pain syndrome"
   >
+</div>
 
-    <div class="publication-figure">
-      <img
-        src="{{ '/assets/images/publications/paper1.png' | relative_url }}"
-        alt="Figure from publication"
-      >
-    </div>
+<div class="publication-info">
 
-    <div class="publication-info">
+  <h3>
+    Altered cortical alpha modulations and connectivity in complex regional pain syndrome
+  </h3>
 
-      <h3>
-        [Paper Title]
-      </h3>
+  <p>
+    <em>The Journal of Pain</em> · 2025
+  </p>
 
-      <p>
-        Journal Name · 2025
-      </p>
+  <p class="publication-authors">
+    Nitesh Singh Malan, Sylvain Baillet, Pavan Tankha, Mathieu Roy, Raghavan Gopalakrishnan
+  </p>
 
-      <span>View publication →</span>
+  <span>View publication →</span>
 
-    </div>
+</div>
+```
 
   </a>
-
 
   <!-- Publication 2 -->
-  <a
-    href="https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.70227"
-    class="publication-card"
-    target="_blank"
-    rel="noopener noreferrer"
+
+<a
+href="https://onlinelibrary.wiley.com/doi/abs/10.1002/hbm.70227"
+class="publication-card"
+target="_blank"
+rel="noopener noreferrer"
+
+>
+
+```
+<div class="publication-figure">
+  <img
+    src="{{ '/assets/images/publications/paper2.png' | relative_url }}"
+    alt="Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke"
   >
+</div>
 
-    <div class="publication-figure">
-      <img
-        src="{{ '/assets/images/publications/paper2.png' | relative_url }}"
-        alt="Figure from Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke"
-      >
-    </div>
+<div class="publication-info">
 
-    <div class="publication-info">
+  <h3>
+    Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke
+  </h3>
 
-      <h3>
-        Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke
-      </h3>
+  <p>
+    <em>Human Brain Mapping</em> · 2025
+  </p>
 
-      <p>
-        Human Brain Mapping · 2025
-      </p>
+  <p class="publication-authors">
+    Nitesh Singh Malan, Raghavan Gopalakrishnan, David Cunningham,
+    Olivia Hogue, Kenneth B. Baker, Andre G. Machado
+  </p>
 
-      <span>View publication →</span>
+  <span>View publication →</span>
 
-    </div>
+</div>
+```
 
   </a>
 
-
   <!-- Publication 3 -->
-  <a
-    href="https://www.sciencedirect.com/science/article/pii/S1746809423004366"
-    class="publication-card"
-    target="_blank"
-    rel="noopener noreferrer"
+
+<a
+href="https://www.sciencedirect.com/science/article/pii/S1746809423004366"
+class="publication-card"
+target="_blank"
+rel="noopener noreferrer"
+
+>
+
+```
+<div class="publication-figure">
+  <img
+    src="{{ '/assets/images/publications/paper3.png' | relative_url }}"
+    alt="Functional connectivity and power spectral density analysis of EEG signals in trained practitioners of Bhramari pranayama"
   >
+</div>
 
-    <div class="publication-figure">
-      <img
-        src="{{ '/assets/images/publications/paper3.png' | relative_url }}"
-        alt="Figure from publication"
-      >
-    </div>
+<div class="publication-info">
 
-    <div class="publication-info">
+  <h3>
+    Functional connectivity and power spectral density analysis of EEG signals in trained practitioners of Bhramari pranayama
+  </h3>
 
-      <h3>
-        [Paper Title]
-      </h3>
+  <p>
+    <em>Biomedical Signal Processing and Control</em> · 2023
+  </p>
 
-      <p>
-        Journal Name · 2023
-      </p>
+  <p class="publication-authors">
+    Nitesh Singh Malan, Aayushi Khajuria, Rishabh Bajpai,
+    Dimpy Kapoor, Medha Kulkarni, Deepak Joshi
+  </p>
 
-      <span>View publication →</span>
+  <span>View publication →</span>
 
-    </div>
+</div>
+```
 
   </a>
 
 </div>
+
 </div>
