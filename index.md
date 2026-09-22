@@ -64,74 +64,105 @@ and motor impairment across cortico-subcortical circuits.
 
 </div>
 <hr>
+<hr>
 
 <h2>Selected Publications</h2>
 
 <div class="publications-grid">
 
+  <!-- Publication 1 -->
   <a
     href="https://www.sciencedirect.com/science/article/pii/S1526590025008223"
     class="publication-card"
     target="_blank"
     rel="noopener noreferrer"
   >
-    <div class="publication-year">2025</div>
 
-    <h3>
-      Neural Dynamics of Pain and Brain Network Alterations in Complex Regional Pain Syndrome
-    </h3>
+    <div class="publication-figure">
+      <img
+        src="{{ '/assets/images/publications/paper1.png' | relative_url }}"
+        alt="Figure from publication"
+      >
+    </div>
 
-    <p class="publication-journal">
-      The Journal of Pain
-    </p>
+    <div class="publication-info">
 
-    <span class="publication-link">
-      View publication →
-    </span>
+      <h3>
+        [Paper Title]
+      </h3>
+
+      <p>
+        Journal Name · 2025
+      </p>
+
+      <span>View publication →</span>
+
+    </div>
+
   </a>
 
 
+  <!-- Publication 2 -->
   <a
     href="https://onlinelibrary.wiley.com/doi/full/10.1002/hbm.70227"
     class="publication-card"
     target="_blank"
     rel="noopener noreferrer"
   >
-    <div class="publication-year">2025</div>
 
-    <h3>
-      Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke
-    </h3>
+    <div class="publication-figure">
+      <img
+        src="{{ '/assets/images/publications/paper2.png' | relative_url }}"
+        alt="Figure from Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke"
+      >
+    </div>
 
-    <p class="publication-journal">
-      Human Brain Mapping
-    </p>
+    <div class="publication-info">
 
-    <span class="publication-link">
-      View publication →
-    </span>
+      <h3>
+        Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke
+      </h3>
+
+      <p>
+        Human Brain Mapping · 2025
+      </p>
+
+      <span>View publication →</span>
+
+    </div>
+
   </a>
 
 
+  <!-- Publication 3 -->
   <a
     href="https://www.sciencedirect.com/science/article/pii/S1746809423004366"
     class="publication-card"
     target="_blank"
     rel="noopener noreferrer"
   >
-    <div class="publication-year">2023</div>
 
-    <h3>
-      Neural Dynamics of Motor Control and Brain–Computer Interfaces
-    </h3>
+    <div class="publication-figure">
+      <img
+        src="{{ '/assets/images/publications/paper3.png' | relative_url }}"
+        alt="Figure from publication"
+      >
+    </div>
 
-    <p class="publication-journal">
-      Biomedical Signal Processing and Control
-    </p>
+    <div class="publication-info">
 
-    <span class="publication-link">
-      View publication →
-    </span>
+      <h3>
+        [Paper Title]
+      </h3>
+
+      <p>
+        Journal Name · 2023
+      </p>
+
+      <span>View publication →</span>
+
+    </div>
+
   </a>
 
 </div>
