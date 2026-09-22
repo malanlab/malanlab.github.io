@@ -66,8 +66,9 @@ brain–computer interfaces, and emerging neurotechnologies.
 
 <div class="research-more">
   <a href="{{ '/research/' | relative_url }}">
-    <span>Explore our research</span>
-    <span class="research-arrow">↗</span>
+    <span>Explore research</span>
+    <span class="research-line"></span>
+    <span class="research-arrow">→</span>
   </a>
 </div>
 <hr>
