@@ -1,475 +1,798 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-const canvas = document.querySelector(".eeg-canvas");
-if (!canvas) return;
+    const canvas = document.querySelector(".eeg-canvas");
+    if (!canvas) return;
 
-const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d");
 
-function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-}
+    // =========================================================
+    // CANVAS
+    // =========================================================
 
-resize();
-window.addEventListener("resize", resize);
+    function resize() {
+        const dpr = window.devicePixelRatio || 1;
 
-// =======================================================
-// CONFIGURATION
-// =======================================================
+        canvas.width = canvas.offsetWidth * dpr;
+        canvas.height = canvas.offsetHeight * dpr;
 
-const CHANNELS = 8;
-const BUFFER_SIZE = 110;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
 
-const electrodeNames = [
-    "Fp1","Fp2",
-    "F3","F4",
-    "C3","C4",
-    "P3","P4"
-];
+    resize();
+    window.addEventListener("resize", resize);
 
-// One buffer per EEG channel
 
-const waves = [];
+    // =========================================================
+    // EEG CONFIGURATION
+    // =========================================================
 
-for (let ch = 0; ch < CHANNELS; ch++) {
+    const CHANNELS = 8;
 
-    waves.push({
-    
-        samples: new Array(BUFFER_SIZE).fill(0),
-    
-        phase1: Math.random() * Math.PI * 2,
-        phase2: Math.random() * Math.PI * 2,
-        phase3: Math.random() * Math.PI * 2,
-    
-        alphaEnvelope: 0.5 + Math.random()*0.5,
-    
-        alphaFreq: 0.12 + Math.random()*0.04,
-        thetaFreq: 0.045 + Math.random()*0.02,
-        betaFreq: 0.32 + Math.random()*0.12,
-        betaEnvelope: Math.random(),
-        channelGain: 0.8 + Math.random()*0.4,
-        lastSignal:0,
-    
-        noise: Array.from({length:80},()=>Math.random()*2-1),
-        noiseIndex:0
-    
-    });
+    const electrodeNames = [
+        "Fp1", "Fp2",
+        "F3",  "F4",
+        "C3",  "C4",
+        "P3",  "P4"
+    ];
 
-}
+    /*
+     * The animation is not intended to represent calibrated EEG.
+     *
+     * It is a visual approximation of multichannel resting-state EEG:
+     *
+     *   - 1/f-like background activity
+     *   - alpha rhythm
+     *   - theta activity
+     *   - low-amplitude beta activity
+     *   - correlated activity between channels
+     *   - slow baseline drift
+     *   - physiological/ocular contamination
+     *
+     * Values are arbitrary display units.
+     */
 
-// =======================================================
-// Eye Blink
-// =======================================================
+    const SAMPLE_RATE = 250;
+    const BUFFER_SIZE = 220;
 
-let blink = {
+    const waves = [];
 
-    active:false,
-    start:0,
-    duration:0
 
-};
+    // =========================================================
+    // RANDOM UTILITIES
+    // =========================================================
 
-// =======================================================
-// EMG Burst
-// =======================================================
+    function randn() {
 
-let emg = {
+        let u = 0;
+        let v = 0;
 
-    active:false,
-    start:0,
-    duration:0,
-    channel:0
+        while (u === 0) u = Math.random();
+        while (v === 0) v = Math.random();
 
-};
+        return Math.sqrt(-2 * Math.log(u)) *
+               Math.cos(2 * Math.PI * v);
 
-let frame = 0;
+    }
 
-// =======================================================
-// Generate one NEW sample
-// =======================================================
 
-function generateSample(wave, ch){
+    // =========================================================
+    // SHARED BRAIN ACTIVITY
+    // =========================================================
 
-    wave.alphaFreq += (Math.random()-0.5)*0.002;
-    wave.thetaFreq += (Math.random()-0.5)*0.001;
-    wave.betaFreq  += (Math.random()-0.5)*0.004;
-    
-    wave.alphaFreq = Math.max(0.10, Math.min(0.18, wave.alphaFreq));
-    wave.thetaFreq = Math.max(0.03, Math.min(0.07, wave.thetaFreq));
-    wave.betaFreq  = Math.max(0.22, Math.min(0.50, wave.betaFreq));
-    
-    wave.phase1 += wave.alphaFreq;
-    wave.phase2 += wave.thetaFreq;
-    wave.phase3 += wave.betaFreq;
-        
-    // Slowly changing alpha envelope
-    if (Math.random() < 0.002)
-        wave.alphaEnvelope *= 0.35;
+    /*
+     * A small common component is shared across channels.
+     * This creates realistic-looking spatial correlation.
+     */
 
-    
-    if(Math.random()<0.003){
-    
+    let globalAlphaPhase = Math.random() * Math.PI * 2;
+    let globalThetaPhase = Math.random() * Math.PI * 2;
+
+    let globalAlphaFreq = 9.5;
+    let globalThetaFreq = 5.2;
+
+    let globalSlow = 0;
+
+
+    // =========================================================
+    // CHANNEL INITIALIZATION
+    // =========================================================
+
+    for (let ch = 0; ch < CHANNELS; ch++) {
+
+        waves.push({
+
+            samples: new Array(BUFFER_SIZE).fill(0),
+
+            // Independent oscillatory phases
+            alphaPhase:
+                Math.random() * Math.PI * 2,
+
+            thetaPhase:
+                Math.random() * Math.PI * 2,
+
+            betaPhase:
+                Math.random() * Math.PI * 2,
+
+            // Slightly different alpha frequency per electrode
+            alphaFreq:
+                8.5 + Math.random() * 2.5,
+
+            thetaFreq:
+                4.2 + Math.random() * 1.8,
+
+            betaFreq:
+                18 + Math.random() * 7,
+
+            // Spatially different alpha amplitude
+            alphaAmplitude:
+                ch >= 6
+                    ? 8 + Math.random() * 4
+                    : 3 + Math.random() * 3,
+
+            thetaAmplitude:
+                1.8 + Math.random() * 1.8,
+
+            betaAmplitude:
+                0.8 + Math.random() * 0.8,
+
+            // Slow amplitude modulation
+            alphaEnvelope:
+                0.7 + Math.random() * 0.3,
+
+            envelopePhase:
+                Math.random() * Math.PI * 2,
+
+            // Colored noise state
+            noise1: 0,
+            noise2: 0,
+
+            // Slow baseline
+            drift: 0,
+
+            // Last output for physiological smoothness
+            lastSignal: 0,
+
+            // Channel gain
+            gain:
+                0.85 + Math.random() * 0.3,
+
+            // Small spatial phase delay
+            phaseOffset:
+                (ch - 3.5) * 0.015
+
+        });
+
+    }
+
+
+    // =========================================================
+    // EYE BLINK
+    // =========================================================
+
+    let blink = {
+        active: false,
+        progress: 0,
+        duration: 0
+    };
+
+
+    // =========================================================
+    // MUSCLE ARTIFACT
+    // =========================================================
+
+    let muscle = {
+        active: false,
+        progress: 0,
+        duration: 0,
+        channel: 0
+    };
+
+
+    // =========================================================
+    // GLOBAL PHYSIOLOGICAL STATE
+    // =========================================================
+
+    let frame = 0;
+
+
+    // =========================================================
+    // UPDATE GLOBAL BRAIN ACTIVITY
+    // =========================================================
+
+    function updateGlobalActivity() {
+
+        // Small natural frequency wandering
+        globalAlphaFreq += randn() * 0.015;
+        globalThetaFreq += randn() * 0.01;
+
+        globalAlphaFreq =
+            Math.max(
+                8.5,
+                Math.min(11.5, globalAlphaFreq)
+            );
+
+        globalThetaFreq =
+            Math.max(
+                4.0,
+                Math.min(6.5, globalThetaFreq)
+            );
+
+
+        globalAlphaPhase +=
+            2 * Math.PI *
+            globalAlphaFreq /
+            SAMPLE_RATE;
+
+        globalThetaPhase +=
+            2 * Math.PI *
+            globalThetaFreq /
+            SAMPLE_RATE;
+
+
+        // Very slow common baseline fluctuation
+
+        globalSlow +=
+            (randn() * 0.015 -
+             globalSlow * 0.003);
+
+    }
+
+
+    // =========================================================
+    // EEG SAMPLE GENERATOR
+    // =========================================================
+
+    function generateSample(wave, ch) {
+
+        // -----------------------------------------------------
+        // Frequency drift
+        // -----------------------------------------------------
+
+        wave.alphaFreq += randn() * 0.006;
+        wave.thetaFreq += randn() * 0.004;
+        wave.betaFreq  += randn() * 0.015;
+
+        wave.alphaFreq =
+            Math.max(
+                8.0,
+                Math.min(12.0, wave.alphaFreq)
+            );
+
+        wave.thetaFreq =
+            Math.max(
+                3.5,
+                Math.min(7.0, wave.thetaFreq)
+            );
+
+        wave.betaFreq =
+            Math.max(
+                15,
+                Math.min(30, wave.betaFreq)
+            );
+
+
+        // -----------------------------------------------------
+        // Phase evolution
+        // -----------------------------------------------------
+
+        wave.alphaPhase +=
+            2 * Math.PI *
+            wave.alphaFreq /
+            SAMPLE_RATE;
+
+        wave.thetaPhase +=
+            2 * Math.PI *
+            wave.thetaFreq /
+            SAMPLE_RATE;
+
+        wave.betaPhase +=
+            2 * Math.PI *
+            wave.betaFreq /
+            SAMPLE_RATE;
+
+
+        // -----------------------------------------------------
+        // Alpha envelope
+        //
+        // Alpha should not continuously pulse like a sine-wave
+        // amplitude animation. It changes slowly and irregularly.
+        // -----------------------------------------------------
+
+        const envelopeTarget =
+            0.72 +
+            0.20 *
+            Math.sin(
+                wave.envelopePhase +
+                frame * 0.002
+            );
+
         wave.alphaEnvelope +=
-        Math.random()*0.8;
-    
-    }
-    
-    wave.alphaEnvelope +=
-    (Math.random()-0.5)*0.03;
-    
-    
-    wave.alphaEnvelope*=0.998;
-    
-    
-    wave.alphaEnvelope=
-    
-    Math.max(
-    0.08,
-    Math.min(1.4,wave.alphaEnvelope)
-    );
-    
-    wave.alphaEnvelope =
-        Math.max(
-            0.15,
-            Math.min(1.8,wave.alphaEnvelope)
-        );
+            (envelopeTarget -
+             wave.alphaEnvelope) * 0.0025;
 
 
-    let signal = 0;
-       
-            
-    // Alpha burst
-    signal +=
-        (
-            Math.sin(wave.phase1) +
-            0.25*Math.sin(wave.phase1*2.2) +
-            0.18*Math.sin(wave.phase1*3.7)
-        ) *
-        wave.alphaEnvelope *
-        8;
-    
-    // Theta
-    signal += Math.sin(wave.phase2) * 2.2;
-    
-    // Beta
+        // -----------------------------------------------------
+        // 1/f-like colored background activity
+        // -----------------------------------------------------
 
-    wave.betaEnvelope += (Math.random()-0.5)*0.04;
-    wave.betaEnvelope *= 0.992;
-    wave.betaEnvelope = Math.max(0.1,Math.min(1.6,wave.betaEnvelope));
-    
-    signal +=
-        Math.sin(wave.phase3)
-        * wave.betaEnvelope
-        * 1.1;
+        const whiteNoise = randn();
 
-    
-    // Gamma texture
-    signal += Math.sin(wave.phase3*2.7) * 0.7;
-    
-    // Colored noise
-    const n = wave.noiseIndex;
-    
-    wave.noise[n] =
-        0.992 * wave.noise[n]
-        + (Math.random()-0.5)*0.05;
-    
-    signal += wave.noise[n]*3.5;
-    
-    wave.noiseIndex =
-        (n+1)%wave.noise.length;
-    
-    //traveling alpha bursts
+        wave.noise1 =
+            0.985 * wave.noise1 +
+            0.12 * whiteNoise;
 
-    const burst =
-    Math.exp(
-        -Math.pow(
-            ((frame + ch*18)%500 - 250)/80,
-            2
-        )
-    );
-    
-    signal += burst * Math.sin(wave.phase1) * 3.5;
+        wave.noise2 =
+            0.94 * wave.noise2 +
+            0.20 * wave.noise1;
 
-   
-    
-    // Slow drift
-    signal +=
-        Math.sin(frame*0.01 + ch)*1.4;
 
-    signal =
-        0.8 * wave.lastSignal +
-        0.2 * signal;
-    
-    wave.lastSignal = signal;
+        const coloredNoise =
+            wave.noise2;
 
-    signal +=
-        (Math.random()-0.5)*1.8;
-               
-    signal +=
-    
-    Math.sin(
-    frame*0.035 +
-    Math.random()
-    )*0.4;
-    
 
-    // ===================================================
-    // Eye blink
-    // ===================================================
+        // -----------------------------------------------------
+        // Alpha rhythm
+        // -----------------------------------------------------
 
-    if(blink.active){
+        const alpha =
+            Math.sin(wave.alphaPhase)
+            * wave.alphaAmplitude
+            * wave.alphaEnvelope;
 
-        const p =
-            (frame-blink.start)/blink.duration;
 
-        if(p>1){
+        // Small harmonic content
+        const alphaHarmonic =
+            0.12 *
+            Math.sin(
+                wave.alphaPhase * 2 +
+                0.3
+            ) *
+            wave.alphaAmplitude;
 
-            blink.active=false;
 
-        }else{
+        // -----------------------------------------------------
+        // Theta
+        // -----------------------------------------------------
 
-            let spike=0;
+        const theta =
+            Math.sin(
+                wave.thetaPhase +
+                wave.phaseOffset
+            )
+            * wave.thetaAmplitude;
 
-            if(p<0.18){
 
-                spike=p/0.18;
+        // -----------------------------------------------------
+        // Beta
+        //
+        // Much smaller than alpha/background activity.
+        // -----------------------------------------------------
 
-            }else if(p<0.34){
+        const beta =
+            Math.sin(wave.betaPhase)
+            * wave.betaAmplitude;
 
-                spike=1-(p-0.18)/0.16;
 
-            }else if(p<0.55){
+        // -----------------------------------------------------
+        // Common neural activity
+        // -----------------------------------------------------
 
-                spike=-0.35*(p-0.34)/0.21;
+        const commonAlpha =
+            Math.sin(globalAlphaPhase)
+            * 2.0;
+
+        const commonTheta =
+            Math.sin(globalThetaPhase)
+            * 0.9;
+
+
+        // -----------------------------------------------------
+        // Slow cortical drift
+        // -----------------------------------------------------
+
+        wave.drift +=
+            randn() * 0.018 -
+            wave.drift * 0.002;
+
+        const slowDrift =
+            wave.drift * 3 +
+            globalSlow * 2;
+
+
+        // -----------------------------------------------------
+        // Combine
+        // -----------------------------------------------------
+
+        let signal =
+
+            alpha +
+
+            alphaHarmonic +
+
+            theta +
+
+            beta +
+
+            coloredNoise * 2.2 +
+
+            commonAlpha +
+
+            commonTheta +
+
+            slowDrift;
+
+
+        // -----------------------------------------------------
+        // EYE BLINK
+        //
+        // Strongest frontally, progressively weaker posteriorly.
+        // -----------------------------------------------------
+
+        if (blink.active) {
+
+            blink.progress += 1;
+
+            const p =
+                blink.progress /
+                blink.duration;
+
+            if (p >= 1) {
+
+                blink.active = false;
+
+            } else {
+
+                // Smooth transient
+                const blinkShape =
+                    Math.sin(Math.PI * p);
+
+                let frontalWeight;
+
+                if (ch < 2) {
+                    frontalWeight = 2.5;
+                } else if (ch < 4) {
+                    frontalWeight = 1.0;
+                } else if (ch < 6) {
+                    frontalWeight = 0.35;
+                } else {
+                    frontalWeight = 0.12;
+                }
+
+                signal +=
+                    blinkShape *
+                    35 *
+                    frontalWeight;
 
             }
 
-            const frontalWeight =
-                ch<2 ? 1.9 :
-                ch<4 ? 0.7 :
-                0.2;
+        }
 
-            signal +=
-                spike*55*frontalWeight;
+
+        // -----------------------------------------------------
+        // EMG / muscle activity
+        // -----------------------------------------------------
+
+        if (muscle.active && ch === muscle.channel) {
+
+            muscle.progress++;
+
+            const p =
+                muscle.progress /
+                muscle.duration;
+
+            if (p >= 1) {
+
+                muscle.active = false;
+
+            } else {
+
+                // High-frequency irregular activity
+
+                const emgNoise =
+                    randn() * 7;
+
+                signal +=
+                    emgNoise *
+                    Math.sin(
+                        frame * 0.7
+                    );
+
+            }
 
         }
 
-    }
+
+        // -----------------------------------------------------
+        // Small measurement noise
+        // -----------------------------------------------------
+
+        signal += randn() * 0.8;
 
 
-    
-    // ===================================================
-    // EMG burst
-    // ===================================================
+        // -----------------------------------------------------
+        // Mild analog-like smoothing
+        // -----------------------------------------------------
 
-    if(emg.active){
+        signal =
+            0.82 * wave.lastSignal +
+            0.18 * signal;
 
-        const p =
-            (frame-emg.start)/emg.duration;
+        wave.lastSignal = signal;
 
-        if(p>1){
 
-            emg.active=false;
-
-        }else if(ch===emg.channel){
-
-            signal +=
-                (Math.random() - 0.5) *
-                18 *
-                Math.sin(frame * 2.2);
-
-        }
-
-    }
-    if (Math.random() < 0.005) {
-    
-        signal +=
-            (3 + Math.random()*4) *
-            Math.sin(frame*0.8);
-    
-    }
-    signal *= wave.channelGain;
-
-    signal =
-        0.75*wave.lastSignal +
-        0.25*signal;
-    
-    wave.lastSignal = signal;
-    
-    return signal;
-
-}
-
-// =======================================================
-// DRAW
-// =======================================================
-
-function draw(){
-
-    const w = canvas.width;
-    const h = canvas.height;
-
-    ctx.fillStyle = "rgba(5,10,20,0.45)";
-    ctx.fillRect(0,0,w,h);
-
-    const spacing = h/(CHANNELS+1);
-
-    // ---------------------------------------------------
-    // Random artefacts
-    // ---------------------------------------------------
-
-    if(!blink.active && Math.random()<0.003){
-
-        blink.active=true;
-        blink.start=frame;
-        blink.duration=22+Math.random()*12;
+        return signal * wave.gain;
 
     }
 
-    if(!emg.active && Math.random()<0.001){
 
-        emg.active=true;
-        emg.start=frame;
-        emg.duration=35+Math.random()*20;
-        emg.channel=Math.floor(Math.random()*CHANNELS);
+    // =========================================================
+    // DRAW
+    // =========================================================
 
-    }
+    function draw() {
 
-    // ---------------------------------------------------
-    // Labels
-    // ---------------------------------------------------
+        const w = canvas.offsetWidth;
+        const h = canvas.offsetHeight;
 
-    ctx.font="500 13px Inter, sans-serif";
-    ctx.textAlign="right";
-    ctx.textBaseline="middle";
 
-    // ===================================================
-    // CHANNEL LOOP
-    // ===================================================
+        // -----------------------------------------------------
+        // Background
+        // -----------------------------------------------------
 
-    for(let ch=0; ch<CHANNELS; ch++){
+        ctx.fillStyle =
+            "rgba(5,10,20,0.30)";
 
-        const wave = waves[ch];
-
-        const baseY = spacing*(ch+1);
-
-        // -----------------------------------------------
-        // Add one new sample
-        // -----------------------------------------------
-
-        for (let k = 0; k < 2; k++) {
-            wave.samples.push(generateSample(wave, ch));
-            wave.samples.shift();
-        }
-
-        // -----------------------------------------------
-        // Channel label
-        // -----------------------------------------------
-
-        ctx.fillStyle="rgba(140,200,255,.9)";
-        ctx.fillText(
-            electrodeNames[ch],
-            46,
-            baseY
+        ctx.fillRect(
+            0,
+            0,
+            w,
+            h
         );
 
-        // -----------------------------------------------
-        // Glow
-        // -----------------------------------------------
 
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
-        
-        ctx.shadowBlur = 14;
-        ctx.shadowColor = "rgba(0,255,220,.32)";
-        ctx.lineWidth=1.7;
+        // -----------------------------------------------------
+        // Layout
+        // -----------------------------------------------------
 
-        const dx=(w-70)/(BUFFER_SIZE-1);
+        const leftMargin = 58;
+        const rightMargin = 12;
 
-        // -----------------------------------------------
-        // Draw trace
-        // -----------------------------------------------
+        const spacing =
+            h / (CHANNELS + 1);
 
-        for (let i = 0; i < BUFFER_SIZE - 1; i++) {
-        
-            const x1 = 60 + i * dx;
-            const x2 = 60 + (i + 1) * dx;
-        
-            const SCALE = 0.65;   // pixels per "µV"
-            
-            const y1 = baseY - wave.samples[i] * SCALE;
-            const y2 = baseY - wave.samples[i + 1] * SCALE;
-        
-            let alpha = 0.36;
-        
-            const fadeStart = w * 0.84;
-        
-            if (x1 > fadeStart) {
-        
-                const fade =
-                    (x1 - fadeStart) /
-                    (w - fadeStart);
-        
-                alpha *= Math.pow(1 - fade, 2.4);
-        
+
+        // -----------------------------------------------------
+        // Random physiological events
+        // -----------------------------------------------------
+
+        if (
+            !blink.active &&
+            Math.random() < 0.0015
+        ) {
+
+            blink.active = true;
+            blink.progress = 0;
+
+            blink.duration =
+                25 +
+                Math.random() * 15;
+
+        }
+
+
+        if (
+            !muscle.active &&
+            Math.random() < 0.0008
+        ) {
+
+            muscle.active = true;
+            muscle.progress = 0;
+
+            muscle.duration =
+                30 +
+                Math.random() * 25;
+
+            muscle.channel =
+                Math.floor(
+                    Math.random() * CHANNELS
+                );
+
+        }
+
+
+        // -----------------------------------------------------
+        // Channel loop
+        // -----------------------------------------------------
+
+        for (
+            let ch = 0;
+            ch < CHANNELS;
+            ch++
+        ) {
+
+            const wave = waves[ch];
+
+            const baseY =
+                spacing * (ch + 1);
+
+
+            // -----------------------------------------------
+            // New samples
+            // -----------------------------------------------
+
+            for (
+                let k = 0;
+                k < 2;
+                k++
+            ) {
+
+                updateGlobalActivity();
+
+                wave.samples.push(
+                    generateSample(
+                        wave,
+                        ch
+                    )
+                );
+
+                wave.samples.shift();
+
             }
-        
-            alpha = Math.max(alpha, 0);
-        
-            ctx.strokeStyle = `rgba(0,255,220,${alpha})`;
-        
+
+
+            // -----------------------------------------------
+            // Electrode label
+            // -----------------------------------------------
+
+            ctx.font =
+                "500 12px Inter, sans-serif";
+
+            ctx.textAlign = "right";
+            ctx.textBaseline = "middle";
+
+            ctx.fillStyle =
+                "rgba(150,205,220,0.75)";
+
+            ctx.fillText(
+                electrodeNames[ch],
+                45,
+                baseY
+            );
+
+
+            // -----------------------------------------------
+            // Baseline
+            // -----------------------------------------------
+
+            ctx.strokeStyle =
+                "rgba(120,180,190,0.07)";
+
+            ctx.lineWidth = 1;
+
             ctx.beginPath();
-            ctx.moveTo(x1, y1);
-            ctx.lineTo(x2, y2);
+
+            ctx.moveTo(
+                leftMargin,
+                baseY
+            );
+
+            ctx.lineTo(
+                w - rightMargin,
+                baseY
+            );
+
             ctx.stroke();
+
+
+            // -----------------------------------------------
+            // EEG trace
+            // -----------------------------------------------
+
+            ctx.lineWidth = 1.25;
+
+            ctx.lineCap = "round";
+            ctx.lineJoin = "round";
+
+            ctx.shadowBlur = 7;
+
+            ctx.shadowColor =
+                "rgba(0,255,220,0.20)";
+
+
+            const dx =
+                (w - leftMargin - rightMargin) /
+                (BUFFER_SIZE - 1);
+
+
+            ctx.beginPath();
+
+            for (
+                let i = 0;
+                i < BUFFER_SIZE;
+                i++
+            ) {
+
+                const x =
+                    leftMargin +
+                    i * dx;
+
+                const y =
+                    baseY -
+                    wave.samples[i] * 0.65;
+
+
+                if (i === 0) {
+
+                    ctx.moveTo(
+                        x,
+                        y
+                    );
+
+                } else {
+
+                    ctx.lineTo(
+                        x,
+                        y
+                    );
+
+                }
+
+            }
+
+
+            ctx.strokeStyle =
+                "rgba(0,235,210,0.72)";
+
+            ctx.stroke();
+
+            ctx.shadowBlur = 0;
+
         }
-        
-        ctx.shadowBlur = 0;
+
+
+        // -----------------------------------------------------
+        // Small acquisition indicator
+        // -----------------------------------------------------
+
+        ctx.font =
+            "500 10px Inter, sans-serif";
+
+        ctx.textAlign = "left";
+
+        ctx.fillStyle =
+            "rgba(160,200,205,0.45)";
+
+        ctx.fillText(
+            "RESTING-STATE EEG",
+            leftMargin,
+            14
+        );
+
+
+        ctx.textAlign = "right";
+
+        ctx.fillText(
+            "8 channels · 250 Hz",
+            w - rightMargin,
+            14
+        );
+
+
+        // -----------------------------------------------------
+        // Continue
+        // -----------------------------------------------------
+
+        frame++;
+
+        requestAnimationFrame(draw);
 
     }
 
 
-    // ===================================================
-    // MOVING TIMING MARKERS
-    // ===================================================
+    // =========================================================
+    // START
+    // =========================================================
 
-    ctx.strokeStyle = "rgba(255,255,255,0.18)";
-    ctx.lineWidth = 1;
-
-    const markerSpacing = 160;
-    const speed = 8;
-
-    for (let i = -1; i < Math.ceil(w / markerSpacing) + 1; i++) {
-
-        const totalWidth = w + markerSpacing;
-        
-        const x =
-            totalWidth -
-            ((frame * speed + i * markerSpacing) % totalWidth);
-
-        if (x < 55 || x > w) continue;
-
-        ctx.beginPath();
-        ctx.moveTo(x, 20);
-        ctx.lineTo(x, h - 20);
-        ctx.stroke();
-    }
-
-    // ===================================================
-    // ADVANCE FRAME
-    // ===================================================
-
-    frame++;
-
-    requestAnimationFrame(draw);
-
-}
-
-// =======================================================
-// START
-// =======================================================
-
-draw();
+    draw();
 
 });
-                          
