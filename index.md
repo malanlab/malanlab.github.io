@@ -36,31 +36,17 @@ motor control, and mechanisms of neuromodulation through brain stimulation.
 
 <hr>
 
+<hr>
+
 <h2>Research Areas</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>Brain–Computer Interfaces</h3>
-<p>
-Decoding neural activity for brain–computer interfaces, motor imagery,
-sensorimotor control, and neurotechnology.
-</p>
-</div>
-
-<div class="card">
-<h3>EEG, MEG & Deep Brain Signals</h3>
-<p>
-Analysis of non-invasive and intracranial electrophysiology, including
-EEG, MEG, and deep brain stimulation local field potentials.
-</p>
-</div>
-
-<div class="card">
 <h3>Neural Signal Processing</h3>
 <p>
-Spectral, time–frequency, connectivity, and multiscale analysis of
-neural signals to characterize brain dynamics.
+Analysis of EEG, MEG, and deep brain signals to characterize neural
+oscillations, spectral dynamics, and brain connectivity.
 </p>
 </div>
 
@@ -68,23 +54,15 @@ neural signals to characterize brain dynamics.
 <h3>Computational Neuroscience</h3>
 <p>
 Computational modeling of neural population dynamics, oscillations,
-and interactions between distributed brain regions.
+and interactions across distributed brain networks.
 </p>
 </div>
 
 <div class="card">
-<h3>Source Localization & Connectivity</h3>
+<h3>Brain–Computer Interfaces</h3>
 <p>
-Reconstructing neural sources and investigating functional interactions
-across cortical and cortico-subcortical networks.
-</p>
-</div>
-
-<div class="card">
-<h3>Motor Control & Neurological Disorders</h3>
-<p>
-Studying neural mechanisms of movement, motor learning, Parkinson’s
-disease, freezing of gait, and neuromodulation.
+Decoding neural activity for brain–computer interfaces, motor control,
+motor learning, and neurotechnology.
 </p>
 </div>
 
