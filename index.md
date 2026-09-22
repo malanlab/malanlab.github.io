@@ -36,8 +36,6 @@ motor control, and mechanisms of neuromodulation through brain stimulation.
 
 <hr>
 
-<hr>
-
 <h2>Research Areas</h2>
 
 <div class="grid">
@@ -45,27 +43,33 @@ motor control, and mechanisms of neuromodulation through brain stimulation.
 <div class="card">
 <h3>Neural Signal Processing</h3>
 <p>
-Analysis of EEG, MEG, and deep brain signals to characterize neural
-oscillations, spectral dynamics, and brain connectivity.
+EEG, MEG, and deep brain signals to study neural oscillations,
+spectral dynamics, brain connectivity, and cortico-subcortical interactions.
 </p>
 </div>
 
 <div class="card">
 <h3>Computational Neuroscience</h3>
 <p>
-Computational modeling of neural population dynamics, oscillations,
-and interactions across distributed brain networks.
+Computational modeling of neural population dynamics, brain rhythms,
+motor learning, and network-level mechanisms underlying behavior.
 </p>
 </div>
 
 <div class="card">
 <h3>Brain–Computer Interfaces</h3>
 <p>
-Decoding neural activity for brain–computer interfaces, motor control,
-motor learning, and neurotechnology.
+Decoding brain activity for motor control, neurorehabilitation,
+brain–computer interfaces, and emerging neurotechnologies.
 </p>
 </div>
 
+</div>
+
+<div class="research-more">
+  <a href="{{ '/research/' | relative_url }}">
+    Explore all research areas →
+  </a>
 </div>
 
 <hr>
