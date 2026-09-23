@@ -4,10 +4,6 @@ title: Research
 permalink: /research/
 ---
 
-<div class="section-label">
-  RESEARCH
-</div>
-
 <h1>Research</h1>
 
 
@@ -21,12 +17,12 @@ permalink: /research/
     PAIN NEUROSCIENCE
   </div>
 
-  <h2>Can brain rhythms explain and predict chronic pain?</h2>
-
+  <h2>
+    Can brain rhythms explain and predict chronic pain?
+  </h2>
 
   <div class="research-block">
 
-    <!-- TEXT SIDE -->
     <div class="card">
 
       <h3>The problem</h3>
@@ -35,19 +31,17 @@ permalink: /research/
         Chronic pain is not only a symptom of injury—it also reflects how the brain
         processes and amplifies pain signals. Many studies show changes in brain
         rhythms, especially in the alpha band (8–12 Hz), but we still do not fully
-        understand <b>which brain regions change, and how these changes relate to
-        how much pain a person feels.</b>
+        understand <strong>which brain regions change, and how these changes relate
+        to how much pain a person feels.</strong>
       </p>
-
 
       <h3>Our approach</h3>
 
       <p>
-        We study whether brain signals such as <b>Peak Alpha Frequency (PAF)</b>
+        We study whether brain signals such as <strong>Peak Alpha Frequency (PAF)</strong>
         and alpha power can act as measurable biomarkers of pain. We also relate
         these brain features to subjective pain intensity across individuals.
       </p>
-
 
       <h3>What we studied</h3>
 
@@ -61,18 +55,14 @@ permalink: /research/
 
     </div>
 
-
-    <!-- IMAGE SIDE -->
     <div class="research-media">
 
       <div class="mini-carousel">
-
         <img
           class="active"
           src="{{ '/assets/images/research/alpha.png' | relative_url }}"
           alt="MEG analysis of cortical alpha dynamics in chronic pain"
         >
-
       </div>
 
     </div>
@@ -80,23 +70,20 @@ permalink: /research/
   </div>
 
 
-  <!-- RESULTS -->
-
-  <div class="grid">
+  <div class="grid research-results">
 
     <div class="card">
 
       <h3>What we found</h3>
 
       <ul>
-        <li>Brain rhythms slow down in chronic pain (reduced PAF)</li>
+        <li>Brain rhythms slow down in chronic pain, reflected by reduced PAF</li>
         <li>Alpha power decreases in key sensory and association areas</li>
         <li>Changes are strongest in regions involved in body representation and attention to pain</li>
         <li>Pain severity is linked to abnormal activity in prefrontal and orbitofrontal regions</li>
       </ul>
 
     </div>
-
 
     <div class="card">
 
@@ -105,7 +92,7 @@ permalink: /research/
       <ul>
         <li>Posterior brain regions reflect how sensory pain is processed</li>
         <li>Prefrontal and orbitofrontal cortex contribute to how unpleasant pain feels</li>
-        <li>Altered connectivity suggests the brain may get “stuck” in persistent pain states</li>
+        <li>Altered connectivity suggests changes in network organization associated with persistent pain</li>
       </ul>
 
     </div>
@@ -113,19 +100,17 @@ permalink: /research/
   </div>
 
 
-  <!-- BIG PICTURE -->
+  <div class="card research-highlight">
 
-  <div class="card">
-
-    <h3>Big picture: towards predictive pain neuroscience</h3>
+    <h3>Big picture</h3>
 
     <p>
       Our long-term goal is to move beyond describing brain differences and build
-      a <b>normative model of brain activity</b>.
+      a <strong>normative model of brain activity</strong>.
     </p>
 
     <p>
-      By learning what “typical” brain activity looks like from large EEG/MEG
+      By learning what typical brain activity looks like from large EEG/MEG
       datasets, we can measure how much each individual deviates from this norm.
       These deviations may help us:
     </p>
@@ -137,10 +122,10 @@ permalink: /research/
       <li>Guide personalized neuromodulation and rehabilitation strategies</li>
     </ul>
 
-    <p>
+    <p class="research-takeaway">
       In simple terms:
-      <b>we aim to turn brain rhythms into a predictive tool for understanding
-      and treating pain.</b>
+      <strong>we aim to turn brain rhythms into a predictive tool for understanding
+      and treating pain.</strong>
     </p>
 
   </div>
@@ -159,28 +144,27 @@ permalink: /research/
     MOTOR LEARNING
   </div>
 
-  <h2>How does the cerebellum help the brain correct movement errors?</h2>
-
+  <h2>
+    How does the cerebellum help the brain correct movement errors?
+  </h2>
 
   <div class="research-block">
 
-    <!-- TEXT SIDE -->
     <div class="card">
 
       <h3>The problem</h3>
 
       <p>
-        Every movement we make involves small errors — we miss the target,
+        Every movement we make involves small errors—we miss the target,
         overshoot, or undershoot. The cerebellum is thought to detect these
         errors and help the brain adjust future movements.
       </p>
 
       <p>
         But in humans, it is still not clear
-        <b>how the cerebellum and cortex communicate in real time during
-        error correction.</b>
+        <strong>how the cerebellum and cortex communicate in real time during
+        error correction.</strong>
       </p>
-
 
       <h3>Our approach</h3>
 
@@ -189,35 +173,30 @@ permalink: /research/
       </p>
 
       <ul>
-        <li>Simultaneous EEG and deep cerebellar recordings (dentate nucleus)</li>
-        <li>Motor error / adaptation tasks</li>
+        <li>Simultaneous EEG and deep cerebellar recordings from the dentate nucleus</li>
+        <li>Motor error and adaptation tasks</li>
         <li>Time–frequency and connectivity analysis</li>
         <li>Computational modeling of learning signals</li>
       </ul>
 
-
       <h3>Key questions</h3>
 
       <ul>
-        <li>How does the cerebellum send “error signals” to the cortex?</li>
+        <li>How does the cerebellum send error signals to the cortex?</li>
         <li>Which cortical regions update motor plans during correction?</li>
-        <li>How do these brain circuits change as learning improves performance?</li>
+        <li>How do these circuits change as learning improves performance?</li>
       </ul>
 
     </div>
 
-
-    <!-- IMAGE SIDE -->
     <div class="research-media">
 
       <div class="mini-carousel">
-
         <img
           class="active"
           src="{{ '/assets/images/research/oddball1.png' | relative_url }}"
           alt="Cortico-cerebellar dynamics during motor error processing"
         >
-
       </div>
 
     </div>
@@ -225,32 +204,29 @@ permalink: /research/
   </div>
 
 
-  <!-- RESULTS -->
-
-  <div class="grid">
+  <div class="grid research-results">
 
     <div class="card">
 
       <h3>What we found</h3>
 
       <ul>
-        <li>Unexpected movements (errors) trigger strong cortical responses in centro-parietal regions</li>
+        <li>Unexpected movements trigger strong cortical responses in centro-parietal regions</li>
         <li>Both cortex and cerebellum show changes in alpha and low-beta rhythms during correction</li>
         <li>Connectivity between cortex and cerebellum increases during error-driven learning</li>
-        <li>Communication is bidirectional — both regions influence each other</li>
+        <li>Communication is bidirectional, with interactions between cortical and cerebellar regions</li>
       </ul>
 
     </div>
-
 
     <div class="card">
 
       <h3>What it means</h3>
 
       <ul>
-        <li>Cerebellum acts like a <b>prediction engine</b> for movement outcomes</li>
-        <li>Cortex updates motor plans based on cerebellar error feedback</li>
-        <li>Alpha/beta rhythms may carry learning and correction signals</li>
+        <li>The cerebellum acts as a prediction engine for movement outcomes</li>
+        <li>The cortex updates motor plans based on cerebellar error feedback</li>
+        <li>Alpha and beta rhythms may carry learning and correction signals</li>
       </ul>
 
     </div>
@@ -258,54 +234,59 @@ permalink: /research/
   </div>
 
 
-  <!-- BIG PICTURE -->
+  <div class="card research-highlight">
 
-  <div class="card">
-
-    <h3>Big picture: how the brain learns from mistakes</h3>
+    <h3>Big picture</h3>
 
     <p>
       This work supports the idea that the cerebellum and cortex form a tightly
-      coupled learning system — continuously comparing expected vs actual
+      coupled learning system—continuously comparing expected and actual
       movement outcomes.
     </p>
 
     <p>
-      We show that motor learning is not just a local process, but a
-      <b>network-level interaction</b> involving rhythmic communication between
-      cerebellum and cortex.
+      Motor learning is therefore not simply a local process, but a
+      <strong>network-level interaction</strong> involving rhythmic communication
+      between cerebellum and cortex.
     </p>
-
 
     <h3>Why this matters</h3>
 
     <ul>
       <li>Helps explain motor learning after stroke or injury</li>
-      <li>Provides biomarkers for rehabilitation progress</li>
-      <li>Supports development of brain stimulation-based therapies (e.g., DBS, neurofeedback)</li>
-      <li>Links physiology with computational models of error-driven learning</li>
+      <li>Provides potential biomarkers for rehabilitation progress</li>
+      <li>Supports development of brain stimulation-based therapies</li>
+      <li>Links neurophysiology with computational models of error-driven learning</li>
     </ul>
 
-    <p>
+    <p class="research-takeaway">
       In simple terms:
-      <b>the cerebellum helps the brain learn from mistakes by constantly talking
-      to the cortex in rhythmic brain signals.</b>
+      <strong>the cerebellum helps the brain learn from movement errors through
+      continuous communication with the cortex.</strong>
     </p>
 
   </div>
 
 
-  <!-- REFERENCE -->
+  <div class="research-reference">
 
-  <div class="card research-reference">
-
-    <h3>Reference</h3>
+    <span>PUBLICATION</span>
 
     <p>
-      <b>Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke</b><br>
-      Malan N.S., Gopalakrishnan R., Cunningham D., Hogue O., Baker K.B., Machado A.G.<br>
-      DOI: 10.1002/hbm.70227
+      <strong>
+        Human Cortico-Cerebellar Dynamics During Motor Error Processing After Stroke
+      </strong><br>
+
+      Malan N.S., Gopalakrishnan R., Cunningham D., Hogue O., Baker K.B., Machado A.G.
     </p>
+
+    <a
+      href="https://doi.org/10.1002/hbm.70227"
+      target="_blank"
+      rel="noopener"
+    >
+      DOI: 10.1002/hbm.70227 ↗
+    </a>
 
   </div>
 
@@ -327,44 +308,69 @@ permalink: /research/
     How does cortico–subcortical network dysfunction lead to freezing of gait?
   </h2>
 
+  <div class="research-block">
 
-  <div class="card">
+    <div class="card">
 
-    <h3>The problem</h3>
+      <h3>The problem</h3>
+
+      <p>
+        Freezing of gait (FOG) is a transient failure to initiate or maintain
+        effective walking. Although FOG is strongly associated with Parkinson's
+        disease, the network mechanisms underlying these episodes remain
+        incompletely understood.
+      </p>
+
+      <h3>What we study</h3>
+
+      <ul>
+        <li>EEG and deep-brain local field potentials (LFPs)</li>
+        <li>DBS recordings during motor paradigms</li>
+        <li>Beta-burst dynamics</li>
+        <li>Cortico–subcortical connectivity</li>
+        <li>Neural dynamics associated with freezing of gait</li>
+      </ul>
+
+      <h3>Key questions</h3>
+
+      <ul>
+        <li>How does cortical activity interact with basal-ganglia circuits during FOG?</li>
+        <li>Do beta bursts reflect unstable transitions between motor states?</li>
+        <li>How does DBS alter cortico–subcortical network dynamics?</li>
+      </ul>
+
+    </div>
+
+    <div class="research-media">
+
+      <div class="research-placeholder">
+
+        <span>EEG</span>
+        <span>↔</span>
+        <span>DBS–LFP</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="card research-highlight">
+
+    <h3>Network perspective</h3>
 
     <p>
-      Freezing of gait (FOG) is a transient failure to initiate or maintain
-      effective walking, but the network mechanisms underlying these episodes
-      remain incompletely understood.
+      Rather than viewing freezing of gait as a dysfunction of a single brain
+      region, we investigate FOG as a
+      <strong>network-level disruption of motor state transitions</strong>
+      across cortical and subcortical circuits.
     </p>
 
-
-    <h3>What we study</h3>
-
-    <ul>
-      <li>EEG + deep brain local field potentials (LFPs)</li>
-      <li>DBS recordings during motor paradigms</li>
-      <li>Beta burst dynamics</li>
-      <li>Cortico–subcortical connectivity</li>
-      <li>Changes in neural dynamics associated with freezing of gait</li>
-    </ul>
-
-
-    <h3>Key questions</h3>
-
-    <ul>
-      <li>How does cortical activity interact with basal-ganglia circuits during FOG?</li>
-      <li>Do beta bursts reflect unstable transitions between motor states?</li>
-      <li>How does DBS alter cortico–subcortical network dynamics?</li>
-    </ul>
-
-
-    <h3>Interpretation</h3>
-
     <p>
-      We investigate FOG as a
-      <b>network-level disruption of motor state transitions</b>
-      across cortical and subcortical circuits.
+      By combining cortical EEG with deep-brain recordings, we aim to characterize
+      how neural oscillations and interactions between brain regions change
+      as the motor system transitions between stable walking and freezing.
     </p>
 
   </div>
