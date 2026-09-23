@@ -352,19 +352,6 @@ a:hover {
 
   opacity: 1;
 }
-/* =========================
-   Section
-========================= */
-.section-label {
-  margin-bottom: 8px;
-
-  font-size: 0.65rem;
-  font-weight: 600;
-
-  letter-spacing: 0.2em;
-
-  color: rgba(0,235,210,0.65);
-}
 
 /* =========================
    CARDS
@@ -537,37 +524,54 @@ a:hover {
 }
 
 /* =========================
-   research-more
+   RESEARCH SECTION LABEL
+========================= */
+
+.section-label {
+  margin-bottom: 10px;
+
+  font-size: 0.78rem;
+  font-weight: 600;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: rgba(0, 235, 210, 0.85);
+}
+
+
+/* =========================
+   EXPLORE RESEARCH
 ========================= */
 
 .research-more {
-  margin-top: 34px;
+  margin-top: 38px;
   text-align: center;
 }
 
 .research-more a {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 
-  color: rgba(220,240,240,0.72);
+  color: rgba(225, 245, 245, 0.9);
 
   text-decoration: none;
 
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.88rem;
+  font-weight: 600;
 
-  letter-spacing: 0.08em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
 
   transition: color 0.3s ease;
 }
 
 .research-line {
-  width: 38px;
+  width: 45px;
   height: 1px;
 
-  background: rgba(0,235,210,0.55);
+  background: rgba(0, 235, 210, 0.75);
 
   transition:
     width 0.35s ease,
@@ -575,23 +579,24 @@ a:hover {
 }
 
 .research-arrow {
-  font-size: 1rem;
+  font-size: 1.1rem;
 
-  transition:
-    transform 0.35s ease;
+  color: rgba(0, 235, 210, 0.9);
+
+  transition: transform 0.35s ease;
 }
 
 .research-more a:hover {
-  color: rgba(0,235,210,0.95);
+  color: #ffffff;
 }
 
 .research-more a:hover .research-line {
-  width: 65px;
-  background: rgba(0,235,210,0.9);
+  width: 70px;
+  background: rgba(0, 235, 210, 1);
 }
 
 .research-more a:hover .research-arrow {
-  transform: translate(4px,-4px);
+  transform: translate(4px, -4px);
 }
 
 /* =========================
