@@ -352,7 +352,19 @@ a:hover {
 
   opacity: 1;
 }
+/* =========================
+   Section
+========================= */
+.section-label {
+  margin-bottom: 8px;
 
+  font-size: 0.65rem;
+  font-weight: 600;
+
+  letter-spacing: 0.2em;
+
+  color: rgba(0,235,210,0.65);
+}
 
 /* =========================
    CARDS
@@ -405,8 +417,6 @@ a:hover {
       rgba(255,255,255,0.015)
     );
 }
-
-
 
 .card {
   background: linear-gradient(180deg, #fff, #f8fafc);
@@ -479,7 +489,8 @@ a:hover {
 ========================= */
 
 .research-more {
-  margin-top: 32px;
+  margin-top: 34px;
+  text-align: center;
 }
 
 .research-more a {
@@ -487,49 +498,49 @@ a:hover {
   align-items: center;
   gap: 12px;
 
-  color: inherit;
+  color: rgba(220,240,240,0.72);
+
   text-decoration: none;
 
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
 
-  transition: color 0.25s ease;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  transition: color 0.3s ease;
 }
 
 .research-line {
-  width: 42px;
+  width: 38px;
   height: 1px;
 
-  background: currentColor;
-
-  opacity: 0.35;
+  background: rgba(0,235,210,0.55);
 
   transition:
-    width 0.3s ease,
-    opacity 0.3s ease;
+    width 0.35s ease,
+    background 0.35s ease;
 }
 
 .research-arrow {
-  font-size: 1.1rem;
+  font-size: 1rem;
 
   transition:
-    transform 0.3s ease;
+    transform 0.35s ease;
 }
 
 .research-more a:hover {
-  color: rgba(0, 235, 210, 0.95);
+  color: rgba(0,235,210,0.95);
 }
 
 .research-more a:hover .research-line {
   width: 65px;
-  opacity: 0.8;
+  background: rgba(0,235,210,0.9);
 }
 
 .research-more a:hover .research-arrow {
-  transform: translateX(5px);
+  transform: translate(4px,-4px);
 }
-
 
 /* =========================
    PAPER FIGURE
@@ -831,6 +842,59 @@ a:hover {
 
     color:#9ca3af;
 }
+
+.footer {
+  margin-top: 100px;
+
+  border-top: 1px solid rgba(255,255,255,0.06);
+
+  background:
+    radial-gradient(
+      circle at 20% 0%,
+      rgba(0,235,210,0.035),
+      transparent 35%
+    );
+}
+
+.footer h3 {
+  margin-bottom: 14px;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: rgba(235,250,250,0.85);
+}
+
+.footer p {
+  color: rgba(210,225,225,0.52);
+  line-height: 1.7;
+}
+
+.footer a {
+  color: rgba(210,235,235,0.65);
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+}
+
+.footer a:hover {
+  color: rgba(0,235,210,0.9);
+}
+
+.footer iframe {
+  width: 100%;
+  min-height: 220px;
+
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+
+  filter: grayscale(0.7) contrast(1.05);
+}
+
+
+
+
 
 @media(max-width:1000px){
 
