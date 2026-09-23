@@ -128,13 +128,34 @@ a:hover {
   padding: 14px var(--content-x);
 }
 
-
 /* LEFT SIDE: logo stays left */
 .logo {
   font-weight: 800;
   font-size: 18px;
   color: #fff;
 }
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+
+  text-decoration: none;
+  letter-spacing: 0.12em;
+}
+
+.logo-main {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.logo-sub {
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  opacity: 0.45;
+}
+
 
 /* RIGHT SIDE: push everything right */
 .nav-links {
