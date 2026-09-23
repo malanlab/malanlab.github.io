@@ -33,6 +33,9 @@ these insights into biomarkers, neurotechnology, and neuromodulation.
 </div>
 
 <hr>
+<div class="section-label">
+  RESEARCH
+</div>
 
 <h2>Research Areas</h2>
 
@@ -64,13 +67,15 @@ brain–computer interfaces, and emerging neurotechnologies.
 
 </div>
 
+
 <div class="research-more">
   <a href="{{ '/research/' | relative_url }}">
     <span>Explore research</span>
     <span class="research-line"></span>
-    <span class="research-arrow">→</span>
+    <span class="research-arrow">↗</span>
   </a>
 </div>
+
 <hr>
 
 <h2>Selected Publications</h2>
