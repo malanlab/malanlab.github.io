@@ -63,9 +63,13 @@ h1 {
 }
 
 h2 {
-  margin: var(--space-5) 0 var(--space-3);
+  margin: 56px 0 20px;
+
   color: var(--primary);
-  font-size: 2rem;
+
+  font-size: 1.8rem;
+  font-weight: 650;
+  line-height: 1.25;
 }
 
 h3 {
@@ -130,12 +134,6 @@ a:hover {
 
 /* LEFT SIDE: logo stays left */
 .logo {
-  font-weight: 800;
-  font-size: 18px;
-  color: #fff;
-}
-
-.logo {
   display: flex;
   align-items: baseline;
   gap: 7px;
@@ -162,12 +160,6 @@ a:hover {
   margin-left: auto;
   display: flex;
   gap: 40px;
-}
-
-.nav-links a {
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  color: #ffffff;
 }
 
 .nav-links a:hover {
@@ -294,7 +286,7 @@ a:hover {
 ========================= */
 
 .hero-lab {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
   letter-spacing: 2px;
   color: #fff;
@@ -321,8 +313,10 @@ a:hover {
   opacity: 0.75;
   width: 100%;
   max-width: 700px;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.65;
 }
+
 /* =========================
    BRAIN IMAGE
 ========================= */
@@ -528,50 +522,49 @@ a:hover {
 ========================= */
 
 .section-label {
-  margin-bottom: 10px;
+  margin-bottom: 9px;
 
-  font-size: 0.78rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 650;
 
   letter-spacing: 0.22em;
   text-transform: uppercase;
 
-  color: rgba(0, 235, 210, 0.85);
+  color: rgba(0, 235, 210, 0.9);
 }
-
 
 /* =========================
    EXPLORE RESEARCH
 ========================= */
 
 .research-more {
-  margin-top: 38px;
+  margin-top: 36px;
   text-align: center;
 }
 
 .research-more a {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 13px;
 
-  color: rgba(225, 245, 245, 0.9);
+  color: rgba(225, 245, 245, 0.88);
 
   text-decoration: none;
 
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-weight: 600;
 
-  letter-spacing: 0.10em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 
   transition: color 0.3s ease;
 }
 
 .research-line {
-  width: 45px;
+  width: 42px;
   height: 1px;
 
-  background: rgba(0, 235, 210, 0.75);
+  background: rgba(0, 235, 210, 0.8);
 
   transition:
     width 0.35s ease,
@@ -579,8 +572,7 @@ a:hover {
 }
 
 .research-arrow {
-  font-size: 1.1rem;
-
+  font-size: 1rem;
   color: rgba(0, 235, 210, 0.9);
 
   transition: transform 0.35s ease;
@@ -591,7 +583,7 @@ a:hover {
 }
 
 .research-more a:hover .research-line {
-  width: 70px;
+  width: 68px;
   background: rgba(0, 235, 210, 1);
 }
 
