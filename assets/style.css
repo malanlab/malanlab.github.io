@@ -375,21 +375,21 @@ a:hover {
 
   padding: 28px;
 
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.045),
-    rgba(255, 255, 255, 0.018)
-  );
+  background: #ffffff !important;
 
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  border: 1px solid #e2e8f0 !important;
   border-radius: 14px;
 
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.20);
+  color: #17202a !important;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  opacity: 1 !important;
+  visibility: visible !important;
 
   transition:
     transform 0.3s ease,
     border-color 0.3s ease,
-    background 0.3s ease,
     box-shadow 0.3s ease;
 }
 
@@ -405,9 +405,9 @@ a:hover {
   left: 24px;
 
   width: 36px;
-  height: 1px;
+  height: 2px;
 
-  background: rgba(0, 235, 210, 0.8);
+  background: #14b8a6;
 }
 
 
@@ -418,7 +418,7 @@ a:hover {
 .card h3 {
   margin: 0 0 12px;
 
-  color: #f1f7f6 !important;
+  color: #0f172a !important;
 
   font-size: 1.05rem;
   font-weight: 600;
@@ -434,7 +434,7 @@ a:hover {
 .card p {
   margin: 0 0 12px;
 
-  color: rgba(225, 235, 235, 0.78) !important;
+  color: #475569 !important;
 
   font-size: 0.92rem;
   line-height: 1.7;
@@ -460,7 +460,7 @@ a:hover {
 .card li {
   margin-bottom: 7px;
 
-  color: rgba(225, 235, 235, 0.78) !important;
+  color: #475569 !important;
 
   line-height: 1.6;
 }
@@ -471,19 +471,12 @@ a:hover {
 ========================= */
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
 
-  border-color: rgba(0, 235, 210, 0.25);
-
-  background: linear-gradient(
-    145deg,
-    rgba(0, 235, 210, 0.05),
-    rgba(255, 255, 255, 0.018)
-  );
+  border-color: rgba(20, 184, 166, 0.35) !important;
 
   box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.25),
-    0 0 30px rgba(0, 235, 210, 0.04);
+    0 16px 38px rgba(0, 0, 0, 0.12);
 }
 
 
@@ -495,15 +488,15 @@ a:hover {
   margin-top: 0;
   margin-bottom: 12px;
 
-  color: #f1f7f6 !important;
+  color: #0f172a !important;
 }
 
 .card.markdown-body p {
-  color: rgba(225, 235, 235, 0.78) !important;
+  color: #475569 !important;
 }
 
 .card.markdown-body li {
-  color: rgba(225, 235, 235, 0.78) !important;
+  color: #475569 !important;
 }
 
 /* =========================
@@ -994,120 +987,7 @@ a:hover {
 
   letter-spacing: 0.04em;
 }
-/* =====================================================
-   FINAL CARD OVERRIDE
-===================================================== */
 
-.card {
-  position: relative !important;
-  display: block !important;
-
-  padding: 28px !important;
-
-  background: #111a22 !important;
-
-  border: 1px solid rgba(255,255,255,0.12) !important;
-  border-radius: 14px !important;
-
-  color: #e8eeee !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-
-  box-shadow: 0 12px 35px rgba(0,0,0,0.25) !important;
-}
-
-
-/* Card headings */
-
-.card h3 {
-  display: block !important;
-
-  margin: 0 0 12px !important;
-
-  color: #ffffff !important;
-
-  font-size: 1.05rem !important;
-  font-weight: 600 !important;
-
-  line-height: 1.4 !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-
-/* Card paragraphs */
-
-.card p {
-  display: block !important;
-
-  margin: 0 0 14px !important;
-
-  color: #d7e2e5 !important;
-
-  font-size: 0.94rem !important;
-  font-weight: 400 !important;
-
-  line-height: 1.7 !important;
-
-  opacity: 1 !important;
-  visibility: visible !important;
-}
-
-
-/* Last paragraph */
-
-.card p:last-child {
-  margin-bottom: 0 !important;
-}
-
-
-/* Bold text inside cards */
-
-.card strong {
-  color: #f1f7f6 !important;
-}
-
-
-/* Lists */
-
-.card ul,
-.card ol {
-  color: #d7e2e5 !important;
-}
-
-.card li {
-  color: #d7e2e5 !important;
-}
-
-
-/* Cyan accent */
-
-.card::before {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: 24px;
-
-  width: 36px;
-  height: 1px;
-
-  background: #00ebd2 !important;
-}
-
-
-/* Hover */
-
-.card:hover {
-  transform: translateY(-4px);
-
-  border-color: rgba(0,235,210,0.3) !important;
-
-  background: #121e26 !important;
-}
 
 /* =========================
    RESPONSIVE
