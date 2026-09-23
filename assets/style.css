@@ -365,25 +365,25 @@ a:hover {
 
   color: rgba(0,235,210,0.65);
 }
-
 /* =========================
    CARDS
 ========================= */
 
 .card {
   position: relative;
+
   padding: 28px;
 
   background: linear-gradient(
     145deg,
-    rgba(255, 255, 255, 0.035),
-    rgba(255, 255, 255, 0.012)
+    rgba(255, 255, 255, 0.045),
+    rgba(255, 255, 255, 0.018)
   );
 
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: 14px;
 
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.20);
 
   transition:
     transform 0.3s ease,
@@ -392,9 +392,12 @@ a:hover {
     box-shadow 0.3s ease;
 }
 
-/* subtle scientific accent */
+
+/* subtle cyan accent */
+
 .card::before {
   content: "";
+
   position: absolute;
 
   top: 0;
@@ -403,10 +406,69 @@ a:hover {
   width: 36px;
   height: 1px;
 
-  background: rgba(0, 235, 210, 0.75);
+  background: rgba(0, 235, 210, 0.8);
 }
 
-/* hover */
+
+/* =========================
+   CARD HEADING
+========================= */
+
+.card h3 {
+  margin: 0 0 12px;
+
+  color: #f1f7f6 !important;
+
+  font-size: 1.05rem;
+  font-weight: 600;
+
+  line-height: 1.4;
+}
+
+
+/* =========================
+   CARD TEXT
+========================= */
+
+.card p {
+  margin: 0 0 12px;
+
+  color: rgba(225, 235, 235, 0.78) !important;
+
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+
+/* last paragraph */
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* =========================
+   CARD LISTS
+========================= */
+
+.card ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+.card li {
+  margin-bottom: 7px;
+
+  color: rgba(225, 235, 235, 0.78) !important;
+
+  line-height: 1.6;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
 .card:hover {
   transform: translateY(-5px);
 
@@ -414,8 +476,8 @@ a:hover {
 
   background: linear-gradient(
     145deg,
-    rgba(0, 235, 210, 0.045),
-    rgba(255, 255, 255, 0.015)
+    rgba(0, 235, 210, 0.05),
+    rgba(255, 255, 255, 0.018)
   );
 
   box-shadow:
@@ -423,41 +485,25 @@ a:hover {
     0 0 30px rgba(0, 235, 210, 0.04);
 }
 
-/* headings */
-.card h3 {
+
+/* =========================
+   MARKDOWN CARDS
+========================= */
+
+.card.markdown-body h3 {
   margin-top: 0;
-  margin-bottom: 10px;
-
-  color: #e8f7f5;
-
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-/* text */
-.card p {
   margin-bottom: 12px;
 
-  color: rgba(215, 230, 230, 0.65);
-
-  font-size: 0.92rem;
-  line-height: 1.7;
+  color: #f1f7f6 !important;
 }
 
-/* lists */
-.card ul {
-  margin-top: 10px;
-  padding-left: 20px;
+.card.markdown-body p {
+  color: rgba(225, 235, 235, 0.78) !important;
 }
 
-.card li {
-  margin-bottom: 7px;
-
-  color: rgba(215, 230, 230, 0.65);
-
-  line-height: 1.6;
+.card.markdown-body li {
+  color: rgba(225, 235, 235, 0.78) !important;
 }
-
 
 /* =========================
    SELECTED PUBLICATIONS
