@@ -536,53 +536,54 @@ a:hover {
 ========================= */
 
 .research-more {
-  margin-top: 36px;
+  margin-top: 28px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
 .research-more a {
   display: inline-flex;
   align-items: center;
-  gap: 13px;
+  gap: 12px;
 
-  color: rgba(225, 245, 245, 0.88);
+  color: #0b1f3a !important;
 
   text-decoration: none;
 
-  font-size: 0.84rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
 
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
+  opacity: 1 !important;
 
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
 }
 
 .research-line {
   width: 42px;
   height: 1px;
 
-  background: rgba(0, 235, 210, 0.8);
+  background: #14b8a6;
 
   transition:
-    width 0.35s ease,
-    background 0.35s ease;
+    width 0.3s ease,
+    background 0.3s ease;
 }
 
 .research-arrow {
-  font-size: 1rem;
-  color: rgba(0, 235, 210, 0.9);
+  font-size: 1.05rem;
+  color: #14b8a6;
 
-  transition: transform 0.35s ease;
+  transition: transform 0.3s ease;
 }
 
 .research-more a:hover {
-  color: #ffffff;
+  color: #0b1f3a !important;
 }
 
 .research-more a:hover .research-line {
-  width: 68px;
-  background: rgba(0, 235, 210, 1);
+  width: 62px;
+  background: #14b8a6;
 }
 
 .research-more a:hover .research-arrow {
