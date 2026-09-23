@@ -4,9 +4,19 @@ title: Research
 permalink: /research/
 ---
 
-# Research
+<div class="section-label">
+  RESEARCH
+</div>
 
-## 🧠 Can brain rhythms explain and predict chronic pain?
+<h1>Research</h1>
+
+
+<div class="section-label">
+  PAIN NEUROSCIENCE
+</div>
+
+<h2>Can brain rhythms explain and predict chronic pain?</h2>
+
 
 <div class="research-block">
 
@@ -105,7 +115,13 @@ permalink: /research/
 </div>
 ---
 
-## 🧠 How does the cerebellum help the brain correct movement errors?
+<div class="section-label">
+  MOTOR LEARNING
+</div>
+
+<h2>How does the cerebellum help the brain correct movement errors?</h2>
+
+
 
 <div class="research-block">
 
@@ -212,8 +228,6 @@ permalink: /research/
 
 </div>
 
----
-
 <div class="card">
 
   <h3>Reference</h3>
@@ -225,9 +239,13 @@ permalink: /research/
 
 </div>
 
----
 
-## 🚶 How does cortico–subcortical network dysfunction lead to freezing of gait in Parkinson’s disease?
+<div class="section-label">
+  PARKINSON'S DISEASE
+</div>
+
+<h2>How does cortico–subcortical network dysfunction lead to freezing of gait?</h2>
+
 
 <div class="card" markdown="1">
 
