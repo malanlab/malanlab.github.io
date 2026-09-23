@@ -173,7 +173,44 @@ a:hover {
 .nav-links a:hover {
   color: var(--accent);
 }
+.nav-links a {
+  position: relative;
 
+  padding: 6px 0;
+
+  color: rgba(220, 235, 235, 0.68);
+  text-decoration: none;
+
+  font-size: 0.82rem;
+  letter-spacing: 0.035em;
+
+  transition:
+    color 0.25s ease;
+}
+
+.nav-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 0;
+  height: 1px;
+
+  background: rgba(0, 235, 210, 0.9);
+
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: rgba(235, 255, 255, 0.95);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
 
 /* =========================
    HERO
