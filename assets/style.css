@@ -63,15 +63,13 @@ h1 {
 }
 
 h2 {
-  margin: 56px 0 20px;
+  margin: 42px 0 20px;
 
   color: var(--primary);
-
   font-size: 1.8rem;
-  font-weight: 650;
   line-height: 1.25;
+  font-weight: 650;
 }
-
 h3 {
   color: var(--primary);
 }
@@ -522,7 +520,7 @@ a:hover {
 ========================= */
 
 .section-label {
-  margin-bottom: 9px;
+  margin-bottom: 6px;
 
   font-size: 0.7rem;
   font-weight: 650;
@@ -530,7 +528,7 @@ a:hover {
   letter-spacing: 0.22em;
   text-transform: uppercase;
 
-  color: rgba(0, 235, 210, 0.9);
+  color: rgba(0, 180, 165, 0.9);
 }
 
 /* =========================
