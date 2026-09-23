@@ -64,7 +64,6 @@ h1 {
 
 h2 {
   margin: 42px 0 20px;
-
   color: var(--primary);
   font-size: 1.8rem;
   line-height: 1.25;
@@ -593,21 +592,29 @@ a:hover {
 }
 
 /* =========================
-   RESEARCH PAGE SPACING
+   RESEARCH PAGE
 ========================= */
 
 .research-project {
-  margin-bottom: 78px;
+  margin-bottom: 72px;
 }
+
+
+/* project label */
 
 .research-project > .section-label {
   margin-bottom: 7px;
 }
 
+
+/* project title */
+
 .research-project > h2 {
-  margin: 0 0 28px;
+  margin: 0 0 26px;
 
   max-width: 900px;
+
+  color: var(--primary);
 
   font-size: 1.8rem;
   line-height: 1.3;
@@ -615,41 +622,27 @@ a:hover {
 }
 
 
-/* First page heading */
-
-.container > .section-label:first-child {
-  margin-top: 55px;
-  margin-bottom: 7px;
-}
-
-.container > h1 {
-  margin: 0 0 62px;
-
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  line-height: 1.15;
-  font-weight: 650;
-}
-
-
-/* Tighter research blocks */
+/* research content */
 
 .research-project .research-block {
-  margin: 0 0 24px;
+  margin: 0 0 22px;
   gap: 24px;
 }
 
 
-/* Tighter cards */
+/* cards inside research */
 
 .research-project .card {
   padding: 26px 30px;
 }
 
 
-/* Research card headings */
+/* card headings */
 
 .research-project .card h3 {
-  font-size: 0.98rem;
+  margin: 0 0 10px;
+
+  font-size: 1rem;
   line-height: 1.4;
 }
 
@@ -658,15 +651,15 @@ a:hover {
 }
 
 
-/* Research text */
+/* card text */
 
 .research-project .card p {
-  font-size: 0.9rem;
+  font-size: 0.91rem;
   line-height: 1.7;
 }
 
 
-/* Research lists */
+/* lists */
 
 .research-project .card ul {
   margin-top: 8px;
@@ -674,12 +667,12 @@ a:hover {
 
 .research-project .card li {
   margin-bottom: 6px;
-  font-size: 0.89rem;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
 
 
-/* Results cards */
+/* result cards */
 
 .research-project > .grid {
   gap: 20px;
@@ -687,23 +680,19 @@ a:hover {
 }
 
 
-/* Reference */
+/* reference */
 
 .research-reference {
   margin-top: 20px;
 }
 
 
-/* Mobile */
+/* mobile */
 
 @media (max-width: 900px) {
 
-  .container > h1 {
-    margin-bottom: 48px;
-  }
-
   .research-project {
-    margin-bottom: 65px;
+    margin-bottom: 60px;
   }
 
   .research-project > h2 {
@@ -717,10 +706,6 @@ a:hover {
 }
 
 @media (max-width: 650px) {
-
-  .container > .section-label:first-child {
-    margin-top: 40px;
-  }
 
   .research-project > h2 {
     font-size: 1.5rem;
