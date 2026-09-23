@@ -372,81 +372,93 @@ a:hover {
 
 .card {
   position: relative;
-
   padding: 28px;
 
-  border: 1px solid rgba(255,255,255,0.07);
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.035),
+    rgba(255, 255, 255, 0.012)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,0.035),
-      rgba(255,255,255,0.012)
-    );
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
 
   transition:
     transform 0.3s ease,
     border-color 0.3s ease,
-    background 0.3s ease;
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
+/* subtle scientific accent */
 .card::before {
   content: "";
-
   position: absolute;
 
   top: 0;
   left: 24px;
 
-  width: 32px;
+  width: 36px;
   height: 1px;
 
-  background: rgba(0,235,210,0.7);
+  background: rgba(0, 235, 210, 0.75);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-
-  border-color: rgba(0,235,210,0.22);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(0,235,210,0.045),
-      rgba(255,255,255,0.015)
-    );
-}
-
-.card {
-  background: linear-gradient(180deg, #fff, #f8fafc);
-  padding: 24px;
-
-  border-radius: var(--radius);
-  border: 1px solid rgba(20,184,166,0.12);
-  border-left: 4px solid var(--primary);
-
-  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-}
-
+/* hover */
 .card:hover {
   transform: translateY(-5px);
-  border-left-color: var(--accent);
-}
-.card.markdown-body h3 {
-  margin-top: 14px;
-  margin-bottom: 8px;
-  color: #0b1f3a;
+
+  border-color: rgba(0, 235, 210, 0.25);
+
+  background: linear-gradient(
+    145deg,
+    rgba(0, 235, 210, 0.045),
+    rgba(255, 255, 255, 0.015)
+  );
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(0, 235, 210, 0.04);
 }
 
-.card.markdown-body ul {
-  padding-left: 20px;
+/* headings */
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  color: #e8f7f5;
+
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+/* text */
+.card p {
+  margin-bottom: 12px;
+
+  color: rgba(215, 230, 230, 0.65);
+
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* lists */
+.card ul {
   margin-top: 10px;
+  padding-left: 20px;
 }
 
-.card.markdown-body li {
-  margin-bottom: 6px;
+.card li {
+  margin-bottom: 7px;
+
+  color: rgba(215, 230, 230, 0.65);
+
+  line-height: 1.6;
 }
+
+
 /* =========================
    SELECTED PUBLICATIONS
 ========================= */
