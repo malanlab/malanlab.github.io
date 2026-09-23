@@ -987,7 +987,11 @@ a:hover {
   }
 
 }
-
+.footer-tagline {
+  color: rgba(0, 235, 210, 0.72) !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.04em;
+}
 
 /* =========================
    RESPONSIVE
