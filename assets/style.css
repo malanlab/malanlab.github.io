@@ -593,40 +593,18 @@ a:hover {
 }
 
 /* =========================
-   RESEARCH PAGE HEADER
+   RESEARCH PAGE SPACING
 ========================= */
 
-.research-page > .section-label {
-  margin-top: 56px;
-  margin-bottom: 8px;
+.research-project {
+  margin-bottom: 78px;
 }
 
-.research-page > h1 {
-  margin: 0 0 64px;
-
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  line-height: 1.15;
-  font-weight: 650;
+.research-project > .section-label {
+  margin-bottom: 7px;
 }
 
-
-/* =========================
-   RESEARCH TOPIC HEADER
-========================= */
-
-.research-section-label {
-  margin-bottom: 8px;
-
-  font-size: 0.68rem;
-  font-weight: 650;
-
-  letter-spacing: 0.20em;
-  text-transform: uppercase;
-
-  color: rgba(0, 180, 165, 0.9);
-}
-
-.research-section-label + h2 {
+.research-project > h2 {
   margin: 0 0 28px;
 
   max-width: 900px;
@@ -634,8 +612,124 @@ a:hover {
   font-size: 1.8rem;
   line-height: 1.3;
   font-weight: 650;
+}
 
-  color: var(--primary);
+
+/* First page heading */
+
+.container > .section-label:first-child {
+  margin-top: 55px;
+  margin-bottom: 7px;
+}
+
+.container > h1 {
+  margin: 0 0 62px;
+
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  line-height: 1.15;
+  font-weight: 650;
+}
+
+
+/* Tighter research blocks */
+
+.research-project .research-block {
+  margin: 0 0 24px;
+  gap: 24px;
+}
+
+
+/* Tighter cards */
+
+.research-project .card {
+  padding: 26px 30px;
+}
+
+
+/* Research card headings */
+
+.research-project .card h3 {
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
+.research-project .card h3:not(:first-child) {
+  margin-top: 24px;
+}
+
+
+/* Research text */
+
+.research-project .card p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+
+/* Research lists */
+
+.research-project .card ul {
+  margin-top: 8px;
+}
+
+.research-project .card li {
+  margin-bottom: 6px;
+  font-size: 0.89rem;
+  line-height: 1.6;
+}
+
+
+/* Results cards */
+
+.research-project > .grid {
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+
+/* Reference */
+
+.research-reference {
+  margin-top: 20px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 900px) {
+
+  .container > h1 {
+    margin-bottom: 48px;
+  }
+
+  .research-project {
+    margin-bottom: 65px;
+  }
+
+  .research-project > h2 {
+    font-size: 1.6rem;
+  }
+
+  .research-project .research-block {
+    gap: 20px;
+  }
+
+}
+
+@media (max-width: 650px) {
+
+  .container > .section-label:first-child {
+    margin-top: 40px;
+  }
+
+  .research-project > h2 {
+    font-size: 1.5rem;
+  }
+
+  .research-project .card {
+    padding: 24px;
+  }
+
 }
 
 /* =========================
