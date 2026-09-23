@@ -791,141 +791,202 @@ a:hover {
    FOOTER
 ========================= */
 
-.footer{
-
-    margin-top:80px;
-    background:#081425;
-    color:white;
-}
-
-.footer-grid{
-
-    display:grid;
-    grid-template-columns:
-        1.1fr
-        1fr
-        1.2fr
-        1.4fr;
-
-    gap:50px;
-
-    padding:60px 0;
-}
-
-.footer h3{
-
-    color:white;
-    margin-bottom:18px;
-}
-
-.footer p{
-
-    color:#d2dae6;
-    line-height:1.8;
-    margin-bottom:14px;
-}
-
-.footer a{
-
-    color:#7dd3fc;
-}
-
-.footer a:hover{
-
-    color:white;
-}
-
-.footer iframe{
-
-    width:100%;
-    height:220px;
-
-    border:none;
-    border-radius:12px;
-}
-
-.footer-bottom{
-
-    border-top:1px solid rgba(255,255,255,.08);
-
-    text-align:center;
-
-    padding:22px;
-
-    color:#9ca3af;
-}
-
 .footer {
-  margin-top: 100px;
+  position: relative;
 
-  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 110px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
 
   background:
     radial-gradient(
-      circle at 20% 0%,
-      rgba(0,235,210,0.035),
-      transparent 35%
-    );
+      circle at 15% 0%,
+      rgba(0, 235, 210, 0.045),
+      transparent 32%
+    ),
+    #070b12;
+
+  color: rgba(220, 235, 235, 0.7);
 }
+
+
+/* =========================
+   FOOTER GRID
+========================= */
+
+.footer-grid {
+  display: grid;
+
+  grid-template-columns:
+    1.25fr
+    1fr
+    1.25fr
+    1.35fr;
+
+  gap: 55px;
+
+  padding: 65px 0;
+}
+
+
+/* =========================
+   FOOTER HEADINGS
+========================= */
 
 .footer h3 {
-  margin-bottom: 14px;
+  margin: 0 0 18px;
 
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  color: rgba(240, 250, 250, 0.88);
+
+  font-size: 0.68rem;
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-
-  color: rgba(235,250,250,0.85);
 }
+
+
+/* =========================
+   FOOTER TEXT
+========================= */
 
 .footer p {
-  color: rgba(210,225,225,0.52);
-  line-height: 1.7;
+  margin: 0 0 15px;
+
+  color: rgba(210, 225, 225, 0.52);
+
+  font-size: 0.86rem;
+  line-height: 1.75;
 }
 
+
+/* Lab name / first block */
+
+.footer-grid > div:first-child p:first-of-type {
+  color: rgba(0, 235, 210, 0.72);
+
+  font-size: 0.78rem;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================
+   FOOTER LINKS
+========================= */
+
 .footer a {
-  color: rgba(210,235,235,0.65);
+  position: relative;
+
+  color: rgba(210, 235, 235, 0.62);
+
   text-decoration: none;
 
-  transition: color 0.25s ease;
+  transition:
+    color 0.25s ease;
 }
 
 .footer a:hover {
-  color: rgba(0,235,210,0.9);
+  color: rgba(0, 235, 210, 0.95);
 }
+
+
+/* =========================
+   MAP
+========================= */
 
 .footer iframe {
-  width: 100%;
-  min-height: 220px;
+  display: block;
 
-  border: 1px solid rgba(255,255,255,0.07);
+  width: 100%;
+  height: 220px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
   border-radius: 12px;
 
-  filter: grayscale(0.7) contrast(1.05);
+  filter:
+    grayscale(0.75)
+    contrast(1.05)
+    brightness(0.8);
+
+  opacity: 0.8;
+
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.footer iframe:hover {
+  opacity: 0.95;
+
+  filter:
+    grayscale(0.45)
+    contrast(1.05)
+    brightness(0.9);
+
+  border-color: rgba(0, 235, 210, 0.2);
 }
 
 
+/* =========================
+   FOOTER BOTTOM
+========================= */
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.055);
+
+  padding: 20px 0;
+
+  text-align: center;
+
+  color: rgba(190, 205, 205, 0.38);
+
+  font-size: 0.72rem;
+
+  letter-spacing: 0.04em;
+}
 
 
+/* =========================
+   RESPONSIVE
+========================= */
 
-@media(max-width:1000px){
+@media (max-width: 1000px) {
 
-.footer-grid{
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
 
-grid-template-columns:1fr;
-gap:35px;
+    gap: 45px;
+  }
 
 }
 
-.footer iframe{
 
-height:260px;
+@media (max-width: 650px) {
+
+  .footer {
+    margin-top: 80px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+    padding: 50px 0;
+  }
+
+  .footer iframe {
+    height: 240px;
+  }
+
+  .footer-bottom {
+    font-size: 0.68rem;
+  }
 
 }
-
-}
-
-
 
 
 /* =========================
