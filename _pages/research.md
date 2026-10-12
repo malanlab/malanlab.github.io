@@ -154,7 +154,7 @@ permalink: /research/
 
     <p>
       <strong>
-        Second pain-related publication
+        Alpha Suppression and Slowing in Chronic Pain are Associated with Baseline Pain Level
       </strong>
     </p>
 
