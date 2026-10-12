@@ -34,23 +34,7 @@ permalink: /people/
     <img src="{{ '/assets/images/person-placeholder.jpg' | relative_url }}"
          alt="Student">
 
-    <h3>Student Name</h3>
-
-    <div class="affiliation">
-      PhD Scholar<br>
-      IIT Jammu
-    </div>
-
-  </div>
-
-  <!-- Student -->
-
-  <div class="person-card">
-
-    <img src="{{ '/assets/images/person-placeholder.jpg' | relative_url }}"
-         alt="Student">
-
-    <h3>Student Name</h3>
+    <h3>Updating Soon</h3>
 
     <div class="affiliation">
       PhD Scholar<br>
