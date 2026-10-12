@@ -50,7 +50,7 @@ permalink: /people/
     <img src="{{ '/assets/images/person-placeholder.jpg' | relative_url }}"
          alt="Collaborator">
 
-    <h3>Collaborator Name</h3>
+    <h3>Updating Soon</h3>
 
     <div class="affiliation">
       University Name
