@@ -130,6 +130,45 @@ permalink: /research/
 
   </div>
 
+
+  <div class="research-reference">
+
+    <span>PUBLICATIONS</span>
+
+    <p>
+      <strong>
+        Altered cortical alpha modulations and connectivity in complex regional pain syndrome
+      </strong><br>
+      <em>The Journal of Pain</em>, 2026
+    </p>
+
+    <a
+      href="https://www.sciencedirect.com/science/article/pii/S1526590025008223"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Read publication ↗
+    </a>
+
+    <div class="publication-divider"></div>
+
+    <p>
+      <strong>
+        Second pain-related publication
+      </strong>
+    </p>
+
+    <a
+      href="https://www.sciencedirect.com/science/article/pii/S1526590024002207"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Read publication ↗
+    </a>
+
+  </div>
+
+
 </div>
 
 
